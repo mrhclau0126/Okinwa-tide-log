@@ -2,7 +2,7 @@
   "name": "沖繩親子行程 Tide Log",
   "short_name": "Tide Log",
   "description": "沖繩7天6夜親子自駕行程 + 旅費記帳",
-  "start_url": "itinerary.html",
+  "start_url": "itinerary",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",

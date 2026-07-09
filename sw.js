@@ -1,5 +1,5 @@
 const CACHE = 'tidelog-v1';
-const SHELL = ['itinerary.html', 'expenses.html', 'manifest.json', 'icon-192.png', 'icon-512.png'];
+const SHELL = ['itinerary', 'expenses', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)));
