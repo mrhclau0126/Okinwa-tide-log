@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B2A32">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>沖繩 7 天 6 夜親子自駕行程 · Tide Log</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --ink:#0B2A32; --ink2:#123B46; --ink3:#0E323C;
+  --paper:#EDF1E4; --paper2:#E1E9D6;
+  --text:#14313A; --text-soft:#3E5A5C;
+  --reef:#2E9C93; --explore:#2D6E8E; --tide:#D9A23B; --coral:#E2593C;
+  --line:#B9C4AC; --linedark:rgba(255,255,255,.16);
+  --disp:'Space Grotesk',sans-serif; --mono:'IBM Plex Mono',monospace; --body:'Work Sans',sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--body); background:var(--ink); color:var(--text); scroll-snap-type:y proximity; overflow-y:auto; height:100vh;}
+h1,h2,h3{font-family:var(--disp); margin:0; letter-spacing:-0.01em;}
+p{margin:0;}
+.slide{min-height:100vh; width:100%; padding:5.5vh 8vw; display:flex; flex-direction:column; justify-content:center; scroll-snap-align:start; position:relative; border-bottom:1px solid var(--linedark);}
+.slide.dark{background:var(--ink); color:#EAF2EC;}
+.slide.paper{background:var(--paper); color:var(--text);}
+.eyebrow{font-family:var(--mono); font-size:.75rem; letter-spacing:.22em; text-transform:uppercase; color:var(--reef); margin-bottom:.9rem; font-weight:600;}
+.slide.dark .eyebrow{color:#7FD9CF;}
+.page-index{position:absolute; top:5.5vh; right:8vw; font-family:var(--mono); font-size:.75rem; color:var(--text-soft); letter-spacing:.05em;}
+.slide.dark .page-index{color:#8FB2AE;}
+
+.edit{border-bottom:1.5px dashed var(--coral); padding:0 .15em; font-style:italic; color:inherit; outline:none; cursor:text;}
+.edit:focus{background:rgba(226,89,60,.12);}
+
+.cover-eyebrow{display:flex; align-items:center; gap:.6rem;}
+.cover h1{font-size:clamp(2.4rem,6vw,4.3rem); font-weight:700; color:#fff; line-height:1.06; margin:.4rem 0 1rem;}
+.cover .sub{font-size:clamp(1rem,1.6vw,1.25rem); color:#B9DED8; font-style:italic; max-width:44rem; margin-bottom:1.8rem;}
+.chip-row{display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem;}
+.chip{font-family:var(--mono); font-size:.78rem; border:1px solid var(--linedark); border-radius:100px; padding:.4rem .9rem; color:#DCEDE8; background:rgba(255,255,255,.03);}
+.meta-card{border:1.5px solid var(--coral); border-radius:10px; background:var(--ink2); padding:1.2rem 1.4rem; max-width:38rem;}
+.meta-card .lead{font-size:.72rem; color:var(--tide); font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.7rem;}
+.meta-row{display:flex; gap:.6rem; font-size:.95rem; padding:.28rem 0; color:#EAF2EC;}
+.meta-row b{color:var(--tide); font-weight:600; min-width:5.2em; font-family:var(--mono); font-size:.82rem;}
+
+.map-embed{width:100%; border-radius:12px; overflow:hidden; border:1px solid var(--linedark); margin-bottom:1.6rem; height:340px;}
+.map-embed iframe{width:100%; height:100%; border:0;}
+.map-hint{font-family:var(--mono); font-size:.72rem; color:#9FC9C2; margin-bottom:1.8rem;}
+.overview-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:4vw; align-items:start;}
+.route-map{position:relative; padding-left:2.4rem;}
+.route-map::before{content:''; position:absolute; left:.62rem; top:.4rem; bottom:.4rem; width:2px; background:linear-gradient(to bottom,var(--tide),var(--reef),var(--explore),var(--coral));}
+.route-item{position:relative; margin-bottom:1.7rem;}
+.route-item .dot{position:absolute; left:-2.4rem; top:.15rem; width:.9rem; height:.9rem; border-radius:50%; border:2px solid var(--ink); box-shadow:0 0 0 2px currentColor;}
+.route-item h3{font-size:1.05rem; color:#fff; margin-bottom:.15rem;}
+.route-item h3 a{color:#fff; text-decoration:none; border-bottom:1px dotted #9FC9C2;}
+.route-item .sub{font-family:var(--mono); font-size:.78rem; color:#9FC9C2;}
+.route-item .daytag{font-family:var(--mono); font-size:.68rem; color:var(--ink); background:var(--tide); padding:.15rem .5rem; border-radius:100px; margin-left:.5rem; letter-spacing:.03em;}
+.hotel-strategy{display:flex; flex-direction:column; gap:1rem;}
+.strategy-card{border:1px solid var(--linedark); border-radius:10px; padding:1.1rem 1.3rem; background:var(--ink2);}
+.strategy-card .tag{font-family:var(--mono); font-size:.72rem; color:var(--tide); letter-spacing:.08em; text-transform:uppercase;}
+.strategy-card h3{font-size:1.15rem; color:#fff; margin:.35rem 0 .3rem;}
+.strategy-card p{font-size:.88rem; color:#B9DED8; line-height:1.5;}
+.strategy-card a{color:#9FE0D8;}
+.strategy-arrow{align-self:center; font-family:var(--mono); color:var(--reef); font-size:.85rem; letter-spacing:.05em; text-align:center;}
+.legend{display:flex; flex-wrap:wrap; gap:.9rem; margin-top:1.6rem;}
+.legend .item{display:flex; align-items:center; gap:.4rem; font-family:var(--mono); font-size:.72rem; color:#B9DED8;}
+.legend .sw{width:.7rem; height:.7rem; border-radius:3px; display:inline-block;}
+
+.day-head{display:flex; align-items:flex-start; gap:1.4rem; margin-bottom:1.1rem; flex-wrap:wrap;}
+.day-badge{font-family:var(--mono); font-weight:700; font-size:2.2rem; line-height:1; color:#fff; background:var(--ink); border-radius:10px; padding:.6rem .9rem; min-width:3.6rem; text-align:center;}
+.day-badge small{display:block; font-size:.55rem; letter-spacing:.2em; font-weight:600; color:var(--tide); margin-bottom:.25rem;}
+.day-title-wrap h2{font-size:clamp(1.4rem,2.6vw,2rem); color:var(--text); margin-bottom:.4rem;}
+.mood-tags{display:flex; gap:.5rem; flex-wrap:wrap;}
+.mood-tag{font-family:var(--mono); font-size:.7rem; padding:.22rem .6rem; border-radius:100px; color:#fff; letter-spacing:.03em;}
+.drive-total{font-family:var(--mono); font-size:.72rem; color:var(--coral); margin-top:.3rem;}
+.route-chips{display:flex; flex-wrap:wrap; gap:.35rem; align-items:center; margin:.7rem 0 .6rem;}
+.route-chip{font-size:.82rem; font-family:var(--mono); background:var(--paper2); border:1px solid var(--line); padding:.32rem .7rem; border-radius:100px; color:var(--text); text-decoration:none;}
+.route-chip:hover{border-color:var(--explore); color:var(--explore);}
+.route-chip.optional{border-style:dashed; border-color:var(--coral); color:var(--coral);}
+.route-leg{font-family:var(--mono); font-size:.7rem; color:#fff; background:var(--text-soft); padding:.18rem .5rem; border-radius:100px; white-space:nowrap;}
+.day-route-actions{margin-bottom:1.4rem;}
+.btn-directions{display:inline-flex; align-items:center; gap:.4rem; font-family:var(--mono); font-size:.76rem; color:#fff; background:var(--explore); padding:.4rem .85rem; border-radius:100px; text-decoration:none;}
+.btn-directions:hover{background:#255877;}
+
+table.sched{width:100%; border-collapse:collapse; font-size:.92rem;}
+table.sched th{text-align:left; font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); padding:.5rem .6rem; border-bottom:2px solid var(--text);}
+table.sched td{padding:.62rem .6rem; border-bottom:1px solid var(--line); vertical-align:top;}
+table.sched td.time{font-family:var(--mono); font-weight:600; white-space:nowrap; color:var(--text);}
+table.sched td.note{color:var(--text-soft); font-size:.85rem; font-style:italic;}
+.who{display:inline-flex; align-items:center; justify-content:center; width:1.7rem; height:1.7rem; border-radius:50%; font-size:.85rem; color:#fff;}
+.who-dad{background:var(--reef);}
+.who-mom{background:var(--tide); color:var(--ink);}
+.who-family{background:var(--explore);}
+.who-move{background:var(--text-soft);}
+.row-map{font-size:.85rem; text-decoration:none; margin-left:.3rem; opacity:.75;}
+.row-map:hover{opacity:1;}
+.row-web{font-size:.85rem; text-decoration:none; margin-left:.15rem; opacity:.75;}
+.row-web:hover{opacity:1;}
+.day-map-embed{width:100%; height:280px; border-radius:10px; overflow:hidden; border:1px solid var(--line); margin-bottom:1.2rem;}
+.day-map-embed iframe{width:100%; height:100%; border:0;}
+
+.day-foot{display:flex; align-items:center; gap:.6rem; margin-top:1.3rem; font-size:.85rem; color:var(--text-soft); flex-wrap:wrap;}
+.day-foot .lbl{font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--coral);}
+
+.section-head{margin-bottom:2rem; max-width:40rem;}
+.section-head h2{font-size:clamp(1.6rem,3vw,2.3rem);}
+.section-head .sub{font-family:var(--mono); font-size:.82rem; color:var(--text-soft); margin-top:.5rem;}
+.slide.dark .section-head .sub{color:#9FC9C2;}
+.card-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem;}
+.food-card{background:var(--paper2); border:1px solid var(--line); border-radius:12px; padding:1.2rem 1.3rem;}
+.food-card .tag{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--reef);}
+.food-card h3{font-size:1.1rem; margin:.35rem 0 .05rem; color:var(--text);}
+.food-card .en{font-size:.75rem; color:var(--text-soft); font-style:italic; margin-bottom:.55rem;}
+.food-card .desc{font-size:.85rem; color:var(--text-soft); margin-bottom:.7rem; line-height:1.45;}
+.food-row{display:flex; gap:.5rem; font-size:.82rem; align-items:flex-start; margin-bottom:.35rem; color:var(--text);}
+.food-row .ic{width:1.1em; text-align:center; flex-shrink:0; color:var(--coral);}
+.food-row a{color:var(--explore); text-decoration:none; border-bottom:1px solid var(--explore);}
+.hotel-card{background:var(--ink2); border:1px solid var(--linedark); border-radius:14px; padding:1.5rem 1.6rem; color:#EAF2EC;}
+.hotel-card .tag{font-family:var(--mono); font-size:.7rem; color:var(--tide); letter-spacing:.08em; text-transform:uppercase;}
+.hotel-card h3{color:#fff; font-size:1.25rem; margin:.4rem 0 .1rem;}
+.hotel-card .cn{font-size:.9rem; color:#B9DED8; margin-bottom:.9rem;}
+.hotel-row{display:flex; gap:.6rem; font-size:.85rem; margin-bottom:.5rem; color:#DCEDE8;}
+.hotel-row .ic{width:1.2em; flex-shrink:0; color:var(--reef);}
+.hotel-row a{color:#DCEDE8;}
+.hotel-tips{margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--linedark); list-style:none; padding-left:0;}
+.hotel-tips li{font-size:.82rem; color:#B9DED8; margin-bottom:.35rem; line-height:1.45;}
+.hotel-tips li::before{content:'· '; color:var(--tide);}
+
+.tips-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem 2rem;}
+.tip-item{display:flex; gap:.8rem; align-items:flex-start;}
+.tip-item .num{font-family:var(--mono); font-weight:700; color:var(--coral); font-size:.95rem; min-width:1.6em;}
+.tip-item p{font-size:.92rem; line-height:1.5; color:var(--text);}
+.tip-item b{color:var(--text);}
+
+.closing h2{color:#fff; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:1rem;}
+.closing p{color:#B9DED8; max-width:34rem; line-height:1.65; font-size:.98rem; margin-bottom:.8rem;}
+.closing .steps{margin-top:1.6rem; display:flex; flex-direction:column; gap:.9rem; max-width:38rem;}
+.closing .step{display:flex; gap:1rem; align-items:flex-start;}
+.closing .step .n{font-family:var(--mono); font-weight:700; color:var(--ink); background:var(--tide); border-radius:50%; width:1.9rem; height:1.9rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.85rem;}
+.closing .step p{color:#DCEDE8; font-size:.88rem; margin:0;}
+
+#dotNav{position:fixed; left:1.4rem; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:.55rem; z-index:50;}
+#dotNav button{width:.6rem; height:.6rem; border-radius:50%; border:1.5px solid rgba(255,255,255,.5); background:transparent; cursor:pointer; padding:0; position:relative;}
+#dotNav button.active{background:var(--tide); border-color:var(--tide); width:.75rem; height:.75rem;}
+#dotNav button:hover::after{content:attr(data-label); position:absolute; left:1.2rem; top:50%; transform:translateY(-50%); font-family:var(--mono); font-size:.68rem; white-space:nowrap; background:var(--ink); color:#fff; padding:.25rem .55rem; border-radius:4px; border:1px solid var(--linedark);}
+
+#printBtn{position:fixed; bottom:1.4rem; right:1.4rem; z-index:50; font-family:var(--mono); font-size:.78rem; letter-spacing:.04em; background:var(--coral); color:#fff; border:none; border-radius:100px; padding:.7rem 1.2rem; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.35);}
+#printBtn:hover{background:#c94d33;}
+
+#bottomNav{
+  position:fixed; left:0; right:0; bottom:0; z-index:60;
+  display:flex; background:var(--ink2); border-top:1px solid var(--linedark);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#bottomNav a{
+  flex:1; text-align:center; padding:.7rem 0 .55rem; text-decoration:none;
+  color:#8FB2AE; font-family:var(--mono); font-size:.68rem; letter-spacing:.03em;
+}
+#bottomNav a .ic{display:block; font-size:1.15rem; margin-bottom:.15rem;}
+#bottomNav a.active{color:var(--tide);}
+body{padding-bottom:3.6rem;}
+#printBtn{bottom:4.6rem;}
+
+@media (max-width:780px){
+  .overview-grid,.card-grid,.tips-grid{grid-template-columns:1fr;}
+  .slide{padding:8vh 6vw;}
+  #dotNav{display:none;}
+}
+@media print{
+  #dotNav,#printBtn{display:none !important;}
+  body{background:#fff; overflow:visible; height:auto;}
+  .slide{min-height:auto; page-break-after:always; scroll-snap-align:none; padding:1.2cm 1.4cm;}
+  .map-embed,.day-map-embed{height:240px;}
+  * {print-color-adjust:exact; -webkit-print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+
+<nav id="dotNav"></nav>
+<button id="printBtn" onclick="window.print()">⬇ 匯出 / 列印 PDF</button>
+
+<section class="slide dark" data-label="封面" id="s-cover">
+  <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · FAMILY ROAD TRIP LOG</span></div>
+  <h1>沖繩 7 天 6 夜<br>親子自駕完美平衡行程</h1>
+  <p class="sub">兩地駐點策略：本部（JUNGLIA · 渡假村） × 那霸市區（購物 · 機場）— 只搬一次行李，每日車程控制在1.5–2小時內</p>
+  <div class="chip-row">
+    <span class="chip">👶 3歲寶寶親子節奏</span>
+    <span class="chip">🏄 爸爸衝浪日（連續2.5小時）</span>
+    <span class="chip">🦖 JUNGLIA + teamLab</span>
+    <span class="chip">🚗 只搬1次酒店</span>
+  </div>
+  <div class="meta-card">
+    <div class="lead">✏️ 以下資料可直接點擊填寫</div>
+    <div class="meta-row"><b>出發日期</b><span class="edit" contenteditable="true">____年8月1日（Day 1，下午3點落機）</span></div>
+    <div class="meta-row"><b>回程日期</b><span class="edit" contenteditable="true">____年____月____日（Day 7，下午4點起飛，2點前到機場）</span></div>
+    <div class="meta-row"><b>同行成員</b><span class="edit" contenteditable="true">爸爸 · 媽媽 · 3歲寶寶（請自行增減）</span></div>
+  </div>
+</section>
+
+<section class="slide dark" data-label="行程總覽" id="s-overview">
+  <span class="page-index">02 / 12</span>
+  <div class="section-head">
+    <span class="eyebrow">Route Overview</span>
+    <h2 style="color:#fff;">行程總覽與兩地駐點地圖</h2>
+    <p class="sub">下方係真實 Google Map，可以拖動、放大查看實際位置</p>
+  </div>
+  <div class="map-embed">
+    <iframe src="https://maps.google.com/maps?q=%E6%B2%96%E7%B8%84%E6%9C%AC%E5%B3%B6&z=10&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="map-hint">📍 每個地點名稱都可以點擊，直接開 Google Maps；每日行程入面重有點對點嘅車程時間標示</div>
+  <div class="overview-grid">
+    <div>
+      <div class="route-map">
+        <div class="route-item" style="color:var(--tide);">
+          <span class="dot" style="background:var(--tide);"></span>
+          <h3><a href="https://www.google.com/maps/search/?api=1&query=JUNGLIA+OKINAWA" target="_blank">北部</a> <span class="daytag">Day 1–3</span></h3>
+          <div class="sub">本部 · 今歸仁 · JUNGLIA · 名護鳳梨園</div>
+        </div>
+        <div class="route-item" style="color:var(--reef);">
+          <span class="dot" style="background:var(--reef);"></span>
+          <h3><a href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E8%B0%B7%E7%94%BA" target="_blank">中部</a> <span class="daytag">Day 4 · Day 6</span></h3>
+          <div class="sub">AEON MALL 沖繩來客夢 · 中城公園 · サーフサイドサービス ハイサイ · 謝苅公園 · 琉球の牛</div>
+        </div>
+        <div class="route-item" style="color:var(--explore);">
+          <span class="dot" style="background:var(--explore);"></span>
+          <h3><a href="https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E5%B8%82" target="_blank">那霸市區</a> <span class="daytag">Day 4–7</span></h3>
+          <div class="sub">新都心 · 牧志市場</div>
+        </div>
+      </div>
+      <div class="legend">
+        <span class="item"><span class="sw" style="background:var(--reef);"></span>🏄 爸爸衝浪時段</span>
+        <span class="item"><span class="sw" style="background:var(--tide);"></span>👶 媽媽＋寶寶時段</span>
+        <span class="item"><span class="sw" style="background:var(--explore);"></span>👨‍👩‍👧 全家一起</span>
+        <span class="item"><span class="sw" style="background:var(--text-soft);"></span>🚗 移動 / 入住</span>
+      </div>
+    </div>
+    <div class="hotel-strategy">
+      <div class="strategy-card">
+        <div class="tag">前 3 晚</div>
+        <h3>本部 · Orion Hotel Motobu Resort &amp; Spa</h3>
+        <p>Day 1 – Day 3　JUNGLIA官方合作飯店，車程僅約15–20分鐘，天然溫泉+泳池，適合中段休息。<a href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%9C%8C%E5%9B%BD%E9%A0%AD%E9%83%A1%E6%9C%AC%E9%83%A8%E7%94%BA%E5%82%99%E7%80%AC148-1" target="_blank">在地圖上查看</a></p>
+      </div>
+      <div class="strategy-arrow">↓ Day 4 唯一一次搬酒店，車程約1.5–2小時，中途AEON MALL休息 ↓</div>
+      <div class="strategy-card">
+        <div class="tag">後 3 晚</div>
+        <h3>那霸市區 · 新都心大和ROYNET飯店</h3>
+        <p>Day 4 – Day 6　方便購物、往機場僅約20分鐘。<a href="https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E5%B8%82%E3%81%8A%E3%82%82%E3%82%8D%E3%81%BE%E3%81%A11-1-12" target="_blank">在地圖上查看</a></p>
+      </div>
+      <div class="strategy-card" style="border-color:var(--coral);">
+        <p style="color:#F3C7B8; font-size:.85rem;">✏️ 全程只搬1次行李；每日行程開頭有車程總覽，表格入面重有逐段點對點車程時間。美國村完全彈性，唔想去可以直接跳過。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="daysContainer"></div>
+
+<section class="slide paper" data-label="推薦餐廳" id="s-food">
+  <span class="page-index">10 / 12</span>
+  <div class="section-head">
+    <span class="eyebrow">Tide-tested Eats</span>
+    <h2>推薦餐廳 · 聯絡與訂位</h2>
+    <p class="sub">電話與連結為目前搜尋所得，出發前建議自行覆核一次</p>
+  </div>
+  <div class="card-grid" id="foodContainer"></div>
+</section>
+
+<section class="slide dark" data-label="住宿資訊" id="s-hotels">
+  <span class="page-index">11 / 12</span>
+  <div class="section-head">
+    <span class="eyebrow">Two-Hotel Strategy</span>
+    <h2 style="color:#fff;">住宿資訊卡（全程只搬一次）</h2>
+  </div>
+  <div class="card-grid" id="hotelContainer"></div>
+</section>
+
+<section class="slide paper" data-label="實用小貼士" id="s-tips">
+  <span class="page-index">12 / 12</span>
+  <div class="section-head"><span class="eyebrow">Field Notes</span><h2>實用小貼士</h2></div>
+  <div class="tips-grid">
+    <div class="tip-item"><span class="num">01</span><p><b>租車汽座：</b>預約時務必註明需要幼兒汽車安全座椅，OTS／Times Car 皆可線上加購。</p></div>
+    <div class="tip-item"><span class="num">02</span><p><b>衝浪課程：</b>Day 6 已預約ハイサイ教練課程最好，滿潮前後時段浪況最佳，2.5小時連續課程應該足夠盡興，建議出發前致電確認集合時間。</p></div>
+    <div class="tip-item"><span class="num">03</span><p><b>JUNGLIA提醒：</b>建議先上官網查當日開閉園時間、預約整理券與停車券，旺季位置有限。</p></div>
+    <div class="tip-item"><span class="num">04</span><p><b>Day 1/Day 7時間較緊：</b>Day 1下午3點先落機，Day 7下午4點起飛（2點前要到機場），呢兩日行程已經刻意精簡，建議唔好再自行加站。</p></div>
+    <div class="tip-item"><span class="num">05</span><p><b>防曬對策：</b>沖繩紫外線強，帽子＋泳衣式防曬衣＋SPF50母嬰可用防曬乳。</p></div>
+    <div class="tip-item"><span class="num">06</span><p><b>還車提醒：</b>還車前記得加滿油，並預留辦理時間，避免趕飛機。</p></div>
+  </div>
+</section>
+
+<section class="slide dark closing" data-label="使用說明" id="s-closing">
+  <span class="eyebrow">How to use this log</span>
+  <h2>如何使用這份行程</h2>
+  <p>這是一份單一 HTML 檔案，開啟瀏覽器即可查看，帶「✏️ 可編輯」虛線的欄位可以直接點擊輸入文字，地點名稱可以直接點擊開 Google Maps。</p>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><p>每日行程開頭有「車程總覽」同一個嵌入嘅Google地圖；地點chip之間嘅灰色小標籤就係點對點車程時間。</p></div>
+    <div class="step"><span class="n">2</span><p>虛線框嘅地點（例如美國村）係完全彈性、可去可不去嘅選項。</p></div>
+    <div class="step"><span class="n">3</span><p>日期、成員等虛線欄位可直接點擊填寫（僅在瀏覽器當前分頁生效，填好建議立即匯出 PDF 留底）。</p></div>
+    <div class="step"><span class="n">4</span><p>按右下角「匯出 / 列印 PDF」即可存成 PDF 分享或列印。</p></div>
+  </div>
+  <p style="margin-top:2rem; font-style:italic;">祝旅途愉快，玩得安全又放電！🌊</p>
+</section>
+
+<script>
+const days = [
+  {num:1, mood:'move', title:'8月1日下午3點落機 → 直上本部',
+   totalDrive:'車程約1小時40分（直達，時間關係唔繞路）',
+   route:[
+     {l:'那霸機場',q:'那覇空港'},
+     {leg:'約1小時40分鐘'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   hotel:'Orion Hotel Motobu Resort & Spa（本部，Day 1–3）',
+   rows:[
+    {t:'15:00', who:'move', a:'8月1日抵達那覇機場', n:'下午先落機，行程刻意精簡，唔安排太多站', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
+    {t:'15:00–15:45', who:'move', a:'領行李、接駁前往 Times Car / OTS 租車，取車', n:'記得預約幼兒汽車安全座椅（6歲以下必備），建議事先網上check-in減少排隊', loc:'那覇空港'},
+    {t:'15:45', who:'move', a:'出發直上本部飯店（車程約1小時40分）', n:'時間唔夠，今日唔繞路去美國村，寶寶車上可補眠', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'17:25', who:'move', a:'抵達本部飯店，辦理入住', n:'Orion Hotel Motobu Resort & Spa，JUNGLIA官方合作飯店', loc:'沖縄県国頭郡本部町備瀬148-1', web:'https://www.okinawaresort-orion.com/'},
+    {t:'17:30–19:00', who:'family', a:'飯店泳池 / 海灘 / 備瀬福木林道散步', n:'8月傍晚仍光猛，抵達後放鬆一下，唔使再郁車', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'19:00', who:'family', a:'晚餐', n:'飯店內5間餐廳任選', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ]},
+  {num:2, mood:'explore', title:'JUNGLIA 叢林樂園日',
+   totalDrive:'車程約30–40分鐘（來回）',
+   route:[
+     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {leg:'約15–20分鐘'},
+     {l:'JUNGLIA(今歸仁)',q:'JUNGLIA OKINAWA'},
+     {leg:'約15–20分鐘'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   hotel:'Orion Hotel Motobu Resort & Spa',
+   rows:[
+    {t:'09:30', who:'move', a:'出發前往 JUNGLIA（車程約15–20分鐘）', n:'建議先上官網確認當日開閉園時間', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
+    {t:'10:00', who:'family', a:'抵達 JUNGLIA', n:'', loc:'JUNGLIA OKINAWA'},
+    {t:'10:00–13:30', who:'family', a:'JUNGLIA 探索：叢林步道 / 熱氣球 / 恐龍探險車等（約3.5小時）', n:'依當日開放項目彈性安排，部分刺激設施不適合3歲，建議先查官網分齡指引，3歲以下免費入場', loc:'JUNGLIA OKINAWA'},
+    {t:'13:30', who:'family', a:'園內午餐', n:'園內有多間餐廳，也可自備輕食', loc:'JUNGLIA OKINAWA'},
+    {t:'15:00', who:'move', a:'返回本部飯店（車程約15–20分鐘）', n:'', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'15:30', who:'family', a:'飯店泳池 / 天然溫泉', n:'JUNGLIA玩到攰，返飯店休息', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ]},
+  {num:3, mood:'explore', title:'渡假村悠閒日 + Nago Pineapple Park',
+   totalDrive:'車程約50分鐘（來回）',
+   route:[
+     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {leg:'約20–25分鐘'},
+     {l:'Nago Pineapple Park',q:'1195 Biimata, Nago, Okinawa 905-0005'},
+     {leg:'約20–25分鐘'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   hotel:'Orion Hotel Motobu Resort & Spa',
+   rows:[
+    {t:'09:00', who:'family', a:'飯店早餐後，備瀬福木林道散步', n:'步行約3分鐘可達，適合悠閒晨間散步', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'10:30', who:'family', a:'飯店泳池 / 海灘戲水', n:'全室海景陽台，唔使出門都好玩', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'12:00', who:'move', a:'出發前往 Nago Pineapple Park（車程約20–25分鐘）', n:'', loc:'1195 Biimata, Nago, Okinawa 905-0005'},
+    {t:'12:30', who:'family', a:'Nago Pineapple Park：午餐 + 自動鳳梨列車 + 鳳梨田觀光車', n:'10:00–18:00營業，恐龍探險區、鳳梨甜品，3歲啱玩坐車遊園', loc:'1195 Biimata, Nago, Okinawa 905-0005', web:'https://www.nagopine.com/'},
+    {t:'15:00', who:'move', a:'返回本部飯店（車程約20–25分鐘）', n:'寶寶車上小睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'16:00', who:'family', a:'天然溫泉「美ら海の湯」', n:'地下1500米湧出天然溫泉', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'19:00', who:'family', a:'晚餐', n:'可試飯店內另一間餐廳', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ]},
+  {num:4, mood:'move', title:'南下：AEON MALL 沖繩來客夢 → 轉移陣地到那霸（唯一一次搬酒店）',
+   totalDrive:'車程約1小時45分（分兩段，中途有休息點）',
+   route:[
+     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {leg:'約60分鐘'},
+     {l:'AEON MALL 沖繩來客夢',q:'イオンモール沖縄ライカム'},
+     {leg:'約10分鐘'},
+     {l:'中城公園',q:'中城公園'},
+     {leg:'約35分鐘'},
+     {l:'那霸市區飯店',q:'那覇市おもろまち1-1-12'},
+   ],
+   hotel:'那霸市區飯店（如：新都心大和ROYNET飯店，Day 4–6）',
+   rows:[
+    {t:'09:30', who:'move', a:'退房，南下前往 AEON MALL 沖繩來客夢（車程約1小時）', n:'寶寶車上補眠，行李已在車尾箱唔使再搬', loc:'イオンモール沖縄ライカム'},
+    {t:'10:30', who:'mom', a:'AEON MALL 沖繩來客夢購物', n:'沖繩最大型購物中心，品牌齊全，親子設施完善', loc:'イオンモール沖縄ライカム'},
+    {t:'12:30', who:'family', a:'午餐：MALL內美食街', n:'選擇多，適合親子', loc:'イオンモール沖縄ライカム'},
+    {t:'14:00', who:'family', a:'中城公園（車程約10分鐘）', n:'巨大白色彈跳床巨蛋，有遮陽棚、超大草皮', loc:'中城公園', web:'https://www.nakagusukupark-osi.jp/'},
+    {t:'15:15', who:'move', a:'南下前往那霸市區飯店辦理入住（車程約35分鐘）', n:'今次係全程唯一一次搬行李入房', loc:'那覇市おもろまち1-1-12', web:'https://www.daiwaroynet.jp/naha-omoromachi/'},
+    {t:'16:30', who:'family', a:'teamLab 未來遊樂園 沖繩', n:'DFS T Galleria 3樓，室內互動數位藝術，需預先購買指定時段票，步行可達，唔使再開車', loc:'チームラボ 学ぶ 未来の遊園地 沖縄', web:'https://www.teamlab.art/e/futurepark-okinawa/'},
+    {t:'19:00', who:'family', a:'晚餐：新都心燒肉／居酒屋', n:'店名自選，建議事先致電或App訂位', loc:'那覇新都心 おもろまち'},
+   ]},
+  {num:5, mood:'shop', title:'媽媽瘋狂購物日 → PARCO CITY 一整天 → 浦添放電',
+   totalDrive:'車程約50分鐘（來回＋接駁）',
+   route:[
+     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+     {leg:'約20分鐘'},
+     {l:'浦添大公園',q:'浦添大公園'},
+     {leg:'約10分鐘'},
+     {l:'浦添 PARCO CITY',q:'サンエー浦添西海岸PARCO CITY'},
+     {leg:'約20分鐘'},
+     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+   ],
+   hotel:'那霸市區飯店',
+   rows:[
+    {t:'09:00', who:'move', a:'全家出發前往浦添大公園（車程約20分鐘）', n:'趁BB精神最好嘅時段先放電', loc:'浦添大公園'},
+    {t:'09:30–10:30', who:'mom', a:'浦添大公園滾輪滑梯', n:'專為2–3歲設計防曬護欄滑梯，先放電先shopping唔怕BB喊', loc:'浦添大公園'},
+    {t:'10:30', who:'move', a:'前往浦添 PARCO CITY（車程約10分鐘）', n:'沖繩最新、最大海景商場', loc:'サンエー浦添西海岸PARCO CITY', web:'https://www.parcocity.jp/'},
+    {t:'11:00', who:'family', a:'午餐：3樓美食街', n:'整面無敵海景窗，避開人潮先食早少少', loc:'サンエー浦添西海岸PARCO CITY'},
+    {t:'12:00', who:'mom', a:'購物：阿卡將本鋪、Sanrio Shop、GU/UNIQLO 等（延長購物時段）', n:'商場提供免費汽車造型嬰兒推車，BB玩完公園可推車上小睡', loc:'サンエー浦添西海岸PARCO CITY'},
+    {t:'16:00', who:'move', a:'返回那霸飯店（車程約20分鐘）', n:'', loc:'那覇市おもろまち1-1-12'},
+   ]},
+  {num:6, mood:'surf', title:'北谷一日：爸爸ハイサイ衝浪課 × 媽媽寶寶謝苅公園 → 琉球の牛晚餐',
+   totalDrive:'車程約1小時20分（去程35分＋北谷區內短程約20分＋返程35分，全日只出入北谷一次）',
+   route:[
+     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+     {leg:'約35分鐘'},
+     {l:'サーフサイドサービス ハイサイ',q:'サーフサイドサービス ハイサイ 北谷'},
+     {leg:'約10分鐘'},
+     {l:'謝苅公園',q:'謝苅公園 北谷'},
+     {leg:'約10分鐘'},
+     {l:'焼肉 琉球の牛 北谷店',q:'焼肉 琉球の牛 北谷店'},
+     {leg:'約35分鐘'},
+     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+   ],
+   hotel:'那霸市區飯店',
+   rows:[
+    {t:'08:00', who:'move', a:'全家出發前往北谷（車程約35分鐘）', n:'寶寶車上小睡', loc:'サーフサイドサービス ハイサイ 北谷'},
+    {t:'08:35', who:'dad', a:'到達サーフサイドサービス ハイサイ，準備落水', n:'北谷宮城海岸旁，ISA／NSA認證教練，有免費更衣室＋熱水沖身', loc:'サーフサイドサービス ハイサイ 北谷', web:'https://suy.jp/'},
+    {t:'08:45', who:'mom', a:'前往謝苅公園（車程約10分鐘）', n:'細細個公園，滑梯坡度平緩，啱3歲玩，仲可以睇北谷西海岸海景', loc:'謝苅公園 北谷'},
+    {t:'08:45–11:15', who:'dad', a:'ハイサイ連續衝浪課程 2.5 小時', n:'教練全程陪同，適合有基礎的爸爸，滿潮前後浪況最佳', loc:'サーフサイドサービス ハイサイ 北谷'},
+    {t:'09:00–11:00', who:'mom', a:'謝苅公園遊玩', n:'公園面積唔大，唔怕BB走失，中間可以去附近便利店買啲小食', loc:'謝苅公園 北谷'},
+    {t:'11:30', who:'dad', a:'沖身換衫，前往謝苅公園會合（車程約10分鐘）', n:'', loc:'謝苅公園 北谷'},
+    {t:'12:00', who:'family', a:'午餐：King Tacos 或北谷區內其他輕食', n:'King Tacos车程約10分鐘，或公園附近任選', loc:'謝苅公園 北谷'},
+    {t:'13:30', who:'family', a:'北谷咖啡廳歇腳，BB可推車上午睡', n:'留喺北谷唔使黎回車程，揾間舒服咖啡廳等埋開飯', loc:'謝苅公園 北谷'},
+    {t:'17:00', who:'family', a:'晚餐：焼肉 琉球の牛 北谷店', n:'沖繩縣產和牛，北谷美濱，近Hilton，建議TableCheck先訂位', loc:'焼肉 琉球の牛 北谷店', web:'https://www.tablecheck.com/en/yakiniku-chatan'},
+    {t:'19:00', who:'move', a:'返回那霸飯店（車程約35分鐘）', n:'寶寶車上瞓著都唔緊要，返到飯店抱返上房', loc:'那覇市おもろまち1-1-12'},
+   ]},
+  {num:7, mood:'move', title:'那霸市區巡禮 → 還車 → 機場返家',
+   totalDrive:'車程約45分鐘（市區內短程）',
+   route:[
+     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+     {leg:'約10分鐘'},
+     {l:'波上宮',q:'波上宮'},
+     {leg:'約10分鐘'},
+     {l:'第一牧志公設市場',q:'第一牧志公設市場'},
+     {leg:'約15分鐘'},
+     {l:'還車',q:''},
+     {leg:'約10分鐘'},
+     {l:'那霸機場',q:'那覇空港'},
+   ],
+   hotel:'—（回程日，4PM起飛，需2PM前到機場）',
+   rows:[
+    {t:'08:30', who:'move', a:'出發前往波上宮（車程約10分鐘）', n:'今日下午4點起飛，行程需精簡', loc:'波上宮'},
+    {t:'08:45', who:'family', a:'波上宮參拜', n:'旁邊波之上海灘可做最後沙灘踏浪', loc:'波上宮', web:'https://www.naminouegu.jp/'},
+    {t:'09:30', who:'move', a:'前往第一牧志公設市場（車程約10分鐘）', n:'', loc:'第一牧志公設市場'},
+    {t:'09:45', who:'family', a:'早午餐：第一牧志公設市場', n:'現撈海鮮、沖繩家庭料理，早少少食避開排隊', loc:'第一牧志公設市場', web:'https://kosetsu-ichiba.com/'},
+    {t:'11:00', who:'move', a:'返回飯店，收拾行李，退房', n:'', loc:'那覇市おもろまち1-1-12'},
+    {t:'11:45', who:'move', a:'出發前往租車公司還車（車程約15分鐘）', n:'', loc:'那覇空港 レンタカー'},
+    {t:'12:00–12:30', who:'move', a:'還車手續', n:'記得先加滿油', loc:'那覇空港 レンタカー'},
+    {t:'12:30', who:'move', a:'接駁前往機場（約10分鐘）', n:'', loc:'那覇空港'},
+    {t:'14:00', who:'move', a:'抵達那覇機場，辦理登機手續', n:'免稅店最後採買，預留充足時間過關', loc:'那覇空港'},
+    {t:'16:00', who:'move', a:'起飛返家', n:'', loc:'那覇空港'},
+   ]},
+];
+
+const moodMeta = {
+  move:{label:'移動日', color:'var(--text-soft)'},
+  surf:{label:'衝浪日', color:'var(--reef)'},
+  explore:{label:'探索日', color:'var(--explore)'},
+  shop:{label:'購物日', color:'var(--coral)'},
+};
+const whoMeta = {
+  dad:{icon:'🏄',cls:'who-dad'}, mom:{icon:'👶',cls:'who-mom'},
+  family:{icon:'👨‍👩‍👧',cls:'who-family'}, move:{icon:'🚗',cls:'who-move'},
+};
+function mapsSearch(q){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
+function mapsDirections(route){
+  const pts = route.filter(r=>r.q);
+  if(pts.length<2) return null;
+  const origin = encodeURIComponent(pts[0].q);
+  const dest = encodeURIComponent(pts[pts.length-1].q);
+  const waypoints = pts.slice(1,-1).map(p=>encodeURIComponent(p.q)).join('|');
+  let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}&travelmode=driving`;
+  if(waypoints) url += `&waypoints=${waypoints}`;
+  return url;
+}
+function dayEmbedUrl(route){
+  const pts = route.filter(r=>r.q);
+  if(pts.length<2) return null;
+  const saddr = encodeURIComponent(pts[0].q);
+  const rest = pts.slice(1).map(p=>encodeURIComponent(p.q)).join('+to:');
+  return `https://maps.google.com/maps?saddr=${saddr}&daddr=${rest}&output=embed`;
+}
+
+const daysContainer = document.getElementById('daysContainer');
+days.forEach((d,idx)=>{
+  const mm = moodMeta[d.mood];
+  const routeHtml = d.route.map((r)=>{
+    if(r.leg) return `<span class="route-leg">🚗 ${r.leg}</span>`;
+    const cls = 'route-chip' + (r.optional ? ' optional' : '');
+    return r.q ? `<a class="${cls}" href="${mapsSearch(r.q)}" target="_blank">📍 ${r.l}</a>` : `<span class="${cls}">${r.l}</span>`;
+  }).join('');
+  const dirUrl = mapsDirections(d.route);
+  const dirBtn = dirUrl ? `<a class="btn-directions" href="${dirUrl}" target="_blank">🗺 用 Google Maps 開啟今日路線</a>` : '';
+  const embedUrl = dayEmbedUrl(d.route);
+  const embedHtml = embedUrl ? `<div class="day-map-embed"><iframe src="${embedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>` : '';
+  const rowsHtml = d.rows.map(r=>{
+    const wm = whoMeta[r.who];
+    const pin = r.loc ? ` <a class="row-map" href="${mapsSearch(r.loc)}" target="_blank" title="開 Google Maps">📍</a>` : '';
+    const web = r.web ? ` <a class="row-web" href="${r.web}" target="_blank" title="官方網站介紹">🔗</a>` : '';
+    return `<tr><td class="time">${r.t}</td><td><span class="who ${wm.cls}" title="${r.who}">${wm.icon}</span></td><td>${r.a}${pin}${web}</td><td class="note">${r.n||''}</td></tr>`;
+  }).join('');
+  const sec = document.createElement('section');
+  sec.className = 'slide paper';
+  sec.id = 's-day'+d.num;
+  sec.setAttribute('data-label', 'Day '+d.num);
+  sec.innerHTML = `
+    <span class="page-index">${String(idx+3).padStart(2,'0')} / 12</span>
+    <div class="day-head">
+      <div class="day-badge"><small>DAY</small>${d.num}</div>
+      <div class="day-title-wrap">
+        <h2>${d.title}</h2>
+        <div class="mood-tags"><span class="mood-tag" style="background:${mm.color};">${mm.label}</span></div>
+        <div class="drive-total">🚗 今日總車程：${d.totalDrive}</div>
+      </div>
+    </div>
+    <div class="route-chips">${routeHtml}</div>
+    <div class="day-route-actions">${dirBtn}</div>
+    ${embedHtml}
+    <table class="sched">
+      <thead><tr><th>時間</th><th>who</th><th>行程內容</th><th>地點 / 小提示</th></tr></thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>
+    <div class="day-foot"><span class="lbl">住宿</span> ${d.hotel}</div>
+  `;
+  daysContainer.appendChild(sec);
+});
+
+const restaurants = [
+  {name:'Nago Pineapple Park', en:'Nago Pineapple Park', day:'Day 3 午餐+遊園', desc:'鳳梨主題樂園，自動觀光車遊鳳梨田，恐龍探險區，鳳梨甜品，10:00–18:00營業', addr:'1195 Biimata, Nago, Okinawa 905-0005', tel:'', book:'https://www.nagopine.com/', bookLabel:'官方網站'},
+  {name:'AEON MALL 沖繩來客夢', en:'AEON MALL Okinawa Rycom', day:'Day 4 購物午餐', desc:'沖繩最大型購物中心，品牌齊全＋美食街，親子設施完善', addr:'沖繩縣中頭郡北中城村字ライカム1番地', tel:'098-930-0425', book:'https://okinawarycom-aeonmall.com/', bookLabel:'官方網站'},
+  {name:'サーフサイドサービス ハイサイ', en:'Surfside Service Haisai', day:'Day 6 爸爸衝浪課', desc:'北谷宮城海岸旁，ISA／NSA認證教練，5歲起有親子衝浪班，有免費更衣室＋熱水沖身', addr:'沖繩縣中頭郡北谷町浜川176-S288', tel:'098-926-1030', book:'https://suy.jp/', bookLabel:'官方網站預約'},
+  {name:'King Tacos 北中城店', en:'King Tacos Kitanakagusuku', day:'Day 6 午餐候選', desc:'元祖 Taco Rice 塔可飯，以外帶為主，北谷周邊', addr:'沖繩縣中頭郡北中城村字島袋307', tel:'098-933-1868', book:'', bookLabel:'現場排隊 / 電話問位'},
+  {name:'焼肉 琉球の牛 北谷店', en:'Yakiniku Ryukyu no Ushi Chatan', day:'Day 6 晚餐', desc:'沖繩縣產和牛專門店，北谷美濱，近Hilton，17:00開始營業', addr:'沖繩縣中頭郡北谷町美濱51-1 2F', tel:'098-989-3405', book:'https://www.tablecheck.com/en/yakiniku-chatan', bookLabel:'TableCheck 線上訂位'},
+  {name:'第一牧志公設市場', en:'Makishi Public Market', day:'Day 7 早午餐', desc:'現撈海鮮、沖繩家庭料理，樓下買樓上代客料理', addr:'那霸市松尾2-10-1', tel:'', book:'', bookLabel:'無需訂位，直接前往'},
+];
+const foodContainer = document.getElementById('foodContainer');
+restaurants.forEach(r=>{
+  const addr = r.addr || '<span class="edit" contenteditable="true">點擊填寫地址</span>';
+  const tel = r.tel ? `<a href="tel:${r.tel.replace(/[^0-9+]/g,'')}">${r.tel}</a>` : '<span class="edit" contenteditable="true">點擊填寫電話</span>';
+  const book = r.book ? `<a href="${r.book}" target="_blank" rel="noopener">${r.bookLabel}</a>` : (r.bookLabel || '<span class="edit" contenteditable="true">點擊填寫訂位方式</span>');
+  const card = document.createElement('div');
+  card.className = 'food-card';
+  card.innerHTML = `<div class="tag">${r.day}</div><h3>${r.name}</h3><div class="en">${r.en}</div><div class="desc">${r.desc}</div>
+    <div class="food-row"><span class="ic">📍</span><span>${addr}</span></div>
+    <div class="food-row"><span class="ic">☎</span><span>${tel}</span></div>
+    <div class="food-row"><span class="ic">🔗</span><span>${book}</span></div>`;
+  foodContainer.appendChild(card);
+});
+
+const hotels = [
+  {name:'Orion Hotel Motobu Resort & Spa', cn:'沖繩本部渡假SPA飯店', days:'Day 1–3', addr:'〒905-0207 沖繩縣國頭郡本部町備瀬148番地1', tel:'+81-980-51-7300', web:'okinawaresort-orion.com ／ Agoda ／ Booking.com', tips:['JUNGLIA官方合作飯店，車程僅約15–20分鐘','全室海景陽台，天然溫泉＋室內外泳池','距美麗海水族館步行7分、備瀬福木林道步行3分','那霸空港開車約100分鐘']},
+  {name:'Daiwa Roynet Hotel Naha-Omoromachi', cn:'那霸歌町大和ROYNET飯店（新都心）', days:'Day 4–6', addr:'〒900-0006 沖繩縣那霸市歌町1-1-12', tel:'+81-98-862-4555', web:'daiwaroynethotelnahaomoromachi.com ／ Agoda ／ Booking.com', tips:['單軌電車歌町站步行約5分鐘','步行可達新都心商圈、DFS免稅店（teamLab同層）· 距機場車程約20分鐘']},
+];
+const hotelContainer = document.getElementById('hotelContainer');
+hotels.forEach(h=>{
+  const card = document.createElement('div');
+  card.className = 'hotel-card';
+  card.innerHTML = `<div class="tag">${h.days}</div><h3>${h.name}</h3><div class="cn">${h.cn}</div>
+    <div class="hotel-row"><span class="ic">📍</span><span><a href="${mapsSearch(h.addr)}" target="_blank">${h.addr}</a></span></div>
+    <div class="hotel-row"><span class="ic">☎</span><span><a href="tel:${h.tel.replace(/[^0-9+]/g,'')}">${h.tel}</a></span></div>
+    <div class="hotel-row"><span class="ic">🌐</span><span>${h.web}</span></div>
+    <ul class="hotel-tips">${h.tips.map(t=>`<li>${t}</li>`).join('')}<li>入住 / 退房日期：<span class="edit" contenteditable="true">點擊填寫</span></li></ul>`;
+  hotelContainer.appendChild(card);
+});
+
+const slides = Array.from(document.querySelectorAll('.slide'));
+const nav = document.getElementById('dotNav');
+slides.forEach((s)=>{
+  const btn = document.createElement('button');
+  btn.setAttribute('data-label', s.getAttribute('data-label') || 'Section');
+  btn.addEventListener('click', ()=> s.scrollIntoView({behavior:'smooth'}));
+  nav.appendChild(btn);
+});
+const dotBtns = Array.from(nav.children);
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx = slides.indexOf(e.target);
+      dotBtns.forEach(b=>b.classList.remove('active'));
+      if(dotBtns[idx]) dotBtns[idx].classList.add('active');
+    }
+  });
+}, {threshold:0.55});
+slides.forEach(s=>io.observe(s));
+</script>
+<nav id="bottomNav">
+  <a href="itinerary.html" class="active"><span class="ic">🗺</span>行程</a>
+  <a href="expenses.html"><span class="ic">💰</span>記帳</a>
+</nav>
+<script>
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+</script>
+</body>
+</html>

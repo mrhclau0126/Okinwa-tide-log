@@ -1,0 +1,9 @@
+{
+  "name": "okinawa-tide-log",
+  "version": "1.0.0",
+  "private": true,
+  "description": "沖繩親子行程 Tide Log - 行程 + 記帳 mobile web app",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}

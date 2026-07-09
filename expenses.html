@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B2A32">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>旅費記帳 · Tide Log</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+:root{
+  --ink:#0B2A32; --ink2:#123B46;
+  --paper:#EDF1E4; --paper2:#E1E9D6;
+  --text:#14313A; --text-soft:#3E5A5C;
+  --reef:#2E9C93; --explore:#2D6E8E; --tide:#D9A23B; --coral:#E2593C;
+  --line:#B9C4AC; --linedark:rgba(255,255,255,.16);
+  --disp:'Space Grotesk',sans-serif; --mono:'IBM Plex Mono',monospace; --body:'Work Sans',sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--body); background:var(--paper); color:var(--text); padding-bottom:4.2rem;}
+h1,h2,h3{font-family:var(--disp); margin:0; letter-spacing:-0.01em;}
+p{margin:0;}
+
+header{background:var(--ink); color:#fff; padding:1.4rem 1.2rem 1.6rem;}
+header .eyebrow{font-family:var(--mono); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:#7FD9CF;}
+header h1{font-size:1.5rem; margin:.3rem 0 .8rem;}
+
+.rate-row{display:flex; align-items:center; gap:.5rem; font-family:var(--mono); font-size:.78rem; color:#DCEDE8;}
+.rate-row input{
+  width:4.2rem; background:var(--ink2); border:1px solid var(--linedark); border-radius:6px;
+  color:#fff; font-family:var(--mono); font-size:.82rem; padding:.25rem .4rem; text-align:center;
+}
+
+.summary{padding:1rem 1.2rem 0;}
+.summary-card{
+  background:var(--ink2); color:#fff; border-radius:14px; padding:1.1rem 1.2rem; margin-bottom:1rem;
+}
+.summary-card .big{font-family:var(--disp); font-size:1.9rem; font-weight:700;}
+.summary-card .sub{font-family:var(--mono); font-size:.72rem; color:#9FC9C2; margin-top:.2rem;}
+.summary-card .budget-bar{height:8px; background:rgba(255,255,255,.15); border-radius:100px; margin-top:.9rem; overflow:hidden;}
+.summary-card .budget-fill{height:100%; background:var(--tide); border-radius:100px;}
+.summary-card .budget-row{display:flex; justify-content:space-between; font-family:var(--mono); font-size:.7rem; color:#B9DED8; margin-top:.4rem;}
+.summary-card .budget-row input{
+  width:5.5rem; background:transparent; border:none; border-bottom:1px dashed var(--coral); color:#fff;
+  font-family:var(--mono); font-size:.7rem; text-align:right;
+}
+
+.cat-breakdown{display:flex; flex-direction:column; gap:.5rem;}
+.cat-row{display:flex; align-items:center; gap:.6rem;}
+.cat-row .label{font-family:var(--mono); font-size:.72rem; width:5.2rem; flex-shrink:0; color:var(--text);}
+.cat-row .bar-wrap{flex:1; height:7px; background:var(--paper2); border-radius:100px; overflow:hidden;}
+.cat-row .bar{height:100%; border-radius:100px;}
+.cat-row .amt{font-family:var(--mono); font-size:.72rem; width:4.5rem; text-align:right; color:var(--text-soft);}
+
+.section-title{font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-soft); padding:1.2rem 1.2rem .5rem;}
+
+.day-group{padding:0 1.2rem;}
+.day-header{font-family:var(--mono); font-size:.78rem; font-weight:600; color:var(--text); padding:.6rem 0 .3rem; display:flex; justify-content:space-between;}
+.day-header .total{color:var(--coral);}
+.expense-row{
+  display:flex; align-items:center; gap:.7rem; background:var(--paper2); border-radius:10px; padding:.7rem .8rem; margin-bottom:.5rem;
+}
+.expense-row .ic{width:2.1rem; height:2.1rem; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; color:#fff; flex-shrink:0;}
+.expense-row .info{flex:1; min-width:0;}
+.expense-row .name{font-size:.9rem; color:var(--text); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.expense-row .meta{font-family:var(--mono); font-size:.68rem; color:var(--text-soft);}
+.expense-row .amt{font-family:var(--mono); font-size:.85rem; font-weight:600; color:var(--text); text-align:right; flex-shrink:0;}
+.expense-row .del{background:none; border:none; color:var(--coral); font-size:1rem; cursor:pointer; padding:.2rem .3rem; flex-shrink:0;}
+.expense-row.pending{border:1px dashed var(--coral);}
+
+.empty-hint{font-size:.85rem; color:var(--text-soft); font-style:italic; padding:1rem 1.2rem 2rem;}
+
+.sync-row{display:flex; gap:.6rem; padding:1rem 1.2rem 0;}
+.btn-sync{
+  flex:1; font-family:var(--mono); font-size:.75rem; padding:.6rem .5rem; border-radius:100px; border:1px solid var(--linedark);
+  background:var(--ink2); color:#fff; text-align:center; cursor:pointer;
+}
+.btn-sync:active{opacity:.7;}
+.sync-status{font-family:var(--mono); font-size:.68rem; color:var(--text-soft); text-align:center; padding:.5rem 1.2rem 0;}
+
+#fab{
+  position:fixed; right:1.2rem; bottom:5rem; z-index:55;
+  width:3.4rem; height:3.4rem; border-radius:50%; background:var(--coral); color:#fff; border:none;
+  font-size:1.5rem; box-shadow:0 6px 16px rgba(0,0,0,.3); cursor:pointer;
+}
+
+#sheet-backdrop{
+  position:fixed; inset:0; background:rgba(11,42,50,.55); z-index:70; display:none;
+}
+#sheet{
+  position:fixed; left:0; right:0; bottom:0; z-index:71; background:var(--paper);
+  border-radius:18px 18px 0 0; padding:1.2rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom));
+  transform:translateY(100%); transition:transform .25s ease; max-height:88vh; overflow-y:auto;
+}
+#sheet-backdrop.show{display:block;}
+#sheet-backdrop.show #sheet{transform:translateY(0);}
+#sheet h2{font-size:1.15rem; margin-bottom:1rem;}
+.field{margin-bottom:.9rem;}
+.field label{display:block; font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-soft); margin-bottom:.3rem;}
+.field input, .field select, .field textarea{
+  width:100%; padding:.65rem .7rem; border:1px solid var(--line); border-radius:8px; background:#fff;
+  font-family:var(--body); font-size:.95rem; color:var(--text);
+}
+.field-row{display:flex; gap:.7rem;}
+.field-row .field{flex:1;}
+.cat-picker{display:flex; flex-wrap:wrap; gap:.5rem;}
+.cat-chip{
+  font-family:var(--mono); font-size:.78rem; padding:.4rem .7rem; border-radius:100px; border:1px solid var(--line);
+  background:#fff; color:var(--text); cursor:pointer;
+}
+.cat-chip.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+.who-picker{display:flex; gap:.5rem;}
+.who-chip{flex:1; text-align:center; font-family:var(--mono); font-size:.8rem; padding:.5rem; border-radius:8px; border:1px solid var(--line); background:#fff; cursor:pointer;}
+.who-chip.active{background:var(--explore); color:#fff; border-color:var(--explore);}
+#sheet .actions{display:flex; gap:.7rem; margin-top:1.2rem;}
+#sheet .btn-cancel, #sheet .btn-save{
+  flex:1; padding:.8rem; border-radius:10px; border:none; font-family:var(--mono); font-size:.85rem; cursor:pointer;
+}
+#sheet .btn-cancel{background:var(--paper2); color:var(--text-soft);}
+#sheet .btn-save{background:var(--coral); color:#fff;}
+
+#bottomNav{
+  position:fixed; left:0; right:0; bottom:0; z-index:60;
+  display:flex; background:var(--ink2); border-top:1px solid var(--linedark);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#bottomNav a{
+  flex:1; text-align:center; padding:.7rem 0 .55rem; text-decoration:none;
+  color:#8FB2AE; font-family:var(--mono); font-size:.68rem; letter-spacing:.03em;
+}
+#bottomNav a .ic{display:block; font-size:1.15rem; margin-bottom:.15rem;}
+#bottomNav a.active{color:var(--tide);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">TIDE LOG · EXPENSES</div>
+  <h1>沖繩旅費記帳</h1>
+  <div class="rate-row">
+    💱 匯率　1 HKD = <input type="number" id="rate" value="19.5" step="0.1"> JPY
+  </div>
+</header>
+
+<div class="summary">
+  <div class="summary-card">
+    <div class="sub">總支出</div>
+    <div class="big" id="totalJPY">¥0</div>
+    <div class="sub" id="totalHKD">≈ HK$0</div>
+    <div class="budget-row">
+      <span>預算 <input type="number" id="budget" placeholder="輸入預算(JPY)"></span>
+      <span id="budgetLeft"></span>
+    </div>
+    <div class="budget-bar"><div class="budget-fill" id="budgetFill" style="width:0%"></div></div>
+  </div>
+  <div class="summary-card">
+    <div class="sub" style="margin-bottom:.7rem;">分類breakdown</div>
+    <div class="cat-breakdown" id="catBreakdown"></div>
+  </div>
+</div>
+
+<div class="sync-row">
+  <button class="btn-sync" onclick="syncToNotion()">☁️ 同步去 Notion</button>
+  <button class="btn-sync" onclick="loadFromNotion()">⬇️ 由 Notion 載入</button>
+</div>
+<div class="sync-status" id="syncStatus">未連接 Notion（純本機儲存，離線都用到）</div>
+
+<div class="section-title">支出記錄</div>
+<div id="list"></div>
+<div class="empty-hint" id="emptyHint">未有記錄，撳右下角 + 開始記帳</div>
+
+<button id="fab" onclick="openSheet()">＋</button>
+
+<div id="sheet-backdrop" onclick="closeSheetOnBackdrop(event)">
+  <div id="sheet">
+    <h2>新增支出</h2>
+    <div class="field">
+      <label>項目名稱</label>
+      <input type="text" id="f-name" placeholder="例如：King Tacos午餐">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Day</label>
+        <select id="f-day">
+          <option>Day 1</option><option>Day 2</option><option>Day 3</option><option>Day 4</option>
+          <option>Day 5</option><option>Day 6</option><option>Day 7</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>日期</label>
+        <input type="date" id="f-date">
+      </div>
+    </div>
+    <div class="field">
+      <label>分類</label>
+      <div class="cat-picker" id="catPicker"></div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>金額</label>
+        <input type="number" id="f-amount" placeholder="0" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label>貨幣</label>
+        <select id="f-currency"><option value="JPY">JPY 円</option><option value="HKD">HKD 港幣</option></select>
+      </div>
+    </div>
+    <div class="field">
+      <label>邊個俾錢</label>
+      <div class="who-picker" id="whoPicker">
+        <div class="who-chip" data-w="爸爸">爸爸</div>
+        <div class="who-chip" data-w="媽媽">媽媽</div>
+        <div class="who-chip active" data-w="公共">公共</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>備註（選填）</label>
+      <input type="text" id="f-note" placeholder="">
+    </div>
+    <div class="actions">
+      <button class="btn-cancel" onclick="closeSheet()">取消</button>
+      <button class="btn-save" onclick="saveExpense()">儲存</button>
+    </div>
+  </div>
+</div>
+
+<nav id="bottomNav">
+  <a href="itinerary.html"><span class="ic">🗺</span>行程</a>
+  <a href="expenses.html" class="active"><span class="ic">💰</span>記帳</a>
+</nav>
+
+<script>
+const CATS = [
+  {key:'住宿', icon:'🏨', color:'var(--explore)'},
+  {key:'餐飲', icon:'🍽', color:'var(--coral)'},
+  {key:'交通', icon:'🚗', color:'var(--text-soft)'},
+  {key:'門票活動', icon:'🎫', color:'var(--reef)'},
+  {key:'購物', icon:'🛍', color:'var(--tide)'},
+  {key:'手信', icon:'🎁', color:'#B26FA8'},
+  {key:'其他', icon:'📦', color:'#8A8A8A'},
+];
+const STORAGE_KEY = 'tidelog_expenses_v1';
+let selectedCat = CATS[1].key;
+
+function loadLocal(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }catch(e){ return []; }
+}
+function saveLocal(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+
+function catMeta(key){ return CATS.find(c=>c.key===key) || CATS[CATS.length-1]; }
+
+function rate(){ return parseFloat(document.getElementById('rate').value) || 19.5; }
+
+function toJPY(amount, currency){ return currency === 'HKD' ? amount * rate() : amount; }
+function toHKD(amount, currency){ return currency === 'HKD' ? amount : amount / rate(); }
+
+function render(){
+  const list = loadLocal();
+  const totalJPY = list.reduce((s,e)=> s + toJPY(e.amount, e.currency), 0);
+  document.getElementById('totalJPY').textContent = '¥' + Math.round(totalJPY).toLocaleString();
+  document.getElementById('totalHKD').textContent = '≈ HK$' + Math.round(totalJPY / rate()).toLocaleString();
+
+  const budget = parseFloat(document.getElementById('budget').value) || 0;
+  const fill = document.getElementById('budgetFill');
+  const left = document.getElementById('budgetLeft');
+  if(budget > 0){
+    const pct = Math.min(100, (totalJPY / budget) * 100);
+    fill.style.width = pct + '%';
+    fill.style.background = pct > 100 ? 'var(--coral)' : 'var(--tide)';
+    left.textContent = '剩 ¥' + Math.round(budget - totalJPY).toLocaleString();
+  } else {
+    fill.style.width = '0%';
+    left.textContent = '';
+  }
+
+  // category breakdown
+  const catTotals = {};
+  list.forEach(e => { catTotals[e.category] = (catTotals[e.category]||0) + toJPY(e.amount, e.currency); });
+  const maxCat = Math.max(1, ...Object.values(catTotals));
+  const catBox = document.getElementById('catBreakdown');
+  catBox.innerHTML = CATS.filter(c => catTotals[c.key]).map(c => {
+    const v = catTotals[c.key] || 0;
+    const pct = (v / maxCat) * 100;
+    return `<div class="cat-row">
+      <div class="label">${c.icon} ${c.key}</div>
+      <div class="bar-wrap"><div class="bar" style="width:${pct}%;background:${c.color}"></div></div>
+      <div class="amt">¥${Math.round(v).toLocaleString()}</div>
+    </div>`;
+  }).join('') || '<div style="font-size:.8rem;color:var(--text-soft);font-style:italic;">未有記錄</div>';
+
+  // list grouped by day
+  const days = ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6','Day 7'];
+  const listBox = document.getElementById('list');
+  const emptyHint = document.getElementById('emptyHint');
+  emptyHint.style.display = list.length ? 'none' : 'block';
+  listBox.innerHTML = days.map(day => {
+    const items = list.filter(e => e.day === day).sort((a,b)=> (a.date||'').localeCompare(b.date||''));
+    if(!items.length) return '';
+    const dayTotal = items.reduce((s,e)=> s + toJPY(e.amount, e.currency), 0);
+    const rows = items.map(e => {
+      const cm = catMeta(e.category);
+      const pendingCls = e.synced ? '' : ' pending';
+      return `<div class="expense-row${pendingCls}">
+        <div class="ic" style="background:${cm.color}">${cm.icon}</div>
+        <div class="info">
+          <div class="name">${e.name}</div>
+          <div class="meta">${e.payer || ''}${e.note ? ' · ' + e.note : ''}${e.synced ? '' : ' · 未同步'}</div>
+        </div>
+        <div class="amt">${e.currency === 'HKD' ? 'HK$' : '¥'}${Math.round(e.amount).toLocaleString()}</div>
+        <button class="del" onclick="deleteExpense('${e.localId}')">✕</button>
+      </div>`;
+    }).join('');
+    return `<div class="day-group">
+      <div class="day-header"><span>${day}</span><span class="total">¥${Math.round(dayTotal).toLocaleString()}</span></div>
+      ${rows}
+    </div>`;
+  }).join('');
+}
+
+function openSheet(){
+  document.getElementById('sheet-backdrop').classList.add('show');
+  if(!document.getElementById('f-date').value){
+    document.getElementById('f-date').value = new Date().toISOString().slice(0,10);
+  }
+}
+function closeSheet(){ document.getElementById('sheet-backdrop').classList.remove('show'); }
+function closeSheetOnBackdrop(e){ if(e.target.id === 'sheet-backdrop') closeSheet(); }
+
+function buildCatPicker(){
+  const box = document.getElementById('catPicker');
+  box.innerHTML = CATS.map(c => `<div class="cat-chip${c.key===selectedCat?' active':''}" data-c="${c.key}">${c.icon} ${c.key}</div>`).join('');
+  box.querySelectorAll('.cat-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      selectedCat = chip.getAttribute('data-c');
+      box.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+}
+document.getElementById('whoPicker').addEventListener('click', (e) => {
+  const chip = e.target.closest('.who-chip');
+  if(!chip) return;
+  document.querySelectorAll('.who-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+});
+
+function saveExpense(){
+  const name = document.getElementById('f-name').value.trim();
+  const amount = parseFloat(document.getElementById('f-amount').value);
+  if(!name || !amount){ alert('請輸入項目名稱同金額'); return; }
+  const list = loadLocal();
+  list.push({
+    localId: 'e' + Date.now() + Math.random().toString(36).slice(2,7),
+    name,
+    day: document.getElementById('f-day').value,
+    date: document.getElementById('f-date').value,
+    category: selectedCat,
+    amount,
+    currency: document.getElementById('f-currency').value,
+    payer: document.querySelector('.who-chip.active')?.getAttribute('data-w') || '公共',
+    note: document.getElementById('f-note').value.trim(),
+    synced: false,
+    notionId: null,
+  });
+  saveLocal(list);
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-amount').value = '';
+  document.getElementById('f-note').value = '';
+  closeSheet();
+  render();
+}
+
+function deleteExpense(localId){
+  let list = loadLocal();
+  const item = list.find(e => e.localId === localId);
+  if(item && item.notionId){
+    fetch('/api/expenses?id=' + encodeURIComponent(item.notionId), {method:'DELETE'}).catch(()=>{});
+  }
+  list = list.filter(e => e.localId !== localId);
+  saveLocal(list);
+  render();
+}
+
+async function syncToNotion(){
+  const status = document.getElementById('syncStatus');
+  const list = loadLocal();
+  const pending = list.filter(e => !e.synced);
+  if(!pending.length){ status.textContent = '所有記錄已同步'; return; }
+  status.textContent = `同步緊 ${pending.length} 項...`;
+  let okCount = 0;
+  for(const e of pending){
+    try{
+      const r = await fetch('/api/expenses', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(e),
+      });
+      const data = await r.json();
+      if(r.ok && data.expense){
+        e.synced = true;
+        e.notionId = data.expense.id;
+        okCount++;
+      }
+    }catch(err){}
+  }
+  saveLocal(list);
+  render();
+  status.textContent = okCount === pending.length
+    ? `✅ 已同步 ${okCount} 項去 Notion`
+    : `⚠️ 同步咗 ${okCount}/${pending.length} 項，未連接好 Notion？`;
+}
+
+async function loadFromNotion(){
+  const status = document.getElementById('syncStatus');
+  status.textContent = '載入緊...';
+  try{
+    const r = await fetch('/api/expenses');
+    const data = await r.json();
+    if(!r.ok){ status.textContent = '⚠️ 載入失敗，請檢查 Notion 連接設定'; return; }
+    const remote = data.expenses || [];
+    const local = loadLocal();
+    const localNotionIds = new Set(local.map(e => e.notionId).filter(Boolean));
+    remote.forEach(re => {
+      if(!localNotionIds.has(re.id)){
+        local.push({
+          localId: 'n' + re.id,
+          name: re.name, day: re.day, date: re.date, category: re.category,
+          amount: re.amount, currency: re.currency, payer: re.payer, note: re.note,
+          synced: true, notionId: re.id,
+        });
+      }
+    });
+    saveLocal(local);
+    render();
+    status.textContent = `✅ 已由 Notion 載入 ${remote.length} 項記錄`;
+  }catch(err){
+    status.textContent = '⚠️ 載入失敗，請檢查網絡或 Notion 設定';
+  }
+}
+
+document.getElementById('rate').addEventListener('input', render);
+document.getElementById('budget').addEventListener('input', render);
+buildCatPicker();
+render();
+
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
+</script>
+</body>
+</html>
