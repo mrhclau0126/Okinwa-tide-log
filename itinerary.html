@@ -87,6 +87,20 @@ p{margin:0;}
 .btn-directions{display:inline-flex; align-items:center; gap:.4rem; font-family:var(--mono); font-size:.74rem; color:#fff; background:var(--explore); padding:.38rem .8rem; border-radius:100px; text-decoration:none;}
 .btn-directions:hover{background:#255877;}
 .day-note-banner{font-family:var(--mono); font-size:.72rem; color:var(--coral); background:rgba(226,89,60,.08); border:1px dashed var(--coral); border-radius:8px; padding:.5rem .7rem; margin-bottom:1rem;}
+.day-guide{font-family:var(--mono); font-size:.74rem; color:var(--explore); background:rgba(45,110,142,.08); border:1px solid var(--explore); border-radius:8px; padding:.5rem .75rem; margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:.25rem .9rem; align-items:center;}
+.day-guide>span{color:var(--tide); font-weight:600; letter-spacing:.04em;}
+.day-guide a{color:var(--explore); text-decoration:none; border-bottom:1px solid var(--explore); font-weight:600;}
+.day-guide a:hover{color:#1c4c66;}
+
+.day-comment{margin-top:1.4rem; border-top:1px dashed var(--line); padding-top:1rem;}
+.day-comment .dc-label{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--coral); margin-bottom:.5rem;}
+.day-comment textarea.dc-text{width:100%; min-height:3.4rem; resize:vertical; font-family:var(--body); font-size:.86rem; color:var(--text); background:var(--paper2); border:1px solid var(--line); border-radius:8px; padding:.6rem .7rem; line-height:1.5;}
+.day-comment textarea.dc-text:focus{outline:none; border-color:var(--coral); background:#fff;}
+.day-comment .dc-actions{display:flex; align-items:center; gap:.7rem; margin-top:.5rem;}
+.day-comment .dc-save{font-family:var(--mono); font-size:.72rem; color:#fff; background:var(--reef); border:none; border-radius:100px; padding:.4rem .95rem; cursor:pointer;}
+.day-comment .dc-save:hover{background:#268279;}
+.day-comment .dc-save:disabled{opacity:.55; cursor:default;}
+.day-comment .dc-status{font-family:var(--mono); font-size:.7rem; color:var(--text-soft);}
 
 table.sched{width:100%; border-collapse:collapse; font-size:.88rem;}
 table.sched th{text-align:left; font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-soft); padding:.45rem .55rem; border-bottom:2px solid var(--text);}
@@ -164,7 +178,8 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   #dotNav{display:none;}
 }
 @media print{
-  #dotNav,#printBtn,#bottomNav{display:none !important;}
+  #dotNav,#printBtn,#bottomNav,.day-comment .dc-save,.day-comment .dc-status{display:none !important;}
+  .day-comment textarea.dc-text{border:1px solid #bbb; background:#fff; min-height:auto;}
   body{background:#fff; overflow:visible; height:auto; padding-bottom:0;}
   .slide{min-height:auto; page-break-after:always; scroll-snap-align:none; padding:1.2cm 1.4cm;}
   .map-embed,.day-map-embed{height:220px;}
@@ -347,6 +362,10 @@ const days = [
    ]},
   {num:3, mood:'explore', title:'JUNGLIA 全日攻略 × 19:30 煙火',
    totalDrive:'車程約30–40分鐘（來回）',
+   guide:[
+     {label:'KKday 香港全攻略', url:'https://www.kkday.com/zh-hk/blog/123079/junglia-okinawa-guide'},
+     {label:'官方事前準備指南', url:'https://junglia.jp/tc/get-ready'},
+   ],
    route:[
      {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
      {leg:'約15–20分鐘'},
@@ -535,6 +554,7 @@ days.forEach((d)=>{
         <div class="drive-total">🚗 今日總車程：${d.totalDrive}</div>
       </div>
     </div>
+    ${d.guide ? `<div class="day-guide"><span>📖 攻略</span>${d.guide.map(g=>`<a href="${g.url}" target="_blank" rel="noopener">${g.label}</a>`).join('')}</div>` : ''}
     <div class="route-chips">${routeHtml}</div>
     <div class="day-route-actions">${dirBtn}</div>
     ${embedHtml}
@@ -543,9 +563,64 @@ days.forEach((d)=>{
       <tbody>${rowsHtml}</tbody>
     </table>
     <div class="day-foot"><span class="lbl">住宿</span> ${d.hotel}</div>
+    <div class="day-comment" data-day="Day ${d.num}">
+      <div class="dc-label">📝 家庭留言 / 太太備註</div>
+      <textarea class="dc-text" placeholder="喺度寫低想法、想食咩、要訂咩…"></textarea>
+      <div class="dc-actions"><button class="dc-save" type="button">儲存</button><span class="dc-status"></span></div>
+    </div>
   `;
   daysContainer.appendChild(sec);
 });
+
+// ---- 每日家庭留言（sync 上 Notion）----
+(function initComments(){
+  const boxes = Array.from(document.querySelectorAll('.day-comment'));
+  if(!boxes.length) return;
+  const byDay = {};
+  boxes.forEach(b=>{ byDay[b.getAttribute('data-day')] = b; });
+
+  // 載入現有留言
+  fetch('/api/comments')
+    .then(r => r.json().then(d => ({ ok:r.ok, d })))
+    .then(({ok, d})=>{
+      if(!ok){
+        if(d && d.error === 'not_configured'){
+          boxes.forEach(b => b.querySelector('.dc-status').textContent = '（Notion 未設定，暫時儲存唔到）');
+        }
+        return;
+      }
+      (d.comments || []).forEach(c=>{
+        const b = byDay[c.day];
+        if(b) b.querySelector('.dc-text').value = c.text || '';
+      });
+    })
+    .catch(()=>{});
+
+  // 儲存
+  boxes.forEach(b=>{
+    const day = b.getAttribute('data-day');
+    const ta = b.querySelector('.dc-text');
+    const btn = b.querySelector('.dc-save');
+    const status = b.querySelector('.dc-status');
+    btn.addEventListener('click', async ()=>{
+      btn.disabled = true; status.textContent = '儲存中…';
+      try{
+        const r = await fetch('/api/comments', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ day, text: ta.value }),
+        });
+        const data = await r.json().catch(()=>({}));
+        if(r.ok){ status.textContent = '已儲存 ✓'; }
+        else if(data.error === 'not_configured'){ status.textContent = '⚠️ Notion 未設定'; }
+        else { status.textContent = '⚠️ 儲存失敗'; }
+      }catch(e){ status.textContent = '⚠️ 網絡錯誤'; }
+      finally{
+        btn.disabled = false;
+        setTimeout(()=>{ if(status.textContent === '已儲存 ✓') status.textContent = ''; }, 3000);
+      }
+    });
+  });
+})();
 
 const restaurants = [
   {name:'Nago Pineapple Park', en:'Nago Pineapple Park', day:'Day 2', desc:'鳳梨主題樂園，觀光車遊鳳梨田，恐龍探險區，10:00–18:00營業', addr:'1195 Biimata, Nago, Okinawa 905-0005', tel:'', book:'https://www.nagopine.com/', bookLabel:'官方網站'},
