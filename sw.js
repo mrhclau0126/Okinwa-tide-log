@@ -1,4 +1,4 @@
-const CACHE = 'tidelog-v1';
+const CACHE = 'tidelog-v2';
 const SHELL = ['itinerary', 'expenses', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', (e) => {
@@ -14,10 +14,27 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  const url = new URL(e.request.url);
+  const req = e.request;
+  const url = new URL(req.url);
+
   // Never cache API calls - always go to network for live Notion data
   if (url.pathname.startsWith('/api/')) return;
-  e.respondWith(
-    caches.match(e.request).then((cached) => cached || fetch(e.request).catch(() => cached))
-  );
+
+  // Pages (itinerary / expenses) -> network-first: 一有新版即刻見到，冇網先用 cache。
+  const isDoc = req.mode === 'navigate' || req.destination === 'document';
+  if (isDoc) {
+    e.respondWith(
+      fetch(req)
+        .then((resp) => {
+          const copy = resp.clone();
+          caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+          return resp;
+        })
+        .catch(() => caches.match(req).then((cached) => cached || caches.match('itinerary')))
+    );
+    return;
+  }
+
+  // Other static assets (icons, manifest) -> cache-first.
+  e.respondWith(caches.match(req).then((cached) => cached || fetch(req)));
 });
