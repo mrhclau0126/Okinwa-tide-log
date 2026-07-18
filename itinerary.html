@@ -92,6 +92,16 @@ p{margin:0;}
 .day-guide a{color:var(--explore); text-decoration:none; border-bottom:1px solid var(--explore); font-weight:600;}
 .day-guide a:hover{color:#1c4c66;}
 
+.day-eats{background:rgba(217,162,59,.12); border:1px solid var(--tide); border-radius:8px; padding:.65rem .85rem; margin-top:1.1rem;}
+.day-eats .de-label{font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:#8A6210; font-weight:600; margin-bottom:.45rem;}
+.day-eats .de-row{display:flex; gap:.5rem; font-size:.83rem; line-height:1.5; margin-bottom:.32rem; align-items:flex-start; color:var(--text);}
+.day-eats .de-row .ic{flex-shrink:0; width:1.2em; text-align:center;}
+.day-eats .de-row a{color:var(--explore); text-decoration:none; border-bottom:1px solid var(--explore); font-weight:600;}
+.day-eats .de-row a:hover{color:#1c4c66;}
+.day-eats .de-row .warn{color:var(--coral); font-weight:600;}
+.resv-btn{display:inline-block; font-family:var(--mono); font-size:.62rem; letter-spacing:.04em; color:#fff !important; background:var(--coral); border-radius:100px; padding:.14rem .55rem; margin-left:.45rem; text-decoration:none !important; border-bottom:none !important; vertical-align:middle; white-space:nowrap; font-weight:600;}
+.resv-btn:hover{background:#c94d33; color:#fff;}
+
 .day-comment{margin-top:1.4rem; border-top:1px dashed var(--line); padding-top:1rem;}
 .day-comment .dc-label{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--coral); margin-bottom:.5rem;}
 .day-comment textarea.dc-text{width:100%; min-height:3.4rem; resize:vertical; font-family:var(--body); font-size:.86rem; color:var(--text); background:var(--paper2); border:1px solid var(--line); border-radius:8px; padding:.6rem .7rem; line-height:1.5;}
@@ -275,11 +285,21 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 <section class="slide paper" data-label="推薦餐廳" id="s-food">
   <span class="page-index" data-auto></span>
   <div class="section-head">
-    <span class="eyebrow">Tide-tested Eats &amp; Activities</span>
-    <h2>推薦餐廳 / 活動 · 聯絡與訂位</h2>
-    <p class="sub">電話與連結為目前搜尋所得，出發前建議自行覆核一次</p>
+    <span class="eyebrow">Tide-tested Eats</span>
+    <h2>推薦餐廳 · 聯絡與訂位</h2>
+    <p class="sub">店名旁邊有「📅 訂位」掣嘅可以直接網上book台；電話與連結為目前搜尋所得，出發前建議自行覆核一次</p>
   </div>
   <div class="card-grid" id="foodContainer"></div>
+</section>
+
+<section class="slide paper" data-label="活動預約" id="s-acts">
+  <span class="page-index" data-auto></span>
+  <div class="section-head">
+    <span class="eyebrow">Activities &amp; Bookings</span>
+    <h2>活動 / 體驗 · 聯絡與預約</h2>
+    <p class="sub">樂園、浮潛、衝浪、煙火等活動嘅官方連結同預約方式</p>
+  </div>
+  <div class="card-grid" id="actContainer"></div>
 </section>
 
 <section class="slide dark" data-label="住宿資訊" id="s-hotels">
@@ -301,6 +321,9 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
     <div class="tip-item"><span class="num">04</span><p><b>北谷煙火：</b>シーポートちゃたんカーニバル每週定期放煙火，8月7日場次建議出發前於官網再confirm一次日程。</p></div>
     <div class="tip-item"><span class="num">05</span><p><b>防曬對策：</b>沖繩紫外線強，帽子＋泳衣式防曬衣＋SPF50母嬰可用防曬乳。</p></div>
     <div class="tip-item"><span class="num">06</span><p><b>還車提醒：</b>Day 8還車前記得加滿油，並預留辦理時間，14:05起飛不算太趕但唔好托到最後一刻。</p></div>
+    <div class="tip-item"><span class="num">07</span><p><b>北部食飯策略：</b>北部名店大多11:00開、17:00前收工，而且好多逢週三定休（きしもと本店／花人逢／Captain Kangaroo）——名店留返午餐食，晚餐靠飯店或燒肉店最實際。</p></div>
+    <div class="tip-item"><span class="num">08</span><p><b>排隊＋訂位：</b>排隊三寶（きしもと食堂／暖暮／ポーたま）開店前15–30分鐘到最穩；燒肉店（本部牧場／琉球の牛）一定要提早預約。8月好熱，帶住BB盡量避開正午戶外排隊。</p></div>
+    <div class="tip-item"><span class="num">09</span><p><b>訂位App：</b>有「📅 訂位」掣嘅餐廳可以直接網上book（HotPepper／TableCheck）；淨係收電話預約嘅店，可以用 <a href="https://autoreserve.com/" target="_blank" rel="noopener">AutoReserve</a> App——AI幫你打電話去日本餐廳book台（有中文介面，成功先收少量手續費，唔使自己講日文）。</p></div>
   </div>
 </section>
 
@@ -341,6 +364,10 @@ const days = [
     {t:'17:30', who:'move', a:'出發前往本部飯店（車程約1小時）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
     {t:'18:30', who:'move', a:'抵達本部飯店，辦理入住', n:'Orion Hotel Motobu Resort & Spa，JUNGLIA官方合作飯店', loc:'沖縄県国頭郡本部町備瀬148-1', web:'https://www.okinawaresort-orion.com/'},
     {t:'19:30', who:'family', a:'晚餐', n:'飯店內5間餐廳任選，或AEON買嘅嘢喺房內輕食', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   eats:[
+    {ic:'🥩', n:'燒肉本部牧場 本部店', q:'焼肉もとぶ牧場 本部店', book:'https://www.hotpepper.jp/strJ000851361/', note:'自家牧場「もとぶ牛」燒肉，近飯店，晚市17:00開，想食一定要預約'},
+    {ic:'🍔', n:'Captain Kangaroo', q:'キャプテンカンガルー 名護', note:'名護人氣美式漢堡，北上途中順路（11:00–20:00，週三休）；趕住check-in就跳過'},
    ]},
   {num:2, mood:'explore', title:'Nago Pineapple Park 鳳梨園日',
    totalDrive:'車程約50分鐘（來回）',
@@ -359,6 +386,11 @@ const days = [
     {t:'13:30', who:'move', a:'返回本部飯店（車程約20–25分）', n:'寶寶車上小睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
     {t:'14:30', who:'family', a:'飯店泳池 / 海灘 / 備瀬福木林道散步', n:'下午悠閒放鬆，晚上早啲休息儲定電力，聽日JUNGLIA全日', loc:'沖縄県国頭郡本部町備瀬148-1'},
     {t:'19:00', who:'family', a:'晚餐', n:'', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   eats:[
+    {ic:'🍜', n:'きしもと食堂 本店', q:'きしもと食堂 本部町', note:'1905年創業、沖繩最老木灰沖繩麵；11:00–17:00賣完即止、週三休，開店前到最穩（渡久地港旁）'},
+    {ic:'🐷', n:'大家 うふやー', q:'百年古家 大家 名護', book:'https://www.hotpepper.jp/strJ000114346/', note:'百年古民家歎阿古豬沖繩麵／涮涮鍋，庭園好靚，同鳳梨園順路，建議預約'},
+    {ic:'🍞', n:'Pan de Kaito', q:'パン・ド・カイト 名護', note:'名護50款麵包老店（8:00開），買定聽日JUNGLIA早餐一流'},
    ]},
   {num:3, mood:'explore', title:'JUNGLIA 全日攻略 × 19:30 煙火',
    totalDrive:'車程約30–40分鐘（來回）',
@@ -383,6 +415,10 @@ const days = [
     {t:'18:00', who:'family', a:'園內晚餐', n:'', loc:'JUNGLIA OKINAWA'},
     {t:'19:30', who:'family', a:'JUNGLIA 煙火表演', n:'3歲以下免費入場；如遇天氣不佳可能取消，建議留意官方公告', loc:'JUNGLIA OKINAWA'},
     {t:'20:00', who:'move', a:'返回本部飯店（車程約15–20分）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   eats:[
+    {ic:'🎢', n:'JUNGLIA 園內餐廳', q:'JUNGLIA OKINAWA', note:'繁忙時段要排隊，建議12:00前或13:30後先食，或者自備輕食畀BB'},
+    {ic:'🍕', n:'花人逢', q:'花人逢 本部町', note:'本部山上海景pizza老屋（11:30–19:00，週二三休）；如果JUNGLIA提早走，落山途中食個下午茶一流'},
    ]},
   {num:4, mood:'explore', title:'真栄田岬 Pink Mermaid 親子浮潛團',
    totalDrive:'車程約1小時（來回）',
@@ -402,6 +438,12 @@ const days = [
     {t:'13:00', who:'move', a:'返回本部飯店（車程約30–40分）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
     {t:'14:30', who:'family', a:'飯店休息 / 沖身換衫 / 泳池', n:'浮潛後好攰，下午留喺飯店休息', loc:'沖縄県国頭郡本部町備瀬148-1'},
     {t:'19:00', who:'family', a:'晚餐', n:'', loc:'沖縄県国頭郡本部町備瀬148-1'},
+   ],
+   eats:[
+    {ic:'🥞', n:'Hawaiian Pancakes House Paanilani', q:'ハワイアンパンケーキハウス パニラニ 恩納', note:'恩納名店pancake，07:00開；出發浮潛前食早餐啱啱好（招牌Nuts Nuts）'},
+    {ic:'🍜', n:'なかむらそば', q:'なかむらそば 恩納', note:'自家製麵沖繩麵名店，招牌アーサ（海藻）そば；離真栄田岬車程約10分，浮潛完食午餐首選'},
+    {ic:'🍧', n:'恩納の駅 なかゆくい市場', q:'おんなの駅 なかゆくい市場', note:'海葡萄、沖繩天婦羅、雪花冰小食市場，回程順路休息位'},
+    {ic:'🥩', n:'琉球の牛 恩納本館', q:'焼肉琉球の牛 恩納本館', book:'https://www.tablecheck.com/en/shops/yakiniku-onna/reserve', note:'唔想咁快返飯店？回程58號線順路歎A5和牛燒肉，17:00開，TableCheck網上訂位好方便'},
    ]},
   {num:5, mood:'move', title:'南下：部瀬名海中公園 → AEON MALL → 轉移陣地到那霸（唯一一次搬酒店）',
    totalDrive:'車程約1小時45分（分段，中途兩個休息點）',
@@ -423,6 +465,11 @@ const days = [
     {t:'13:00', who:'family', a:'超巨大 Toys "R" Us 玩具反斗城', n:'寶寶放電＋手信掃貨', loc:'イオンモール沖縄ライカム'},
     {t:'14:30', who:'move', a:'南下前往那霸市區飯店辦理入住（車程約35分）', n:'今次係全程唯一一次搬行李入房', loc:'那覇市おもろまち1-1-12', web:'https://www.daiwaroynet.jp/naha-omoromachi/'},
     {t:'19:00', who:'family', a:'晚餐：新都心周邊', n:'店名自選，建議事先致電或App訂位', loc:'那覇新都心 おもろまち'},
+   ],
+   eats:[
+    {ic:'⚠️', n:'今日係週三', q:'', note:'北部名店（きしもと本店／花人逢／Captain Kangaroo）多數週三休——所以今日午餐留喺AEON美食街最穩陣', warn:true},
+    {ic:'🥩', n:'ジャッキーステーキハウス Jackie Steak House', q:'ジャッキーステーキハウス 那覇', note:'1953年老字號美式牛排，到埗那霸第一晚好選擇；唔收訂位，繁忙時間現場攞籌'},
+    {ic:'🍶', n:'目利きの銀次（新都心）', q:'目利きの銀次 おもろまち駅前店', note:'海鮮居酒屋，行返酒店好近，帶BB都方便，建議先訂位'},
    ]},
   {num:6, mood:'shop', title:'精華購物日：teamLab × PARCO/San-A × 國際通',
    totalDrive:'車程約20–30分鐘（視乎購物地點）',
@@ -442,6 +489,16 @@ const days = [
     {t:'13:30', who:'mom', a:'（彈性擇一）浦添 PARCO CITY 或 San-A Main Place 購物', n:'寶寶回飯店午睡，爸媽輪流去，任揀一個購物點', loc:'サンエー浦添西海岸PARCO CITY', web:'https://www.parcocity.jp/'},
     {t:'16:30', who:'family', a:'（彈性）搭Yui-Rail單軌去國際通散步，或去新都心公園畀BB跑草地', n:'視乎精神狀態自由安排', loc:'国際通り 那覇'},
     {t:'19:00', who:'family', a:'晚餐：國際通或新都心', n:'', loc:'国際通り 那覇'},
+   ],
+   eats:[
+    {ic:'🍙', n:'ポーたま 牧志市場本店', q:'ポークたまごおにぎり本店 牧志', note:'豬肉蛋飯糰，07:00開，現點現做；早啲去避排隊，第一牧志公設市場就喺隔籬'},
+    {ic:'🦀', n:'泊いゆまち 魚市場', q:'泊いゆまち 那覇', note:'沖繩最大海鮮市場：吞拿魚／三文魚籽／蟹籽海鮮丼，市場格局地方大BB車入到，離酒店車程約10分（Day 5入那霸途中都順路）'},
+    {ic:'🍚', n:'鰻と日本料理 彦 本店', q:'鰻と日本料理 彦 本店 那覇', book:'http://honten.hiko-okinawa.jp/', note:'那霸鰻魚飯最正斗嘅一間，有個室坐得舒服啱一家人，晚餐建議預約'},
+    {ic:'🍱', n:'みんなのうなぎ 國際通り', q:'みんなのうなぎ 那覇 国際通り', book:'https://min-una.com/', note:'國際通鰻魚飯專門店，行街順路食，價錢相宜'},
+    {ic:'🍜', n:'暖暮拉麵 那霸牧志店', q:'暖暮 那覇牧志店', note:'九州拉麵總選舉冠軍；店面較細又排隊，帶BB嫌逼可以改食通堂（Day 8嗰間）或AEON美食街'},
+    {ic:'🥩', n:'琉球の牛 那覇国際通り', q:'焼肉琉球の牛 那覇国際通り', book:'https://www.tablecheck.com/en/shops/yakiniku-naha/reserve', note:'A5和牛燒肉，17:00開晚市，TableCheck網上訂位，一定要提早book'},
+    {ic:'🍔', n:'A&W 國際通牧志店', q:'A&W 国際通り牧志店', note:'沖繩限定美式快餐，Root Beer任飲，BB友善又快靚正'},
+    {ic:'🍦', n:'Blue Seal／Calbee+ 國際通', q:'ブルーシール 国際通り', note:'行街甜品位：紅芋雪糕、即炸紅芋薯條'},
    ]},
   {num:7, mood:'surf', title:'北谷一日：爸爸ハイサイ衝浪 × 安良波公園 → 美國村花火',
    totalDrive:'車程約1小時20分（去程35分＋北谷區內短程約15分＋返程35分，全日只出入北谷一次）',
@@ -469,6 +526,12 @@ const days = [
     {t:'16:00', who:'family', a:'飯店方向歇腳 / 房內午睡（如需要）', n:'儲定精神睇夜晚煙火', loc:'アメリカンビレッジ デポアイランド'},
     {t:'20:00', who:'family', a:'シーポートちゃたんカーニバル 煙火表演', n:'免費，坐喺Depot Island海岸木棧道就睇到，8月7日場次建議出發前先confirm官方日程', loc:'アメリカンビレッジ デポアイランド'},
     {t:'20:30', who:'move', a:'返回那霸飯店（車程約35分）', n:'寶寶車上瞓著都唔緊要', loc:'那覇市おもろまち1-1-12'},
+   ],
+   eats:[
+    {ic:'🌮', n:'タコライスcafe きじむなぁ Kijimuna', q:'タコライスcafe きじむなぁ デポアイランド店', note:'美國村蛋包taco rice名店，親子友善，午餐同King Tacos二選一'},
+    {ic:'🦞', n:'Chatan Steam Seafood', q:'チャタンスチームシーフード 北谷', note:'露台蒸海鮮對住個海，食完行落木棧道啱啱好睇20:00煙火'},
+    {ic:'🥤', n:'The Calif Kitchen', q:'The Calif Kitchen 北谷', note:'海邊美式餐廳，日落位一流；同上面二選一做晚餐'},
+    {ic:'🥩', n:'琉球の牛 北谷', q:'焼肉琉球の牛 北谷', book:'https://www.tablecheck.com/en/shops/yakiniku-chatan/reserve', note:'美國村都有分店！想食好啲嘅話TableCheck訂位，食完啱啱好睇煙火'},
    ]},
   {num:8, mood:'move', title:'回程日：Apple Town掃貨 → 還車 → 14:05起飛',
    totalDrive:'車程約20–30分鐘',
@@ -490,6 +553,10 @@ const days = [
     {t:'11:30', who:'move', a:'接駁前往機場', n:'約10分鐘，預留充足時間過關', loc:'那覇空港'},
     {t:'12:00', who:'move', a:'抵達機場，辦理登機手續', n:'免稅店最後採買', loc:'那覇空港'},
     {t:'14:05', who:'move', a:'起飛返香港', n:'預計16:00抵達香港', loc:'那覇空港'},
+   ],
+   eats:[
+    {ic:'🍜', n:'琉球新麺 通堂 小禄本店', q:'琉球新麺 通堂 小禄本店', note:'沖繩人氣拉麵，就喺Apple Town／還車點附近，11:00開；時間夠先好去'},
+    {ic:'🍱', n:'那霸機場 空港食堂／A&W', q:'空港食堂 那覇空港', note:'時間緊就過咗關先食：國內線航廈有平價空港食堂同A&W，最後一杯Root Beer'},
    ]},
 ];
 
@@ -562,6 +629,11 @@ days.forEach((d)=>{
       <thead><tr><th>時間</th><th>who</th><th>行程內容</th><th>地點 / 小提示</th></tr></thead>
       <tbody>${rowsHtml}</tbody>
     </table>
+    ${d.eats ? `<div class="day-eats"><div class="de-label">🍽 食乜好 · 順路必食 REMARK</div>${d.eats.map(e=>{
+      const name = e.q ? `<a href="${mapsSearch(e.q)}" target="_blank">${e.n}</a>` : `<span class="${e.warn?'warn':''}">${e.n}</span>`;
+      const bk = e.book ? `<a class="resv-btn" href="${e.book}" target="_blank" rel="noopener">📅 訂位</a>` : '';
+      return `<div class="de-row"><span class="ic">${e.ic||'🍜'}</span><span>${name}${bk}${e.note?` — ${e.note}`:''}</span></div>`;
+    }).join('')}</div>` : ''}
     <div class="day-foot"><span class="lbl">住宿</span> ${d.hotel}</div>
     <div class="day-comment" data-day="Day ${d.num}">
       <div class="dc-label">📝 家庭留言 / 太太備註</div>
@@ -623,27 +695,42 @@ days.forEach((d)=>{
 })();
 
 const restaurants = [
-  {name:'Nago Pineapple Park', en:'Nago Pineapple Park', day:'Day 2', desc:'鳳梨主題樂園，觀光車遊鳳梨田，恐龍探險區，10:00–18:00營業', addr:'1195 Biimata, Nago, Okinawa 905-0005', tel:'', book:'https://www.nagopine.com/', bookLabel:'官方網站'},
-  {name:'JUNGLIA 叢林樂園', en:'JUNGLIA Okinawa', day:'Day 3（含19:30煙火）', desc:'2025新開幕主題樂園，3歲以下免費入場', addr:'', tel:'', book:'https://junglia.jp/', bookLabel:'官方網站'},
-  {name:'Pink Mermaid 青の洞窟浮潛', en:'Pink Mermaid Snorkel Tour', day:'Day 4', desc:'真栄田岬幼兒專屬浮潛團，1歲起可玩，含水下拍攝+餵魚體驗，3人同行約6,500円/人', addr:'真栄田岬，恩納村', tel:'', book:'https://pink-mermaid.com/tw/course/Dcourse.html', bookLabel:'官方預約頁'},
-  {name:'部瀬名海中公園', en:'Busena Marine Park', day:'Day 5', desc:'海中展望塔＋鯨魚造型玻璃船，服著晒都可以睇熱帶魚', addr:'沖縄県名護市字喜瀬1744-1', tel:'0980-52-3379', book:'https://www.busena-marinepark.com/', bookLabel:'官方網站'},
-  {name:'AEON MALL 沖繩來客夢', en:'AEON MALL Okinawa Rycom', day:'Day 1 / Day 5', desc:'沖繩最大型購物中心，超市＋巨大Toys R Us＋美食街', addr:'沖繩縣中頭郡北中城村字ライカム1番地', tel:'098-930-0425', book:'https://okinawarycom-aeonmall.com/', bookLabel:'官方網站'},
-  {name:'サーフサイドサービス ハイサイ', en:'Surfside Service Haisai', day:'Day 7 爸爸衝浪課', desc:'北谷宮城海岸旁，ISA／NSA認證教練，2.5小時連續課程', addr:'沖繩縣中頭郡北谷町浜川176-S288', tel:'098-926-1030', book:'https://suy.jp/', bookLabel:'官方網站預約'},
-  {name:'安良波公園', en:'Araha Park', day:'Day 7 媽媽+BB', desc:'船型大型遊具「印度橡樹號」，隔壁安良波海灘，近美國村', addr:'沖縄県中頭郡北谷町美浜1丁目6番地3', tel:'', book:'', bookLabel:'免費入場'},
-  {name:'シーポートちゃたんカーニバル', en:'Seaport Chatan Carnival Fireworks', day:'Day 7 晚上20:00', desc:'北谷美濱定期煙火表演，Depot Island海岸木棧道免費觀賞', addr:'', tel:'', book:'', editable:true},
+  {name:'燒肉本部牧場 本部店', en:'Yakiniku Motobu Bokujo', day:'Day 1 晚餐', desc:'自家牧場直送「もとぶ牛」燒肉，離本部飯店好近；晚市17:00開，想食一定要預約', addr:'沖縄県国頭郡本部町大浜881-1', tel:'', resv:'https://www.hotpepper.jp/strJ000851361/', book:'https://motobu-farm.com/', bookLabel:'官方網站'},
+  {act:true, name:'Nago Pineapple Park', en:'Nago Pineapple Park', day:'Day 2', desc:'鳳梨主題樂園，觀光車遊鳳梨田，恐龍探險區，10:00–18:00營業', addr:'1195 Biimata, Nago, Okinawa 905-0005', tel:'', book:'https://www.nagopine.com/', bookLabel:'官方網站'},
+  {name:'きしもと食堂 本店', en:'Kishimoto Shokudo (est.1905)', day:'Day 2 午餐', desc:'沖繩最老木灰沖繩麵老店，11:00–17:00賣完即止，逢週三休；排隊名店，開店前到最穩', addr:'沖縄県国頭郡本部町渡久地5', tel:'0980-47-2887', book:'https://tabelog.com/en/okinawa/A4702/A470202/47000068/', bookLabel:'Tabelog介紹'},
+  {name:'大家 うふやー', en:'Ufuya · Agu Pork', day:'Day 2 備選', desc:'百年古民家歎阿古豬沖繩麵／涮涮鍋，庭園環境一流，近鳳梨園，遊客多建議預約', addr:'沖縄県名護市中山90', tel:'0980-53-0280', resv:'https://www.hotpepper.jp/strJ000114346/', book:'https://ufuya.com/', bookLabel:'官方網站'},
+  {act:true, name:'JUNGLIA 叢林樂園', en:'JUNGLIA Okinawa', day:'Day 3（含19:30煙火）', desc:'2025新開幕主題樂園，3歲以下免費入場', addr:'', tel:'', book:'https://junglia.jp/', bookLabel:'官方網站'},
+  {name:'花人逢', en:'Kajinho · Ocean-view Pizza', day:'Day 3 備選', desc:'本部山上海景pizza老屋，11:30–19:00，週二三休；view一流，假日要排隊', addr:'沖縄県国頭郡本部町山里1153-2', tel:'0980-47-5537', book:'https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2', bookLabel:'地圖'},
+  {act:true, name:'Pink Mermaid 青の洞窟浮潛', en:'Pink Mermaid Snorkel Tour', day:'Day 4', desc:'真栄田岬幼兒專屬浮潛團，1歲起可玩，含水下拍攝+餵魚體驗，3人同行約6,500円/人', addr:'真栄田岬，恩納村', tel:'', book:'https://pink-mermaid.com/tw/course/Dcourse.html', bookLabel:'官方預約頁'},
+  {name:'なかむらそば', en:'Nakamura Soba', day:'Day 4 午餐', desc:'恩納自家製麵沖繩麵名店，招牌アーサ（海藻）そば；離真栄田岬車程約10分', addr:'沖縄県国頭郡恩納村瀬良垣1669-1', tel:'098-966-8005', book:'https://www.nakamurasoba.com/', bookLabel:'官方網站'},
+  {act:true, name:'部瀬名海中公園', en:'Busena Marine Park', day:'Day 5', desc:'海中展望塔＋鯨魚造型玻璃船，服著晒都可以睇熱帶魚', addr:'沖縄県名護市字喜瀬1744-1', tel:'0980-52-3379', book:'https://www.busena-marinepark.com/', bookLabel:'官方網站'},
+  {act:true, name:'AEON MALL 沖繩來客夢', en:'AEON MALL Okinawa Rycom', day:'Day 1 / Day 5', desc:'沖繩最大型購物中心，超市＋巨大Toys R Us＋美食街；Day 5週三北部名店多數休息，午餐留呢度最穩', addr:'沖繩縣中頭郡北中城村字ライカム1番地', tel:'098-930-0425', book:'https://okinawarycom-aeonmall.com/', bookLabel:'官方網站'},
+  {name:'ジャッキーステーキハウス', en:'Jackie Steak House (est.1953)', day:'Day 5 晚餐', desc:'那霸老字號美式牛排，招牌Tenderloin；唔收訂位，繁忙時間現場攞籌', addr:'沖縄県那覇市西1-7-3', tel:'098-868-2408', book:'https://www.google.com/maps/search/?api=1&query=%E3%82%B8%E3%83%A3%E3%83%83%E3%82%AD%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B9', bookLabel:'地圖'},
+  {name:'ポーたま 牧志市場本店', en:'Pork Tamago Onigiri', day:'Day 6 早餐', desc:'豬肉蛋飯糰專門店，07:00開門現點現做；早去避排隊，第一牧志公設市場喺隔籬', addr:'沖縄県那覇市松尾2-8-35', tel:'', book:'https://porktamago.com/', bookLabel:'官方網站'},
+  {name:'暖暮拉麵 那霸牧志店', en:'Danbo Ramen', day:'Day 6 午餐', desc:'九州拉麵總選舉冠軍豚骨拉麵，排隊名店，避開12–13:00高峰', addr:'沖縄県那覇市牧志2-16-10', tel:'', book:'https://www.google.com/maps/search/?api=1&query=%E6%9A%96%E5%B9%95%20%E9%82%A3%E8%A6%87%E7%89%A7%E5%BF%97%E5%BA%97', bookLabel:'地圖'},
+  {name:'琉球の牛 那覇国際通り', en:'Yakiniku Ryukyu no Ushi', day:'Day 6 晚餐', desc:'沖繩人氣A5和牛燒肉，17:00開晚市；熱門到爆，必須提早網上預約（恩納、北谷都有分店）', addr:'沖縄県那覇市牧志3-2-3', tel:'', resv:'https://www.tablecheck.com/en/shops/yakiniku-naha/reserve', book:'https://www.u-shi.net/', bookLabel:'官方網站'},
+  {name:'鰻と日本料理 彦 本店', en:'Unagi & Japanese Cuisine Hiko', day:'Day 6 晚餐備選', desc:'那霸專門鰻魚飯＋日本料理，有個室坐得舒服，帶BB一家人都自在；晚餐建議預約', addr:'沖縄県那覇市久茂地', tel:'', resv:'http://honten.hiko-okinawa.jp/', book:'http://honten.hiko-okinawa.jp/', bookLabel:'官方網站'},
+  {name:'みんなのうなぎ 國際通り', en:'Minna no Unagi', day:'Day 6 備選', desc:'國際通鰻魚飯專門店，行街順路食，價錢相宜', addr:'沖縄県那覇市 国際通り', tel:'', resv:'https://min-una.com/', book:'https://min-una.com/', bookLabel:'官方網站'},
+  {name:'泊いゆまち 魚市場', en:'Tomari Iyumachi Fish Market', day:'Day 5–6 午餐', desc:'沖繩最大海鮮市場：吞拿魚、三文魚籽、蟹籽海鮮丼任揀檔口；市場格局地方大，BB車直入，離新都心酒店車程約10分', addr:'沖縄県那覇市港町1-1-18', tel:'', book:'https://tabelog.com/en/okinawa/A4701/A470101/47010966/', bookLabel:'Tabelog介紹'},
+  {act:true, name:'サーフサイドサービス ハイサイ', en:'Surfside Service Haisai', day:'Day 7 爸爸衝浪課', desc:'北谷宮城海岸旁，ISA／NSA認證教練，2.5小時連續課程', addr:'沖繩縣中頭郡北谷町浜川176-S288', tel:'098-926-1030', book:'https://suy.jp/', bookLabel:'官方網站預約'},
+  {act:true, name:'安良波公園', en:'Araha Park', day:'Day 7 媽媽+BB', desc:'船型大型遊具「印度橡樹號」，隔壁安良波海灘，近美國村', addr:'沖縄県中頭郡北谷町美浜1丁目6番地3', tel:'', book:'', bookLabel:'免費入場'},
+  {name:'タコライスcafe きじむなぁ', en:'Taco Rice Cafe Kijimuna', day:'Day 7 午/晚餐', desc:'美國村Depot Island蛋包taco rice名店，親子友善；食完行落海岸木棧道啱啱好睇煙火', addr:'沖縄県中頭郡北谷町美浜9-1 デポアイランドシーサイド2F', tel:'', book:'https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%82%B3%E3%83%A9%E3%82%A4%E3%82%B9cafe%20%E3%81%8D%E3%81%98%E3%82%80%E3%81%AA%E3%81%81%20%E3%83%87%E3%83%9D%E3%82%A2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89%E5%BA%97', bookLabel:'地圖'},
+  {act:true, name:'シーポートちゃたんカーニバル', en:'Seaport Chatan Carnival Fireworks', day:'Day 7 晚上20:00', desc:'北谷美濱定期煙火表演，Depot Island海岸木棧道免費觀賞', addr:'', tel:'', book:'', editable:true},
+  {name:'琉球新麺 通堂 小禄本店', en:'Tondou Ramen', day:'Day 8 還車前', desc:'沖繩人氣拉麵，Apple Town／還車點附近，11:00開；時間緊就改機場空港食堂／A&W', addr:'沖縄県那覇市金城5-4-6', tel:'', book:'https://www.google.com/maps/search/?api=1&query=%E7%90%89%E7%90%83%E6%96%B0%E9%BA%BA%20%E9%80%9A%E5%A0%82%20%E5%B0%8F%E7%A6%84%E6%9C%AC%E5%BA%97', bookLabel:'地圖'},
 ];
 const foodContainer = document.getElementById('foodContainer');
+const actContainer = document.getElementById('actContainer');
 restaurants.forEach(r=>{
   const addr = r.addr || '<span class="edit" contenteditable="true">點擊填寫地址</span>';
   const tel = r.tel ? `<a href="tel:${r.tel.replace(/[^0-9+]/g,'')}">${r.tel}</a>` : '<span class="edit" contenteditable="true">點擊填寫電話</span>';
   const book = r.book ? `<a href="${r.book}" target="_blank" rel="noopener">${r.bookLabel}</a>` : (r.bookLabel || '<span class="edit" contenteditable="true">點擊填寫訂位方式</span>');
   const card = document.createElement('div');
   card.className = 'food-card';
-  card.innerHTML = `<div class="tag">${r.day}</div><h3>${r.name}</h3><div class="en">${r.en}</div><div class="desc">${r.desc}</div>
+  card.innerHTML = `<div class="tag">${r.day}</div><h3>${r.name}${r.resv?` <a class="resv-btn" href="${r.resv}" target="_blank" rel="noopener">📅 訂位</a>`:''}</h3><div class="en">${r.en}</div><div class="desc">${r.desc}</div>
     <div class="food-row"><span class="ic">📍</span><span>${addr}</span></div>
     <div class="food-row"><span class="ic">☎</span><span>${tel}</span></div>
     <div class="food-row"><span class="ic">🔗</span><span>${book}</span></div>`;
-  foodContainer.appendChild(card);
+  (r.act ? actContainer : foodContainer).appendChild(card);
 });
 
 const hotels = [
