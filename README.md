@@ -85,6 +85,29 @@
 
 ---
 
+## 第五步之二：設定「每日家庭留言」（comment box，sync 上 Notion）
+
+行程頁每一日底部有個「📝 家庭留言 / 太太備註」框，太太打完撳「儲存」就會 sync 上 Notion，兩部電話共用。要開通呢個功能：
+
+1. 喺 Notion **新建一個 Database (Table)**，改名叫「沖繩行程 Comments」。
+2. 將欄位改成**同以下完全一樣**（大小寫要一致）：
+
+   | 欄位名稱 | 類型 |
+   |---|---|
+   | Day | Title（預設嗰個 title 欄，改名做 `Day`）|
+   | Comment | Text |
+
+3. 喺呢個 Database 頁面右上角 **⋯ → Connections**，揀返你之前建立嗰個「Tide Log App」integration（同記帳共用同一個 token，唔使開新的）。
+4. 睇網址攞 **Database ID**（`notion.so/xxxxxxxx...?v=...` 入面 `?` 之前嗰 32 位）。
+5. 去 Vercel → 你個 project → **Settings → Environment Variables**，加一條：
+   - `NOTION_COMMENTS_DATABASE_ID` = 頭先攞到嗰 32 位 ID
+   （`NOTION_TOKEN` 已經有咗，唔使再加。）
+6. 撳 Save → **Deployments** → 最新嗰個 → **⋯ → Redeploy**。
+
+設定好之前，個框仍然見到，但撳儲存會顯示「Notion 未設定」。設定好之後，每日儲存會用嗰日做 key（`Day 1`…`Day 8`），同一日再存會覆蓋。
+
+---
+
 ## 第六步：喺日本手機用（Add to Home Screen）
 
 1. 用手機Safari（iPhone）或Chrome（Android）開返你個Vercel網址。
