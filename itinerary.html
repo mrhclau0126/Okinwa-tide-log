@@ -216,12 +216,12 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   <div class="flight-card">
     <div class="lead">✈️ 已確認航班</div>
     <div class="flight-row"><span>去程</span><b>2026/08/01（六）香港11:20 → 沖繩15:10　HX658</b></div>
-    <div class="flight-row"><span>回程</span><b>2026/08/08（六）沖繩14:05 → 香港16:00</b></div>
+    <div class="flight-row"><span>回程</span><b>2026/08/08（六）沖繩14:05 → 香港16:00　HX679</b></div>
   </div>
   <div class="meta-card">
     <div class="lead">✏️ 以下資料可直接點擊填寫</div>
     <div class="meta-row"><b>同行成員</b><span class="edit" contenteditable="true">爸爸 · 媽媽 · 3歲寶寶（請自行增減）</span></div>
-    <div class="meta-row"><b>租車公司</b><span class="edit" contenteditable="true">點擊填寫（例如 Times Car / OTS）</span></div>
+    <div class="meta-row"><b>租車預約</b><span class="edit" contenteditable="true">已預約 ✓ 編號 202601583244｜8/1 16:30 取車 · 8/8 12:00 還車（那霸機場店）</span></div>
   </div>
 </section>
 
@@ -316,12 +316,12 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   <span class="page-index" data-auto></span>
   <div class="section-head"><span class="eyebrow">Field Notes</span><h2>實用小貼士</h2></div>
   <div class="tips-grid">
-    <div class="tip-item"><span class="num">01</span><p><b>租車汽座：</b>預約時務必註明需要幼兒汽車安全座椅，OTS／Times Car 皆可線上加購。</p></div>
+    <div class="tip-item"><span class="num">01</span><p><b>租車已預約：</b>編號 <b>202601583244</b>，8/1 16:30取車（機場11號接送巴士站搭shuttle去店）、8/8 12:00機場店還車；取車時記得confirm幼兒汽座已安裝。</p></div>
     <div class="tip-item"><span class="num">02</span><p><b>Pink Mermaid浮潛：</b>3人以上同行每人約6,500円，含裝備船票保險＋免費水下拍攝，建議提早於官網預約。</p></div>
     <div class="tip-item"><span class="num">03</span><p><b>JUNGLIA提醒：</b>建議先上官網查當日開閉園時間、預約整理券與停車券，19:30煙火時間如遇天氣不佳可能取消。</p></div>
     <div class="tip-item"><span class="num">04</span><p><b>北谷煙火：</b>シーポートちゃたんカーニバル每週定期放煙火，8月7日場次建議出發前於官網再confirm一次日程。</p></div>
     <div class="tip-item"><span class="num">05</span><p><b>防曬對策：</b>沖繩紫外線強，帽子＋泳衣式防曬衣＋SPF50母嬰可用防曬乳。</p></div>
-    <div class="tip-item"><span class="num">06</span><p><b>還車提醒：</b>Day 8還車前記得加滿油，並預留辦理時間，14:05起飛不算太趕但唔好托到最後一刻。</p></div>
+    <div class="tip-item"><span class="num">06</span><p><b>還車提醒：</b>Day 8預約還車時間係12:00（規定要喺起飛前1.5小時還），途中記得加滿油；還完店方有接駁去機場，約5分鐘。</p></div>
     <div class="tip-item"><span class="num">07</span><p><b>北部食飯策略：</b>北部名店大多11:00開、17:00前收工，而且好多逢週三定休（きしもと本店／花人逢／Captain Kangaroo）——名店留返午餐食，晚餐靠飯店或燒肉店最實際。</p></div>
     <div class="tip-item"><span class="num">08</span><p><b>排隊＋訂位：</b>排隊三寶（きしもと食堂／暖暮／ポーたま）開店前15–30分鐘到最穩；燒肉店（本部牧場／琉球の牛）一定要提早預約。8月好熱，帶住BB盡量避開正午戶外排隊。</p></div>
     <div class="tip-item"><span class="num">09</span><p><b>訂位App：</b>有「📅 訂位」掣嘅餐廳可以直接網上book（HotPepper／TableCheck）；淨係收電話預約嘅店，可以用 <a href="https://autoreserve.com/" target="_blank" rel="noopener">AutoReserve</a> App——AI幫你打電話去日本餐廳book台（有中文介面，成功先收少量手續費，唔使自己講日文）。</p></div>
@@ -358,13 +358,13 @@ const days = [
    ],
    hotel:'Marine Piazza Okinawa（本部・浜元，Day 1–4）',
    rows:[
-    {t:'15:10', who:'move', a:'HX658 抵達那覇機場', n:'記得預約幼兒汽車安全座椅（6歲以下必備）', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
-    {t:'15:10–16:00', who:'move', a:'領行李、接駁租車、取車', n:'建議事先網上check-in減少排隊', loc:'那覇空港'},
-    {t:'16:00', who:'move', a:'出發前往 AEON MALL 沖繩來客夢（車程約40分）', n:'寶寶車上補眠', loc:'イオンモール沖縄ライカム'},
-    {t:'16:45', who:'family', a:'超市買水果、飲用水、零食等日用品', n:'商場內San-A超市選擇多，之後幾日飯店消夜靠呢度', loc:'イオンモール沖縄ライカム'},
-    {t:'17:30', who:'move', a:'出發前往本部飯店（車程約1小時）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町浜元410'},
-    {t:'18:30', who:'move', a:'抵達本部飯店 Marine Piazza Okinawa，辦理入住', n:'同一園區就係もとぶ元気村，聽日起身就可以睇海豚', loc:'沖縄県国頭郡本部町浜元410', web:'https://m-piazza.com/'},
-    {t:'19:30', who:'family', a:'晚餐', n:'飯店餐廳，或AEON買嘅嘢喺房內輕食', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'15:10', who:'move', a:'HX658 抵達那覇機場', n:'已預約幼兒汽車安全座椅記得同店員confirm', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
+    {t:'15:30', who:'move', a:'領行李 → 國內線出口 → 行人天橋 → 11號接送巴士站搭接駁車去租車店（約1.5km）', n:'租車已預約 ✓ 編號202601583244，取車時間16:30', loc:'那覇空港'},
+    {t:'16:30', who:'move', a:'租車店辦手續、裝汽座、取車出發', n:'檢查車身花痕影相留底', loc:'那覇空港 レンタカー'},
+    {t:'17:10', who:'family', a:'AEON MALL 沖繩來客夢：超市買水果、飲用水、零食等日用品（車程約40分）', n:'商場內San-A超市選擇多，之後幾日飯店消夜靠呢度', loc:'イオンモール沖縄ライカム'},
+    {t:'18:00', who:'move', a:'出發前往本部飯店（車程約1小時）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'19:00', who:'move', a:'抵達本部飯店 Marine Piazza Okinawa，辦理入住', n:'同一園區就係もとぶ元気村，聽日起身就可以睇海豚', loc:'沖縄県国頭郡本部町浜元410', web:'https://m-piazza.com/'},
+    {t:'19:45', who:'family', a:'晚餐', n:'飯店餐廳，或AEON買嘅嘢喺房內輕食', loc:'沖縄県国頭郡本部町浜元410'},
    ],
    eats:[
     {ic:'🥩', n:'燒肉本部牧場 本部店', q:'焼肉もとぶ牧場 本部店', book:'https://www.hotpepper.jp/strJ000851361/', note:'自家牧場「もとぶ牛」燒肉，近飯店，晚市17:00開，想食一定要預約'},
@@ -549,11 +549,10 @@ const days = [
    rows:[
     {t:'08:30', who:'move', a:'退房，出發前往 Apple Town（車程約15分）', n:'行李放車尾箱', loc:'アップルタウン 那覇 アカチャンホンポ'},
     {t:'09:00', who:'family', a:'阿卡將本鋪最後大掃貨', n:'嬰幼兒用品、手信一次過買齊', loc:'アップルタウン 那覇 アカチャンホンポ'},
-    {t:'10:30', who:'move', a:'前往租車公司還車（車程約20分）', n:'記得先加滿油', loc:'那覇空港 レンタカー'},
-    {t:'11:00', who:'move', a:'還車手續', n:'', loc:'那覇空港 レンタカー'},
-    {t:'11:30', who:'move', a:'接駁前往機場', n:'約10分鐘，預留充足時間過關', loc:'那覇空港'},
-    {t:'12:00', who:'move', a:'抵達機場，辦理登機手續', n:'免稅店最後採買', loc:'那覇空港'},
-    {t:'14:05', who:'move', a:'起飛返香港', n:'預計16:00抵達香港', loc:'那覇空港'},
+    {t:'11:15', who:'move', a:'前往租車公司還車（車程約15分，途中加滿油）', n:'預約還車時間12:00（編號202601583244），提早少少到最穩', loc:'那覇空港 レンタカー'},
+    {t:'11:45–12:00', who:'move', a:'還車手續 + 接駁前往機場（約5分鐘）', n:'店方提供機場接送服務', loc:'那覇空港'},
+    {t:'12:10', who:'move', a:'抵達機場，辦理登機手續', n:'免稅店最後採買', loc:'那覇空港'},
+    {t:'14:05', who:'move', a:'HX679 起飛返香港', n:'預計16:00抵達香港', loc:'那覇空港'},
    ],
    eats:[
     {ic:'🍜', n:'琉球新麺 通堂 小禄本店', q:'琉球新麺 通堂 小禄本店', note:'沖繩人氣拉麵，就喺Apple Town／還車點附近，11:00開；時間夠先好去'},
