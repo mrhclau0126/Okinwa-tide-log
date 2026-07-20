@@ -74,6 +74,7 @@ p{margin:0;}
 .day-head{display:flex; align-items:flex-start; gap:1.2rem; margin-bottom:1rem; flex-wrap:wrap;}
 .day-badge{font-family:var(--mono); font-weight:700; font-size:2rem; line-height:1; color:#fff; background:var(--ink); border-radius:10px; padding:.55rem .8rem; min-width:3.3rem; text-align:center;}
 .day-badge small{display:block; font-size:.52rem; letter-spacing:.2em; font-weight:600; color:var(--tide); margin-bottom:.22rem;}
+.day-badge .dbdate{display:block; font-size:.56rem; letter-spacing:.06em; font-weight:600; color:#B9DED8; margin-top:.28rem; white-space:nowrap;}
 .day-title-wrap h2{font-size:clamp(1.25rem,2.3vw,1.8rem); color:var(--text); margin-bottom:.35rem;}
 .mood-tags{display:flex; gap:.5rem; flex-wrap:wrap;}
 .mood-tag{font-family:var(--mono); font-size:.68rem; padding:.2rem .55rem; border-radius:100px; color:#fff; letter-spacing:.03em;}
@@ -245,13 +246,13 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
         </div>
         <div class="route-item" style="color:var(--reef);">
           <span class="dot" style="background:var(--reef);"></span>
-          <h3><a href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E8%B0%B7%E7%94%BA" target="_blank">中部</a> <span class="daytag">Day 1 · Day 5 · Day 7</span></h3>
+          <h3><a href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E8%B0%B7%E7%94%BA" target="_blank">中部</a> <span class="daytag">Day 1 · Day 7</span></h3>
           <div class="sub">AEON MALL 沖繩來客夢 · サーフサイドハイサイ · 安良波公園 · 美國村花火</div>
         </div>
         <div class="route-item" style="color:var(--explore);">
           <span class="dot" style="background:var(--explore);"></span>
           <h3><a href="https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E5%B8%82" target="_blank">那霸市區</a> <span class="daytag">Day 5–8</span></h3>
-          <div class="sub">新都心teamLab · PARCO CITY/San-A · 國際通 · Apple Town</div>
+          <div class="sub">teamLab · PARCO CITY · 國際通 · 波の上ビーチ · Apple Town</div>
         </div>
       </div>
       <div class="legend">
@@ -264,14 +265,14 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
     <div class="hotel-strategy">
       <div class="strategy-card">
         <div class="tag">前 4 晚</div>
-        <h3>本部 · Orion Hotel Motobu Resort &amp; Spa</h3>
-        <p>Day 1 – Day 4　JUNGLIA官方合作飯店，車程僅約15–20分鐘。<a href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%9C%8C%E5%9B%BD%E9%A0%AD%E9%83%A1%E6%9C%AC%E9%83%A8%E7%94%BA%E5%82%99%E7%80%AC148-1" target="_blank">在地圖上查看</a></p>
+        <h3>本部 · Marine Piazza Okinawa</h3>
+        <p>Day 1 – Day 4　同一園區就係もとぶ元気村（海豚體驗），距美麗海水族館車程約5分、JUNGLIA約20分。<a href="https://www.google.com/maps/search/?api=1&query=%E6%B2%96%E7%B8%84%E7%9C%8C%E5%9B%BD%E9%A0%AD%E9%83%A1%E6%9C%AC%E9%83%A8%E7%94%BA%E6%B5%9C%E5%85%83410" target="_blank">在地圖上查看</a></p>
       </div>
-      <div class="strategy-arrow">↓ Day 5 唯一一次搬酒店，途經部瀬名海中公園 + AEON MALL ↓</div>
+      <div class="strategy-arrow">↓ Day 5 唯一一次搬酒店：部瀬名海中公園＋ブセナテラス午餐後直入那霸 ↓</div>
       <div class="strategy-card">
         <div class="tag">後 3 晚</div>
-        <h3>那霸市區 · 新都心大和ROYNET飯店</h3>
-        <p>Day 5 – Day 7　步行可達teamLab／DFS，往機場約20分鐘。<a href="https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E5%B8%82%E3%81%8A%E3%82%82%E3%82%8D%E3%81%BE%E3%81%A11-1-12" target="_blank">在地圖上查看</a></p>
+        <h3>那霸 · HOTEL SANSUI NAHA 波之上の湯</h3>
+        <p>Day 5 – Day 7　頂樓天然溫泉＋無邊際泳池，行路5分鐘到波の上ビーチ，往機場約10分鐘。<a href="https://www.google.com/maps/search/?api=1&query=%E9%82%A3%E8%A6%87%E5%B8%82%E8%BE%BB2-25-1" target="_blank">在地圖上查看</a></p>
       </div>
       <div class="strategy-card" style="border-color:var(--coral);">
         <p style="color:#F3C7B8; font-size:.85rem;">✏️ Day 4真栄田岬浮潛位於恩納村範圍，因為呢個親子浮潛團評價太好所以保留；如唔想去可以刪走呢日，改做本部飯店休息日。</p>
@@ -346,98 +347,98 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 
 <script>
 const days = [
-  {num:1, mood:'move', title:'8月1日15:10落機 → 途經AEON買水果 → 直上本部',
+  {num:1, mood:'move', date:'8/1・六', title:'15:10落機 → 途經AEON買水果 → 直上本部',
    totalDrive:'車程約1小時40分（分段：機場→AEON約40分，AEON→本部約1小時）',
    route:[
      {l:'那霸機場',q:'那覇空港'},
      {leg:'約40分鐘'},
      {l:'AEON MALL 沖繩來客夢',q:'イオンモール沖縄ライカム'},
      {leg:'約1小時'},
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
    ],
-   hotel:'Orion Hotel Motobu Resort & Spa（本部，Day 1–4）',
+   hotel:'Marine Piazza Okinawa（本部・浜元，Day 1–4）',
    rows:[
     {t:'15:10', who:'move', a:'HX658 抵達那覇機場', n:'記得預約幼兒汽車安全座椅（6歲以下必備）', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
     {t:'15:10–16:00', who:'move', a:'領行李、接駁租車、取車', n:'建議事先網上check-in減少排隊', loc:'那覇空港'},
     {t:'16:00', who:'move', a:'出發前往 AEON MALL 沖繩來客夢（車程約40分）', n:'寶寶車上補眠', loc:'イオンモール沖縄ライカム'},
     {t:'16:45', who:'family', a:'超市買水果、飲用水、零食等日用品', n:'商場內San-A超市選擇多，之後幾日飯店消夜靠呢度', loc:'イオンモール沖縄ライカム'},
-    {t:'17:30', who:'move', a:'出發前往本部飯店（車程約1小時）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
-    {t:'18:30', who:'move', a:'抵達本部飯店，辦理入住', n:'Orion Hotel Motobu Resort & Spa，JUNGLIA官方合作飯店', loc:'沖縄県国頭郡本部町備瀬148-1', web:'https://www.okinawaresort-orion.com/'},
-    {t:'19:30', who:'family', a:'晚餐', n:'飯店內5間餐廳任選，或AEON買嘅嘢喺房內輕食', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'17:30', who:'move', a:'出發前往本部飯店（車程約1小時）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'18:30', who:'move', a:'抵達本部飯店 Marine Piazza Okinawa，辦理入住', n:'同一園區就係もとぶ元気村，聽日起身就可以睇海豚', loc:'沖縄県国頭郡本部町浜元410', web:'https://m-piazza.com/'},
+    {t:'19:30', who:'family', a:'晚餐', n:'飯店餐廳，或AEON買嘅嘢喺房內輕食', loc:'沖縄県国頭郡本部町浜元410'},
    ],
    eats:[
     {ic:'🥩', n:'燒肉本部牧場 本部店', q:'焼肉もとぶ牧場 本部店', book:'https://www.hotpepper.jp/strJ000851361/', note:'自家牧場「もとぶ牛」燒肉，近飯店，晚市17:00開，想食一定要預約'},
     {ic:'🍔', n:'Captain Kangaroo', q:'キャプテンカンガルー 名護', note:'名護人氣美式漢堡，北上途中順路（11:00–20:00，週三休）；趕住check-in就跳過'},
    ]},
-  {num:2, mood:'explore', title:'Nago Pineapple Park 鳳梨園日',
+  {num:2, mood:'explore', date:'8/2・日', title:'Nago Pineapple Park 鳳梨園日',
    totalDrive:'車程約50分鐘（來回）',
    route:[
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
      {leg:'約20–25分鐘'},
      {l:'Nago Pineapple Park',q:'1195 Biimata, Nago, Okinawa 905-0005'},
      {leg:'約20–25分鐘'},
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
    ],
-   hotel:'Orion Hotel Motobu Resort & Spa',
+   hotel:'Marine Piazza Okinawa',
    rows:[
     {t:'09:30', who:'family', a:'飯店早餐後，出發前往 Nago Pineapple Park（車程約20–25分）', n:'', loc:'1195 Biimata, Nago, Okinawa 905-0005'},
     {t:'10:00', who:'family', a:'自動鳳梨列車、鳳梨田觀光車、恐龍探險區', n:'10:00–18:00營業，3歲啱玩坐車遊園', loc:'1195 Biimata, Nago, Okinawa 905-0005', web:'https://www.nagopine.com/'},
     {t:'12:00', who:'family', a:'園內午餐 / 鳳梨甜品', n:'', loc:'1195 Biimata, Nago, Okinawa 905-0005'},
-    {t:'13:30', who:'move', a:'返回本部飯店（車程約20–25分）', n:'寶寶車上小睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
-    {t:'14:30', who:'family', a:'飯店泳池 / 海灘 / 備瀬福木林道散步', n:'下午悠閒放鬆，晚上早啲休息儲定電力，聽日JUNGLIA全日', loc:'沖縄県国頭郡本部町備瀬148-1'},
-    {t:'19:00', who:'family', a:'晚餐', n:'', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'13:30', who:'move', a:'返回本部飯店（車程約20–25分）', n:'寶寶車上小睡', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'14:30', who:'family', a:'飯店室內泳池 / もとぶ元気村睇海豚 / 備瀬福木林道散步（車程約5分）', n:'下午悠閒放鬆，晚上早啲休息儲定電力，聽日JUNGLIA全日', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'19:00', who:'family', a:'晚餐', n:'', loc:'沖縄県国頭郡本部町浜元410'},
    ],
    eats:[
     {ic:'🍜', n:'きしもと食堂 本店', q:'きしもと食堂 本部町', note:'1905年創業、沖繩最老木灰沖繩麵；11:00–17:00賣完即止、週三休，開店前到最穩（渡久地港旁）'},
     {ic:'🐷', n:'大家 うふやー', q:'百年古家 大家 名護', book:'https://www.hotpepper.jp/strJ000114346/', note:'百年古民家歎阿古豬沖繩麵／涮涮鍋，庭園好靚，同鳳梨園順路，建議預約'},
     {ic:'🍞', n:'Pan de Kaito', q:'パン・ド・カイト 名護', note:'名護50款麵包老店（8:00開），買定聽日JUNGLIA早餐一流'},
    ]},
-  {num:3, mood:'explore', title:'JUNGLIA 全日攻略 × 19:30 煙火',
-   totalDrive:'車程約30–40分鐘（來回）',
+  {num:3, mood:'explore', date:'8/3・一', title:'JUNGLIA 全日攻略 × 19:30 煙火',
+   totalDrive:'車程約40分鐘（來回）',
    guide:[
      {label:'KKday 香港全攻略', url:'https://www.kkday.com/zh-hk/blog/123079/junglia-okinawa-guide'},
      {label:'官方事前準備指南', url:'https://junglia.jp/tc/get-ready'},
    ],
    route:[
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
-     {leg:'約15–20分鐘'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
+     {leg:'約20分鐘'},
      {l:'JUNGLIA(今歸仁)',q:'JUNGLIA OKINAWA'},
-     {leg:'約15–20分鐘'},
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {leg:'約20分鐘'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
    ],
-   hotel:'Orion Hotel Motobu Resort & Spa',
+   hotel:'Marine Piazza Okinawa',
    rows:[
-    {t:'09:30', who:'move', a:'出發前往 JUNGLIA（車程約15–20分）', n:'建議先上官網確認當日開閉園時間及整理券', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
+    {t:'09:30', who:'move', a:'出發前往 JUNGLIA（車程約20分）', n:'建議先上官網確認當日開閉園時間及整理券', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
     {t:'10:00', who:'family', a:'上午探索：叢林步道 / 熱氣球 / 恐龍探險車', n:'依當日開放項目彈性安排，部分刺激設施不適合3歲', loc:'JUNGLIA OKINAWA'},
     {t:'12:30', who:'family', a:'園內午餐', n:'園內多間餐廳可選，也可自備輕食', loc:'JUNGLIA OKINAWA'},
     {t:'13:30–15:30', who:'family', a:'下午繼續探索 / 手信店', n:'寶寶可於推車上午睡，彈性安排', loc:'JUNGLIA OKINAWA'},
     {t:'15:30–18:00', who:'family', a:'自由活動 / 休息區歇腳', n:'留喺園內慢慢逛，養精蓄銳等睇煙火', loc:'JUNGLIA OKINAWA'},
     {t:'18:00', who:'family', a:'園內晚餐', n:'', loc:'JUNGLIA OKINAWA'},
     {t:'19:30', who:'family', a:'JUNGLIA 煙火表演', n:'3歲以下免費入場；如遇天氣不佳可能取消，建議留意官方公告', loc:'JUNGLIA OKINAWA'},
-    {t:'20:00', who:'move', a:'返回本部飯店（車程約15–20分）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'20:00', who:'move', a:'返回本部飯店（車程約20分）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町浜元410'},
    ],
    eats:[
     {ic:'🎢', n:'JUNGLIA 園內餐廳', q:'JUNGLIA OKINAWA', note:'繁忙時段要排隊，建議12:00前或13:30後先食，或者自備輕食畀BB'},
     {ic:'🍕', n:'花人逢', q:'花人逢 本部町', note:'本部山上海景pizza老屋（11:30–19:00，週二三休）；如果JUNGLIA提早走，落山途中食個下午茶一流'},
    ]},
-  {num:4, mood:'explore', title:'真栄田岬 Pink Mermaid 親子浮潛團',
+  {num:4, mood:'explore', date:'8/4・二', title:'真栄田岬 Pink Mermaid 親子浮潛團',
    totalDrive:'車程約1小時（來回）',
    route:[
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
      {leg:'約30–40分鐘'},
      {l:'真栄田岬（青の洞窟）',q:'真栄田岬 沖縄'},
      {leg:'約30–40分鐘'},
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
    ],
-   hotel:'Orion Hotel Motobu Resort & Spa',
+   hotel:'Marine Piazza Okinawa',
    rows:[
     {t:'08:30', who:'move', a:'出發前往真栄田岬（車程約30–40分）', n:'', loc:'真栄田岬 沖縄'},
     {t:'09:15', who:'family', a:'Pink Mermaid 幼兒專屬浮潛團報到', n:'中英文教練團隊，1歲起可玩，對2–3歲小朋友經驗豐富', loc:'真栄田岬 沖縄', web:'https://pink-mermaid.com/tw/course/Dcourse.html'},
     {t:'09:30–11:00', who:'family', a:'青之洞窟親子浮潛體驗', n:'含免費水下高畫質相機拍攝/錄影（教練AirDrop傳送）及免費餵魚體驗，3人同行約6,500円/人（已含裝備船票保險）', loc:'真栄田岬 沖縄'},
     {t:'11:30', who:'family', a:'附近午餐', n:'恩納村沿海一帶有多間餐廳可選', loc:'真栄田岬 沖縄'},
-    {t:'13:00', who:'move', a:'返回本部飯店（車程約30–40分）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町備瀬148-1'},
-    {t:'14:30', who:'family', a:'飯店休息 / 沖身換衫 / 泳池', n:'浮潛後好攰，下午留喺飯店休息', loc:'沖縄県国頭郡本部町備瀬148-1'},
-    {t:'19:00', who:'family', a:'晚餐', n:'', loc:'沖縄県国頭郡本部町備瀬148-1'},
+    {t:'13:00', who:'move', a:'返回本部飯店（車程約30–40分）', n:'寶寶車上熟睡', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'14:30', who:'family', a:'飯店休息 / 沖身換衫 / 泳池', n:'浮潛後好攰，下午留喺飯店休息', loc:'沖縄県国頭郡本部町浜元410'},
+    {t:'19:00', who:'family', a:'晚餐', n:'', loc:'沖縄県国頭郡本部町浜元410'},
    ],
    eats:[
     {ic:'🥞', n:'Hawaiian Pancakes House Paanilani', q:'ハワイアンパンケーキハウス パニラニ 恩納', note:'恩納名店pancake，07:00開；出發浮潛前食早餐啱啱好（招牌Nuts Nuts）'},
@@ -445,50 +446,50 @@ const days = [
     {ic:'🍧', n:'恩納の駅 なかゆくい市場', q:'おんなの駅 なかゆくい市場', note:'海葡萄、沖繩天婦羅、雪花冰小食市場，回程順路休息位'},
     {ic:'🥩', n:'琉球の牛 恩納本館', q:'焼肉琉球の牛 恩納本館', book:'https://www.tablecheck.com/en/shops/yakiniku-onna/reserve', note:'唔想咁快返飯店？回程58號線順路歎A5和牛燒肉，17:00開，TableCheck網上訂位好方便'},
    ]},
-  {num:5, mood:'move', title:'南下：部瀬名海中公園 → AEON MALL → 轉移陣地到那霸（唯一一次搬酒店）',
-   totalDrive:'車程約1小時45分（分段，中途兩個休息點）',
+  {num:5, mood:'move', date:'8/5・三', title:'南下：部瀬名海中公園 → ブセナテラス午餐 → 直入那霸CHECK IN（唯一一次搬酒店）',
+   totalDrive:'車程約1小時45分（海中公園同酒店午餐喺同一個岬角，午餐後一程直入那霸）',
    route:[
-     {l:'本部飯店',q:'沖縄県国頭郡本部町備瀬148-1'},
-     {leg:'約20–25分鐘'},
+     {l:'本部飯店',q:'沖縄県国頭郡本部町浜元410'},
+     {leg:'約30分鐘'},
      {l:'部瀬名海中公園',q:'ブセナ海中公園'},
-     {leg:'約40分鐘'},
-     {l:'AEON MALL 沖繩來客夢',q:'イオンモール沖縄ライカム'},
-     {leg:'約35分鐘'},
-     {l:'那霸市區飯店',q:'那覇市おもろまち1-1-12'},
+     {leg:'園區內2分鐘'},
+     {l:'The Busena Terrace（午餐）',q:'ザ・ブセナテラス'},
+     {leg:'約1小時15分'},
+     {l:'那霸SANSUI飯店',q:'那覇市辻2-25-1'},
    ],
-   hotel:'那霸市區飯店（如：新都心大和ROYNET飯店，Day 5–7）',
+   hotel:'HOTEL SANSUI NAHA 琉球温泉 波之上の湯（Day 5–7）',
    rows:[
-    {t:'09:30', who:'move', a:'退房，出發前往部瀬名海中公園（車程約20–25分）', n:'行李放車尾箱', loc:'ブセナ海中公園'},
+    {t:'09:30', who:'move', a:'退房，出發前往部瀬名海中公園（車程約30分）', n:'行李放車尾箱', loc:'ブセナ海中公園'},
     {t:'10:00', who:'family', a:'海中展望塔 + 鯨魚造型玻璃船', n:'服著晒都可以睇水底熱帶魚，3歲以下免費，全程約40–60分鐘', loc:'ブセナ海中公園', web:'https://www.busena-marinepark.com/'},
-    {t:'11:00', who:'move', a:'南下前往 AEON MALL 沖繩來客夢（車程約40分）', n:'寶寶車上補眠', loc:'イオンモール沖縄ライカム'},
-    {t:'12:00', who:'family', a:'午餐：MALL內美食街', n:'', loc:'イオンモール沖縄ライカム'},
-    {t:'13:00', who:'family', a:'超巨大 Toys "R" Us 玩具反斗城', n:'寶寶放電＋手信掃貨', loc:'イオンモール沖縄ライカム'},
-    {t:'14:30', who:'move', a:'南下前往那霸市區飯店辦理入住（車程約35分）', n:'今次係全程唯一一次搬行李入房', loc:'那覇市おもろまち1-1-12', web:'https://www.daiwaroynet.jp/naha-omoromachi/'},
-    {t:'19:00', who:'family', a:'晚餐：新都心周邊', n:'店名自選，建議事先致電或App訂位', loc:'那覇新都心 おもろまち'},
+    {t:'11:45', who:'family', a:'午餐：The Busena Terrace「ラ・ティーダ」lunch buffet', n:'同海中公園同一個岬角，開車2分鐘即到；親子友善，建議預先訂位', loc:'ザ・ブセナテラス', web:'https://www.terrace.co.jp/busena/restaurants_bars/la_tida.php'},
+    {t:'13:30', who:'move', a:'午餐後直入那霸（經沖繩自動車道，車程約1小時15分）', n:'寶寶車上熟睡，中途唔停站', loc:'那覇市辻2-25-1'},
+    {t:'15:00', who:'move', a:'抵達 HOTEL SANSUI NAHA 辦理入住', n:'今次係全程唯一一次搬行李入房；頂樓有天然溫泉「波之上の湯」＋無邊際泳池', loc:'那覇市辻2-25-1', web:'https://www.resorts.co.jp/sansuinaha/'},
+    {t:'16:30', who:'family', a:'波の上ビーチ / 波上宮散步，或飯店溫泉泳池', n:'行路約5分鐘就到海灘，黃昏影相一流', loc:'波の上ビーチ 那覇'},
+    {t:'19:00', who:'family', a:'晚餐：飯店周邊（辻／西町／久茂地）', n:'Jackie牛排行路約8分鐘就到；建議事先訂位', loc:'那覇市辻2-25-1'},
    ],
    eats:[
-    {ic:'⚠️', n:'今日係週三', q:'', note:'北部名店（きしもと本店／花人逢／Captain Kangaroo）多數週三休——所以今日午餐留喺AEON美食街最穩陣', warn:true},
-    {ic:'🥩', n:'ジャッキーステーキハウス Jackie Steak House', q:'ジャッキーステーキハウス 那覇', note:'1953年老字號美式牛排，到埗那霸第一晚好選擇；唔收訂位，繁忙時間現場攞籌'},
-    {ic:'🍶', n:'目利きの銀次（新都心）', q:'目利きの銀次 おもろまち駅前店', note:'海鮮居酒屋，行返酒店好近，帶BB都方便，建議先訂位'},
+    {ic:'⚠️', n:'今日係週三', q:'', note:'北部名店（きしもと本店／花人逢／Captain Kangaroo）多數週三休——好彩今日午餐喺ブセナテラス食buffet，唔受影響', warn:true},
+    {ic:'🍽', n:'ブセナテラス「ラ・ティーダ」', q:'ザ・ブセナテラス ラ・ティーダ', book:'https://www.terrace.co.jp/busena/restaurants_bars/la_tida.php', note:'海中展望塔隔籬五星酒店嘅lunch buffet，海景座位，親子友善，記得預先訂位'},
+    {ic:'🥩', n:'ジャッキーステーキハウス Jackie Steak House', q:'ジャッキーステーキハウス 那覇', note:'1953年老字號美式牛排，離SANSUI飯店行路約8分鐘，到埗那霸第一晚啱啱好；唔收訂位，繁忙時間現場攞籌'},
    ]},
-  {num:6, mood:'shop', title:'精華購物日：teamLab × PARCO/San-A × 國際通',
+  {num:6, mood:'shop', date:'8/6・四', title:'精華購物日：teamLab × PARCO CITY × 國際通',
    totalDrive:'車程約20–30分鐘（視乎購物地點）',
    route:[
-     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
-     {leg:'步行約5分鐘'},
+     {l:'那霸SANSUI飯店',q:'那覇市辻2-25-1'},
+     {leg:'車程約15分鐘'},
      {l:'teamLab未來遊樂園',q:'チームラボ 学ぶ 未来の遊園地 沖縄'},
-     {leg:'約10–20分鐘'},
-     {l:'PARCO CITY / San-A Main Place',q:'サンエー浦添西海岸PARCO CITY'},
+     {leg:'約15分鐘'},
+     {l:'PARCO CITY',q:'サンエー浦添西海岸PARCO CITY'},
      {leg:'約15分鐘'},
      {l:'國際通',q:'国際通り 那覇'},
    ],
-   hotel:'那霸市區飯店',
+   hotel:'HOTEL SANSUI NAHA 琉球温泉 波之上の湯',
    rows:[
-    {t:'09:30', who:'family', a:'步行前往 DFS T Galleria teamLab 未來遊樂園', n:'飯店步行約5分鐘，室內互動數位藝術，需預先購買指定時段票', loc:'チームラボ 学ぶ 未来の遊園地 沖縄', web:'https://www.teamlab.art/e/futurepark-okinawa/'},
+    {t:'09:30', who:'family', a:'開車前往 DFS T Galleria teamLab 未來遊樂園（車程約15分，或單軌旭橋→おもろまち）', n:'室內互動數位藝術，需預先購買指定時段票', loc:'チームラボ 学ぶ 未来の遊園地 沖縄', web:'https://www.teamlab.art/e/futurepark-okinawa/'},
     {t:'12:00', who:'family', a:'午餐：DFS或對面商場', n:'', loc:'チームラボ 学ぶ 未来の遊園地 沖縄'},
-    {t:'13:30', who:'mom', a:'（彈性擇一）浦添 PARCO CITY 或 San-A Main Place 購物', n:'寶寶回飯店午睡，爸媽輪流去，任揀一個購物點', loc:'サンエー浦添西海岸PARCO CITY', web:'https://www.parcocity.jp/'},
-    {t:'16:30', who:'family', a:'（彈性）搭Yui-Rail單軌去國際通散步，或去新都心公園畀BB跑草地', n:'視乎精神狀態自由安排', loc:'国際通り 那覇'},
-    {t:'19:00', who:'family', a:'晚餐：國際通或新都心', n:'', loc:'国際通り 那覇'},
+    {t:'13:30', who:'mom', a:'浦添 PARCO CITY 購物（已確認）', n:'寶寶回飯店午睡，爸媽輪流去；teamLab開車過去約15分', loc:'サンエー浦添西海岸PARCO CITY', web:'https://www.parcocity.jp/'},
+    {t:'16:30', who:'family', a:'（彈性）去國際通散步，或返飯店浸溫泉、波の上ビーチ玩水', n:'視乎精神狀態自由安排', loc:'国際通り 那覇'},
+    {t:'19:00', who:'family', a:'晚餐：國際通或飯店周邊', n:'', loc:'国際通り 那覇'},
    ],
    eats:[
     {ic:'🍙', n:'ポーたま 牧志市場本店', q:'ポークたまごおにぎり本店 牧志', note:'豬肉蛋飯糰，07:00開，現點現做；早啲去避排隊，第一牧志公設市場就喺隔籬'},
@@ -500,10 +501,10 @@ const days = [
     {ic:'🍔', n:'A&W 國際通牧志店', q:'A&W 国際通り牧志店', note:'沖繩限定美式快餐，Root Beer任飲，BB友善又快靚正'},
     {ic:'🍦', n:'Blue Seal／Calbee+ 國際通', q:'ブルーシール 国際通り', note:'行街甜品位：紅芋雪糕、即炸紅芋薯條'},
    ]},
-  {num:7, mood:'surf', title:'北谷一日：爸爸ハイサイ衝浪 × 安良波公園 → 美國村花火',
+  {num:7, mood:'surf', date:'8/7・五', title:'北谷一日：爸爸ハイサイ衝浪 × 安良波公園 → 美國村花火',
    totalDrive:'車程約1小時20分（去程35分＋北谷區內短程約15分＋返程35分，全日只出入北谷一次）',
    route:[
-     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+     {l:'那霸飯店',q:'那覇市辻2-25-1'},
      {leg:'約35分鐘'},
      {l:'サーフサイドサービス ハイサイ',q:'サーフサイドサービス ハイサイ 北谷'},
      {leg:'約5分鐘'},
@@ -511,7 +512,7 @@ const days = [
      {leg:'約5分鐘'},
      {l:'美國村 Depot Island',q:'アメリカンビレッジ デポアイランド'},
      {leg:'約35分鐘'},
-     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
+     {l:'那霸飯店',q:'那覇市辻2-25-1'},
    ],
    hotel:'那霸市區飯店',
    rows:[
@@ -525,7 +526,7 @@ const days = [
     {t:'13:30', who:'family', a:'美國村自由活動 / Depot Island 逛街', n:'', loc:'アメリカンビレッジ デポアイランド'},
     {t:'16:00', who:'family', a:'飯店方向歇腳 / 房內午睡（如需要）', n:'儲定精神睇夜晚煙火', loc:'アメリカンビレッジ デポアイランド'},
     {t:'20:00', who:'family', a:'シーポートちゃたんカーニバル 煙火表演', n:'免費，坐喺Depot Island海岸木棧道就睇到，8月7日場次建議出發前先confirm官方日程', loc:'アメリカンビレッジ デポアイランド'},
-    {t:'20:30', who:'move', a:'返回那霸飯店（車程約35分）', n:'寶寶車上瞓著都唔緊要', loc:'那覇市おもろまち1-1-12'},
+    {t:'20:30', who:'move', a:'返回那霸飯店（車程約35分）', n:'寶寶車上瞓著都唔緊要', loc:'那覇市辻2-25-1'},
    ],
    eats:[
     {ic:'🌮', n:'タコライスcafe きじむなぁ Kijimuna', q:'タコライスcafe きじむなぁ デポアイランド店', note:'美國村蛋包taco rice名店，親子友善，午餐同King Tacos二選一'},
@@ -533,11 +534,11 @@ const days = [
     {ic:'🥤', n:'The Calif Kitchen', q:'The Calif Kitchen 北谷', note:'海邊美式餐廳，日落位一流；同上面二選一做晚餐'},
     {ic:'🥩', n:'琉球の牛 北谷', q:'焼肉琉球の牛 北谷', book:'https://www.tablecheck.com/en/shops/yakiniku-chatan/reserve', note:'美國村都有分店！想食好啲嘅話TableCheck訂位，食完啱啱好睇煙火'},
    ]},
-  {num:8, mood:'move', title:'回程日：Apple Town掃貨 → 還車 → 14:05起飛',
+  {num:8, mood:'move', date:'8/8・六', title:'回程日：Apple Town掃貨 → 還車 → 14:05起飛',
    totalDrive:'車程約20–30分鐘',
    route:[
-     {l:'那霸飯店',q:'那覇市おもろまち1-1-12'},
-     {leg:'約25分鐘'},
+     {l:'那霸SANSUI飯店',q:'那覇市辻2-25-1'},
+     {leg:'約15分鐘'},
      {l:'Apple Town 阿卡將本鋪',q:'アップルタウン 那覇 アカチャンホンポ'},
      {leg:'約20分鐘'},
      {l:'還車',q:''},
@@ -546,7 +547,7 @@ const days = [
    ],
    hotel:'—（回程日，14:05起飛）',
    rows:[
-    {t:'08:30', who:'move', a:'退房，出發前往 Apple Town（車程約25分）', n:'行李放車尾箱', loc:'アップルタウン 那覇 アカチャンホンポ'},
+    {t:'08:30', who:'move', a:'退房，出發前往 Apple Town（車程約15分）', n:'行李放車尾箱', loc:'アップルタウン 那覇 アカチャンホンポ'},
     {t:'09:00', who:'family', a:'阿卡將本鋪最後大掃貨', n:'嬰幼兒用品、手信一次過買齊', loc:'アップルタウン 那覇 アカチャンホンポ'},
     {t:'10:30', who:'move', a:'前往租車公司還車（車程約20分）', n:'記得先加滿油', loc:'那覇空港 レンタカー'},
     {t:'11:00', who:'move', a:'還車手續', n:'', loc:'那覇空港 レンタカー'},
@@ -614,7 +615,7 @@ days.forEach((d)=>{
   sec.innerHTML = `
     <span class="page-index" data-auto></span>
     <div class="day-head">
-      <div class="day-badge"><small>DAY</small>${d.num}</div>
+      <div class="day-badge"><small>DAY</small>${d.num}${d.date?`<span class="dbdate">${d.date}</span>`:''}</div>
       <div class="day-title-wrap">
         <h2>${d.title}</h2>
         <div class="mood-tags"><span class="mood-tag" style="background:${mm.color};">${mm.label}</span></div>
@@ -704,14 +705,14 @@ const restaurants = [
   {act:true, name:'Pink Mermaid 青の洞窟浮潛', en:'Pink Mermaid Snorkel Tour', day:'Day 4', desc:'真栄田岬幼兒專屬浮潛團，1歲起可玩，含水下拍攝+餵魚體驗，3人同行約6,500円/人', addr:'真栄田岬，恩納村', tel:'', book:'https://pink-mermaid.com/tw/course/Dcourse.html', bookLabel:'官方預約頁'},
   {name:'なかむらそば', en:'Nakamura Soba', day:'Day 4 午餐', desc:'恩納自家製麵沖繩麵名店，招牌アーサ（海藻）そば；離真栄田岬車程約10分', addr:'沖縄県国頭郡恩納村瀬良垣1669-1', tel:'098-966-8005', book:'https://www.nakamurasoba.com/', bookLabel:'官方網站'},
   {act:true, name:'部瀬名海中公園', en:'Busena Marine Park', day:'Day 5', desc:'海中展望塔＋鯨魚造型玻璃船，服著晒都可以睇熱帶魚', addr:'沖縄県名護市字喜瀬1744-1', tel:'0980-52-3379', book:'https://www.busena-marinepark.com/', bookLabel:'官方網站'},
-  {act:true, name:'AEON MALL 沖繩來客夢', en:'AEON MALL Okinawa Rycom', day:'Day 1 / Day 5', desc:'沖繩最大型購物中心，超市＋巨大Toys R Us＋美食街；Day 5週三北部名店多數休息，午餐留呢度最穩', addr:'沖繩縣中頭郡北中城村字ライカム1番地', tel:'098-930-0425', book:'https://okinawarycom-aeonmall.com/', bookLabel:'官方網站'},
+  {act:true, name:'AEON MALL 沖繩來客夢', en:'AEON MALL Okinawa Rycom', day:'Day 1', desc:'沖繩最大型購物中心，超市＋巨大Toys R Us＋美食街，Day 1北上途中入貨', addr:'沖繩縣中頭郡北中城村字ライカム1番地', tel:'098-930-0425', book:'https://okinawarycom-aeonmall.com/', bookLabel:'官方網站'},
   {name:'ジャッキーステーキハウス', en:'Jackie Steak House (est.1953)', day:'Day 5 晚餐', desc:'那霸老字號美式牛排，招牌Tenderloin；唔收訂位，繁忙時間現場攞籌', addr:'沖縄県那覇市西1-7-3', tel:'098-868-2408', book:'https://www.google.com/maps/search/?api=1&query=%E3%82%B8%E3%83%A3%E3%83%83%E3%82%AD%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B9', bookLabel:'地圖'},
   {name:'ポーたま 牧志市場本店', en:'Pork Tamago Onigiri', day:'Day 6 早餐', desc:'豬肉蛋飯糰專門店，07:00開門現點現做；早去避排隊，第一牧志公設市場喺隔籬', addr:'沖縄県那覇市松尾2-8-35', tel:'', book:'https://porktamago.com/', bookLabel:'官方網站'},
   {name:'暖暮拉麵 那霸牧志店', en:'Danbo Ramen', day:'Day 6 午餐', desc:'九州拉麵總選舉冠軍豚骨拉麵，排隊名店，避開12–13:00高峰', addr:'沖縄県那覇市牧志2-16-10', tel:'', book:'https://www.google.com/maps/search/?api=1&query=%E6%9A%96%E5%B9%95%20%E9%82%A3%E8%A6%87%E7%89%A7%E5%BF%97%E5%BA%97', bookLabel:'地圖'},
   {name:'琉球の牛 那覇国際通り', en:'Yakiniku Ryukyu no Ushi', day:'Day 6 晚餐', desc:'沖繩人氣A5和牛燒肉，17:00開晚市；熱門到爆，必須提早網上預約（恩納、北谷都有分店）', addr:'沖縄県那覇市牧志3-2-3', tel:'', resv:'https://www.tablecheck.com/en/shops/yakiniku-naha/reserve', book:'https://www.u-shi.net/', bookLabel:'官方網站'},
   {name:'鰻と日本料理 彦 本店', en:'Unagi & Japanese Cuisine Hiko', day:'Day 6 晚餐備選', desc:'那霸專門鰻魚飯＋日本料理，有個室坐得舒服，帶BB一家人都自在；晚餐建議預約', addr:'沖縄県那覇市久茂地', tel:'', resv:'http://honten.hiko-okinawa.jp/', book:'http://honten.hiko-okinawa.jp/', bookLabel:'官方網站'},
   {name:'みんなのうなぎ 國際通り', en:'Minna no Unagi', day:'Day 6 備選', desc:'國際通鰻魚飯專門店，行街順路食，價錢相宜', addr:'沖縄県那覇市 国際通り', tel:'', resv:'https://min-una.com/', book:'https://min-una.com/', bookLabel:'官方網站'},
-  {name:'泊いゆまち 魚市場', en:'Tomari Iyumachi Fish Market', day:'Day 5–6 午餐', desc:'沖繩最大海鮮市場：吞拿魚、三文魚籽、蟹籽海鮮丼任揀檔口；市場格局地方大，BB車直入，離新都心酒店車程約10分', addr:'沖縄県那覇市港町1-1-18', tel:'', book:'https://tabelog.com/en/okinawa/A4701/A470101/47010966/', bookLabel:'Tabelog介紹'},
+  {name:'泊いゆまち 魚市場', en:'Tomari Iyumachi Fish Market', day:'Day 5–6 午餐', desc:'沖繩最大海鮮市場：吞拿魚、三文魚籽、蟹籽海鮮丼任揀檔口；市場格局地方大，BB車直入，離SANSUI飯店車程約8分', addr:'沖縄県那覇市港町1-1-18', tel:'', book:'https://tabelog.com/en/okinawa/A4701/A470101/47010966/', bookLabel:'Tabelog介紹'},
   {act:true, name:'サーフサイドサービス ハイサイ', en:'Surfside Service Haisai', day:'Day 7 爸爸衝浪課', desc:'北谷宮城海岸旁，ISA／NSA認證教練，2.5小時連續課程', addr:'沖繩縣中頭郡北谷町浜川176-S288', tel:'098-926-1030', book:'https://suy.jp/', bookLabel:'官方網站預約'},
   {act:true, name:'安良波公園', en:'Araha Park', day:'Day 7 媽媽+BB', desc:'船型大型遊具「印度橡樹號」，隔壁安良波海灘，近美國村', addr:'沖縄県中頭郡北谷町美浜1丁目6番地3', tel:'', book:'', bookLabel:'免費入場'},
   {name:'タコライスcafe きじむなぁ', en:'Taco Rice Cafe Kijimuna', day:'Day 7 午/晚餐', desc:'美國村Depot Island蛋包taco rice名店，親子友善；食完行落海岸木棧道啱啱好睇煙火', addr:'沖縄県中頭郡北谷町美浜9-1 デポアイランドシーサイド2F', tel:'', book:'https://www.google.com/maps/search/?api=1&query=%E3%82%BF%E3%82%B3%E3%83%A9%E3%82%A4%E3%82%B9cafe%20%E3%81%8D%E3%81%98%E3%82%80%E3%81%AA%E3%81%81%20%E3%83%87%E3%83%9D%E3%82%A2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89%E5%BA%97', bookLabel:'地圖'},
@@ -734,8 +735,8 @@ restaurants.forEach(r=>{
 });
 
 const hotels = [
-  {name:'Orion Hotel Motobu Resort & Spa', cn:'沖繩本部渡假SPA飯店', days:'Day 1–4', addr:'〒905-0207 沖繩縣國頭郡本部町備瀬148番地1', tel:'+81-980-51-7300', web:'okinawaresort-orion.com ／ Agoda ／ Booking.com', tips:['JUNGLIA官方合作飯店，車程僅約15–20分鐘','全室海景陽台，天然溫泉＋室內外泳池','距美麗海水族館步行7分、備瀬福木林道步行3分','那霸空港開車約100分鐘']},
-  {name:'Daiwa Roynet Hotel Naha-Omoromachi', cn:'那霸歌町大和ROYNET飯店（新都心）', days:'Day 5–7', addr:'〒900-0006 沖繩縣那霸市歌町1-1-12', tel:'+81-98-862-4555', web:'daiwaroynethotelnahaomoromachi.com ／ Agoda ／ Booking.com', tips:['單軌電車歌町站步行約5分鐘','步行可達新都心商圈、DFS免稅店（teamLab同層）· 距機場車程約20分鐘']},
+  {name:'Marine Piazza Okinawa', cn:'マリンピアザオキナワ（本部・浜元）', days:'Day 1–4', addr:'〒905-0216 沖繩縣國頭郡本部町浜元410', tel:'+81-980-48-3000', web:'m-piazza.com ／ Agoda ／ Booking.com', tips:['同一園區就係もとぶ元気村：海豚體驗、marine program行路即到','室內溫水泳池免費，海景陽台房','距美麗海水族館車程約5分、JUNGLIA約20分、備瀬福木林道約5分','那霸空港開車約2小時（經高速）']},
+  {name:'HOTEL SANSUI NAHA 琉球温泉 波之上の湯', cn:'那霸SANSUI飯店（辻・波之上）', days:'Day 5–7', addr:'〒900-0037 沖繩縣那霸市辻2-25-1', tel:'+81-50-1722-5762', web:'resorts.co.jp/sansuinaha ／ Agoda ／ Booking.com', tips:['頂樓天然溫泉「波之上の湯」＋無邊際泳池，浸完睇夕陽','行路約5分鐘到波の上ビーチ／波上宮，單軌旭橋站步行約17分','距機場車程約10分鐘，另有免費機場接駁巴士（8:00–19:45）','自家立體停車場42個位先到先得（¥1,500/晚，車高限175cm）——租SUV要留意']},
 ];
 const hotelContainer = document.getElementById('hotelContainer');
 hotels.forEach(h=>{
