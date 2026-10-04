@@ -202,16 +202,111 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   .map-embed,.day-map-embed{height:220px;}
   * {print-color-adjust:exact; -webkit-print-color-adjust:exact;}
 }
+/* Compact itinerary workspace */
+body{height:auto;scroll-snap-type:none;padding-bottom:5rem;}
+.slide{min-height:0;padding:1.25rem max(1rem,calc((100vw - 1080px)/2));justify-content:flex-start;scroll-snap-align:none;}
+.page-index,#dotNav{display:none;}
+#s-cover{padding-top:1.5rem;padding-bottom:1rem;}
+#s-cover h1{font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.2;margin:.4rem 0 .65rem;}
+#s-cover>.sub{font-size:.85rem;line-height:1.5;color:#B9DED8;margin-bottom:.75rem;}
+.cover-eyebrow .eyebrow{font-size:.62rem;margin:0;}
+.chip-row{gap:.4rem;margin-bottom:.8rem;}
+.chip{font-size:.66rem;padding:.3rem .6rem;}
+.app-tools{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;margin-bottom:.8rem;}
+.app-tools button,.app-tools label{font:inherit;font-size:.75rem;border:1px solid var(--linedark);border-radius:8px;padding:.5rem .7rem;background:var(--ink2);color:#EAF2EC;cursor:pointer;}
+.app-tools button:disabled{opacity:.45;cursor:default;}
+#printBtn{position:static;box-shadow:none;}
+.info-panel,.support-panel{border:1px solid var(--linedark);border-radius:10px;}
+.info-panel>summary,.support-panel>summary{padding:.8rem;cursor:pointer;font-size:.88rem;font-weight:600;}
+.panel-body{padding:.8rem;}
+.flight-card,.meta-card{max-width:none;}
+.info-panel .meta-card{margin-bottom:0;}
+#dayNav{position:sticky;top:0;z-index:55;background:var(--ink2);border-bottom:1px solid var(--linedark);padding:.6rem max(.75rem,calc((100vw - 1080px)/2));}
+.day-nav-top{display:flex;gap:.6rem;align-items:center;justify-content:space-between;margin-bottom:.4rem;}
+.day-nav-top span{font-size:.72rem;color:#B9DED8;}
+#todayBtn{border:0;background:var(--tide);color:var(--ink);border-radius:8px;padding:.4rem .7rem;font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;}
+.day-shortcuts{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:thin;}
+.day-shortcuts button{flex:1;min-width:65px;padding:.45rem .6rem;background:transparent;color:#B9DED8;border:1px solid var(--linedark);border-radius:8px;cursor:pointer;font:inherit;font-size:.75rem;}
+.day-shortcuts button span{display:block;font-size:.67rem;margin-top:.15rem;white-space:nowrap;}
+.day-shortcuts button[aria-current="date"]{background:var(--reef);color:white;border-color:var(--reef);}
+#daysContainer{background:var(--paper);}
+.day-section[hidden]{display:none;}
+.day-section{scroll-margin-top:115px;}
+.day-head{gap:.7rem;margin:0 0 .8rem;flex-wrap:nowrap;align-items:flex-start;}
+.day-badge{font-size:1.5rem;padding:.45rem .65rem;}
+.day-title-wrap{min-width:0;}
+.day-title-wrap h2{font-size:1.08rem;line-height:1.45;margin:.1rem 0 .4rem;}
+.day-toolbar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;margin-bottom:.7rem;}
+.day-toolbar p{font-size:.73rem;color:var(--text-soft);line-height:1.5;}
+.day-toolbar button{border:1px solid var(--line);background:var(--paper2);border-radius:7px;padding:.4rem .55rem;color:var(--text);font:inherit;font-size:.72rem;cursor:pointer;}
+.stop-list{display:flex;flex-direction:column;gap:.45rem;}
+.stop-card{border:1px solid var(--line);border-radius:10px;background:#F8FAF2;min-width:0;overflow-wrap:anywhere;position:relative;}
+.stop-top{display:grid;grid-template-columns:26px 76px minmax(0,1fr) 32px;gap:.35rem;align-items:start;padding:.65rem .5rem .4rem;}
+.stop-card button{font:inherit;cursor:pointer;}
+.drag-handle{touch-action:none;user-select:none;-webkit-user-select:none;border:0;background:transparent;color:var(--text-soft);font-size:1.3rem!important;padding:.1rem 0;min-height:36px;cursor:grab!important;}
+.drag-handle:active{cursor:grabbing!important;}
+.stop-time{font-family:var(--mono)!important;font-size:.76rem!important;font-weight:700;border:0;background:transparent;color:var(--explore);padding:.2rem 0;text-align:left;line-height:1.5;overflow-wrap:anywhere;}
+.stop-main{min-width:0;}
+.stop-title{border:0;background:transparent;color:var(--text);padding:.15rem 0;text-align:left;line-height:1.5;font-size:.87rem!important;width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.stop-title .who{width:1.2rem;height:1.2rem;font-size:.65rem;margin-right:.3rem;vertical-align:middle;}
+.edit-stop{border:0;background:var(--paper2);color:var(--text);border-radius:6px;min-height:32px;padding:.3rem;font-size:.8rem!important;}
+.stop-bottom{display:flex;justify-content:space-between;align-items:center;gap:.35rem;padding:0 .55rem .4rem 2.45rem;}
+.stop-details{min-width:0;flex:1;}
+.stop-details>summary{font-size:.73rem;color:var(--text-soft);cursor:pointer;padding:.15rem 0;}
+.stop-details .stop-note{font-size:.81rem;line-height:1.6;white-space:pre-wrap;margin:.4rem 0;color:var(--text-soft);}
+.stop-details .stop-location{font-size:.76rem;color:var(--explore);}
+.stop-links{font-size:.75rem;margin-top:.25rem;display:flex;gap:.5rem;flex-wrap:wrap;}
+.stop-links a{color:var(--explore);}
+.move-buttons{display:flex;gap:.2rem;align-self:flex-start;}
+.move-buttons button{border:1px solid var(--line);background:transparent;color:var(--text-soft);border-radius:6px;width:30px;height:30px;}
+.move-buttons button:disabled{opacity:.3;cursor:default;}
+.stop-card.dragging{border:2px solid var(--reef);box-shadow:0 3px 14px #0b2a3226;background:#E3F2E8;z-index:2;}
+.day-extra{margin-top:.7rem;border:1px solid var(--line);border-radius:9px;}
+.day-extra>summary{padding:.7rem;font-size:.8rem;color:var(--text);cursor:pointer;font-weight:600;}
+.day-extra-body{padding:0 .7rem .7rem;}
+.day-extra .day-eats,.day-extra .day-comment{margin-top:.3rem;}
+.day-map-embed{height:200px;margin:.6rem 0;}
+.day-foot{margin:.6rem 0;font-size:.75rem;line-height:1.5;}
+.day-guide{font-size:.7rem;}
+.support-section{padding-top:.35rem;padding-bottom:.35rem;}
+.support-section.paper .support-panel{border-color:var(--line);}
+.support-section .section-head{margin-bottom:.65rem;}
+.support-section .section-head h2{font-size:1.1rem;}
+#editDialog{border:0;border-radius:16px;background:var(--paper);color:var(--text);width:min(520px,calc(100vw - 24px));max-height:calc(100dvh - 30px);padding:1.1rem;overflow:auto;}
+#editDialog::backdrop{background:#0b2a3299;}
+#editDialog h2{font-size:1.15rem;margin-bottom:.5rem;}
+#editDialog label{display:block;font-size:.8rem;margin:.7rem 0 .3rem;}
+#editDialog input,#editDialog textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:.65rem;font:inherit;font-size:16px;color:var(--text);}
+#editDialog textarea{resize:vertical;line-height:1.5;}
+.dialog-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:1rem;}
+.dialog-actions button{border:1px solid var(--line);border-radius:8px;padding:.65rem 1rem;font:inherit;background:var(--paper2);color:var(--text);cursor:pointer;}
+.dialog-actions .save{background:var(--reef);color:white;border-color:var(--reef);}
+#editError{font-size:.8rem;color:#a52f21;margin-top:.5rem;}
+#editDialog .local-hint{font-size:.75rem;color:var(--text-soft);line-height:1.5;}
+#saveStatus{position:fixed;bottom:4.5rem;left:50%;transform:translateX(-50%);background:var(--ink);color:white;border-radius:8px;padding:.7rem 1rem;font-size:.78rem;z-index:100;max-width:90vw;box-shadow:0 2px 15px #0003;}
+#saveStatus:empty{display:none;}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--tide);outline-offset:3px;}
+@media(max-width:380px){.stop-top{grid-template-columns:24px 65px minmax(0,1fr) 30px;gap:.25rem;}.day-shortcuts button{min-width:60px;}}
+@media print{
+ #dayNav,.app-tools,.drag-handle,.edit-stop,.move-buttons,#editDialog,#saveStatus,.day-toolbar{display:none!important;}
+ #daysContainer .day-section[hidden]{display:block;}
+ .slide{padding:.6cm;page-break-after:auto;}
+ .stop-card{break-inside:avoid;}
+ .stop-top{grid-template-columns:80px 1fr;padding:.4rem;}
+ .stop-title{-webkit-line-clamp:unset;display:block;}
+ .stop-bottom{padding-left:80px;}
+ .support-section{display:block;}
+}
+
 </style>
 </head>
 <body>
 
-<nav id="dotNav"></nav>
-<button id="printBtn" onclick="window.print()">⬇ 匯出/列印</button>
+
 
 <section class="slide dark" data-label="封面" id="s-cover">
-  <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · FAMILY ROAD TRIP LOG · v4 (BOOKINGS)</span></div>
-  <h1>沖繩 6 天 5 夜<br>親子自駕完美平衡行程</h1>
+  <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · 7–12 OCT 2026</span></div>
+  <h1>沖繩 · 6 天 5 夜<br>親子行程手帳</h1>
   <p class="sub">兩地駐點：北部（JUNGLIA・青之洞窟浮潛） × 那霸（美らSUN沙灘・浦添大公園・teamLab・PARCO・琉球の牛已訂晚餐）</p>
   <div class="chip-row">
     <span class="chip">👶 3歲寶寶親子節奏</span>
@@ -219,6 +314,13 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
     <span class="chip">🥩 10/10 琉球の牛已訂位</span>
     <span class="chip">🚗 只搬1次酒店</span>
   </div>
+  <div class="app-tools">
+    <button id="undoBtn" type="button" disabled>↶ 復原</button>
+    <button id="exportBtn" type="button">匯出修改</button>
+    <label for="importFile">匯入備份</label><input type="file" id="importFile" accept="application/json,.json" hidden>
+    <button id="printBtn" type="button" onclick="window.print()">列印行程</button>
+  </div>
+  <details class="info-panel"><summary>✈️ 航班及已確認預訂 · 查看詳情</summary><div class="panel-body">
   <div class="flight-card">
     <div class="lead">✈️ 香港航空 · 已核對改期後十月航班</div>
     <div class="flight-row"><span>去程</span><b>2026/10/07（三）HX676 · 香港09:05 → 沖繩12:55<br>香港國際機場 T2 → 那霸機場 · 直航2小時50分</b></div>
@@ -237,6 +339,7 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
     <div class="meta-row"><b>已訂晚餐</b><span>✓ 10/10（六）19:15（日本時間）· 琉球の牛 那覇久茂地店<br>Ryukyu beef Nahakumoji · 成人2名＋幼兒1名 · 確認碼QSNGSK<br><a href="https://www.google.com/maps/search/?api=1&amp;query=沖縄県那覇市久茂地3-16-1%20Taihei%20Building%201F" target="_blank" rel="noopener">久茂地3-16-1 · Taihei Building 1F</a></span></div>
     <p class="booking-note">⚠️ 取車預約13:00，但HX676於12:55落機，未計入境、行李及接駁時間，需先同店方確認等候及實際取車安排。憑證列訂單不可更改，請向店方／Klook查詢處理方式。已選增高座椅標示適合4–7歲、15–30kg；如同行仍係3歲寶寶，需按身高體重向店方確認合適嘅幼童安全座椅。</p>
   </div>
+  </div></details>
 </section>
 
 <section class="slide dark" data-label="行程總覽" id="s-overview">
@@ -295,7 +398,24 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   </div>
 </section>
 
+<nav id="dayNav" aria-label="日期捷徑">
+  <div class="day-nav-top"><span>每日行程 · 10/7–10/12</span><button id="todayBtn" type="button">↗ 今日</button></div>
+  <div class="day-shortcuts"></div>
+</nav>
 <div id="daysContainer"></div>
+<p id="saveStatus" role="status" aria-live="polite"></p>
+<dialog id="editDialog" aria-labelledby="editHeading" aria-describedby="localHint">
+  <form id="editForm">
+    <h2 id="editHeading">編輯行程</h2>
+    <p id="localHint" class="local-hint">儲存後保留喺此裝置；可用「匯出修改」備份或搬去另一部電話。</p>
+    <label for="field-t">時間（日本時間，可填估算／時段）</label><input id="field-t" type="text" maxlength="120" placeholder="例如 09:30 或 10:00–12:00">
+    <label for="field-a">行程內容</label><textarea id="field-a" rows="3" maxlength="10000" required></textarea>
+    <label for="field-n">小提示</label><textarea id="field-n" rows="4" maxlength="10000" placeholder="集合安排、預訂編號、帶備物品…"></textarea>
+    <label for="field-loc">地點／地址（用作地圖導航）</label><input id="field-loc" type="text" maxlength="1000">
+    <p id="editError" role="alert"></p>
+    <div class="dialog-actions"><button id="cancelEdit" type="button">取消</button><button class="save" type="submit">儲存</button></div>
+  </form>
+</dialog>
 
 <section class="slide paper" data-label="推薦餐廳" id="s-food">
   <span class="page-index" data-auto></span>
@@ -345,11 +465,11 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 <section class="slide dark closing" data-label="使用說明" id="s-closing">
   <span class="eyebrow">How to use this log</span>
   <h2>如何使用這份行程</h2>
-  <p>這是一份單一 HTML 檔案，開啟瀏覽器即可查看，帶「✏️ 可編輯」虛線的欄位可以直接點擊輸入文字，地點名稱可以直接點擊開 Google Maps。</p>
+  <p>用上方日期捷徑切換每日行程；「今日」按日本日期跳到當日，旅程開始前會先顯示Day 1。</p>
   <div class="steps">
-    <div class="step"><span class="n">1</span><p>每日行程開頭有「車程總覽」同一個嵌入嘅Google地圖；地點chip之間嘅灰色小標籤就係點對點車程時間。</p></div>
-    <div class="step"><span class="n">2</span><p>虛線框嘅地點係彈性選項，可以按需要刪走或調整。</p></div>
-    <div class="step"><span class="n">3</span><p>按右下角「匯出/列印」即可存成 PDF 分享或列印。</p></div>
+    <div class="step"><span class="n">1</span><p>按時間、內容或✎可以編輯時間、行程、小提示及地點。修改會自動儲存到目前裝置，未會同步到其他電話。</p></div>
+    <div class="step"><span class="n">2</span><p>拖住每項左邊⠿上下排序，亦可用↑↓移動；排序唔會改時間。路線跟目前排序及地點更新，車程仍要按導航覆核。</p></div>
+    <div class="step"><span class="n">3</span><p>「復原」可撤銷上一次修改；「還原此日」重設當日。「匯出修改」／「匯入備份」可搬到另一裝置，列印會包括全部日子及小提示。</p></div>
   </div>
   <p style="margin-top:2rem; font-style:italic;">祝旅途愉快，玩得安全又放電！🌊🎆</p>
 </section>
@@ -360,6 +480,7 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 </nav>
 
 <script>
+// Keep these item IDs stable across releases so saved edits stay with the same activity.
 const days = [
   {num:1, mood:'move', date:'10/7・三', title:'HX676 12:55落機 → OKS取車 → AEON補給 → 入住Ala MAHAINA',
    totalDrive:'估算約2–2.5小時（機場接駁至糸滿另計；OKS→AEON約45–60分，AEON→本部町約75–90分）',
@@ -374,13 +495,13 @@ const days = [
    ],
    hotel:'Ala MAHAINA CONDO HOTEL（本部町，已付款並確認 ✓ 10/7–10/9・2晚）',
    rows:[
-    {t:'12:55', who:'move', a:'HX676抵達那覇機場（香港T2 09:05起飛）', n:'⚠️ OKS訂單13:00取車，落機後只得5分鐘，出發前必須確認店方等候安排，唔可以當作已能準時取車', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
-    {t:'13:30–14:00（估）', who:'move', a:'入境、領行李 → 國內線3樓6號門集合 → OKS接駁', n:'憑證為AI翻譯指示，先向店方核實集合點及班次；認OKS標誌，電話+81-80-6495-8648', loc:'那覇空港'},
-    {t:'14:00–14:45（估）', who:'move', a:'OKS租車店辦手續、確認合適安全座椅、取車', n:'預約UBH323555；Nissan Note e-POWER 2018；護照、駕照正本、紙本IDP及列印憑證帶齊；到店付款¥10,000以門市為準，車身花痕影相留底', loc:'沖縄県糸満市潮平794-2'},
-    {t:'15:30–16:00（估）', who:'family', a:'AEON MALL 沖繩來客夢：超市買水果、飲用水、零食（車程約45–60分）', n:'以快速補給為主；如取車延誤就跳過商場，直接北上飯店', loc:'イオンモール沖縄ライカム'},
-    {t:'16:00（估）', who:'move', a:'出發前往 Ala MAHAINA（本部町，車程約75–90分）', n:'寶寶車上補眠；入住時間視取車及路況順延', loc:'Ala MAHAINA CONDO HOTEL'},
-    {t:'17:15–17:30（估）', who:'move', a:'抵達 Ala MAHAINA 辦理入住', n:'已付款並確認，訂單1771809270；15:00起入住，10/9 11:00前退房；設施及早餐權益以入住憑證為準', loc:'沖縄県国頭郡本部町山川1421-1'},
-    {t:'18:00（估）', who:'family', a:'飯店休息、附近散步及晚餐', n:'第一日唔再安排長途繞路，食完早唞，聽日JUNGLIA全日', loc:'Ala MAHAINA CONDO HOTEL'},
+    {id:'d1-stop-1', t:'12:55', who:'move', a:'HX676抵達那覇機場（香港T2 09:05起飛）', n:'⚠️ OKS訂單13:00取車，落機後只得5分鐘，出發前必須確認店方等候安排，唔可以當作已能準時取車', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
+    {id:'d1-stop-2', t:'13:30–14:00（估）', who:'move', a:'入境、領行李 → 國內線3樓6號門集合 → OKS接駁', n:'憑證為AI翻譯指示，先向店方核實集合點及班次；認OKS標誌，電話+81-80-6495-8648', loc:'那覇空港'},
+    {id:'d1-stop-3', t:'14:00–14:45（估）', who:'move', a:'OKS租車店辦手續、確認合適安全座椅、取車', n:'預約UBH323555；Nissan Note e-POWER 2018；護照、駕照正本、紙本IDP及列印憑證帶齊；到店付款¥10,000以門市為準，車身花痕影相留底', loc:'沖縄県糸満市潮平794-2'},
+    {id:'d1-stop-4', t:'15:30–16:00（估）', who:'family', a:'AEON MALL 沖繩來客夢：超市買水果、飲用水、零食（車程約45–60分）', n:'以快速補給為主；如取車延誤就跳過商場，直接北上飯店', loc:'イオンモール沖縄ライカム'},
+    {id:'d1-stop-5', t:'16:00（估）', who:'move', a:'出發前往 Ala MAHAINA（本部町，車程約75–90分）', n:'寶寶車上補眠；入住時間視取車及路況順延', loc:'Ala MAHAINA CONDO HOTEL'},
+    {id:'d1-stop-6', t:'17:15–17:30（估）', who:'move', a:'抵達 Ala MAHAINA 辦理入住', n:'已付款並確認，訂單1771809270；15:00起入住，10/9 11:00前退房；設施及早餐權益以入住憑證為準', loc:'沖縄県国頭郡本部町山川1421-1'},
+    {id:'d1-stop-7', t:'18:00（估）', who:'family', a:'飯店休息、附近散步及晚餐', n:'第一日唔再安排長途繞路，食完早唞，聽日JUNGLIA全日', loc:'Ala MAHAINA CONDO HOTEL'},
    ],
    eats:[
     {ic:'🍽', n:'飯店或本部町附近晚餐', q:'Ala MAHAINA CONDO HOTEL', note:'以已訂飯店為中心，避免再繞去恩納／喜瀬；餐廳營業時間及是否需訂位先確認'},
@@ -403,17 +524,17 @@ const days = [
    ],
    hotel:'Ala MAHAINA CONDO HOTEL（已付款並確認 ✓ 第2晚）',
    rows:[
-    {t:'08:00', who:'family', a:'起身、早餐', n:'早餐是否包含以入住憑證為準；按當日開園時間調整出發', loc:'Ala MAHAINA CONDO HOTEL'},
-    {t:'09:00（估）', who:'move', a:'由本部町出發前往 JUNGLIA（車程約30–45分）', n:'📱 出發前裝定官方App＋綁定門票；另預留泊車及步行時間，開園時間以官方日曆為準', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
-    {t:'10:00', who:'family', a:'一入園即刻喺App抽上午場「整理券」（刺激項目全部靠抽籤或Premium Pass）', n:'🎯 策略：抽籤一日分幾輪，第一輪中籤率最高；抽唔中就買Premium Pass（每項約¥2,600–3,700）保底', loc:'JUNGLIA OKINAWA'},
-    {t:'10:15', who:'family', a:'⭐ Finding Dinosaurs（搵BB恐龍）——3歲最高評價、無年齡身高限制', n:'行叢林小徑+吊橋+山洞搵恐龍BB，親子好評No.1；正常排60–75分鐘，Premium ¥3,740直入', loc:'JUNGLIA OKINAWA'},
-    {t:'11:30', who:'family', a:'午餐：早過12:00去食避開高峰（或13:00後去Wild Banquet戶外美食廣場）', n:'多間餐廳有kids plate；BB零食可以帶入園', loc:'JUNGLIA OKINAWA'},
-    {t:'13:30', who:'family', a:'Show時段：Wild Beat（約13:30）→ やんばるフレンズ室內show → Splash Fest（約14:30）', n:'3歲啱睇晒，坐定定唞氣；時間以App當日公佈為準', loc:'JUNGLIA OKINAWA'},
-    {t:'15:00–16:00', who:'family', a:'BB喺BB車午睡 ➜ 爸媽用「Child Switch」輪流玩刺激項目', n:'用App抽下午場：Sky Phoenix滑索／Titans Swing等（95cm+項目BB玩唔到，爸媽輪流上陣唔使嘥飛）', loc:'JUNGLIA OKINAWA'},
-    {t:'16:30', who:'family', a:'Tram Tram園內小火車 / 手信店 / 或去 SPA JUNGLIA 無邊際溫泉浸吓', n:'BB瞓醒精神返；SPA門票另計，入場截至閉館前1小時', loc:'JUNGLIA OKINAWA'},
-    {t:'18:00', who:'family', a:'園內晚餐', n:'', loc:'JUNGLIA OKINAWA'},
-    {t:'19:00', who:'family', a:'夜間表演／煙火（如當日有場次）', n:'⚠️ 10月show/煙火時間每月月末先公佈，出發前必須用App confirm；天氣差會取消', loc:'JUNGLIA OKINAWA'},
-    {t:'19:45（估）', who:'move', a:'返回 Ala MAHAINA（車程約30–45分）', n:'寶寶車上熟睡；按實際表演結束時間出發', loc:'Ala MAHAINA CONDO HOTEL'},
+    {id:'d2-stop-1', t:'08:00', who:'family', a:'起身、早餐', n:'早餐是否包含以入住憑證為準；按當日開園時間調整出發', loc:'Ala MAHAINA CONDO HOTEL'},
+    {id:'d2-stop-2', t:'09:00（估）', who:'move', a:'由本部町出發前往 JUNGLIA（車程約30–45分）', n:'📱 出發前裝定官方App＋綁定門票；另預留泊車及步行時間，開園時間以官方日曆為準', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
+    {id:'d2-stop-3', t:'10:00', who:'family', a:'一入園即刻喺App抽上午場「整理券」（刺激項目全部靠抽籤或Premium Pass）', n:'🎯 策略：抽籤一日分幾輪，第一輪中籤率最高；抽唔中就買Premium Pass（每項約¥2,600–3,700）保底', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-4', t:'10:15', who:'family', a:'⭐ Finding Dinosaurs（搵BB恐龍）——3歲最高評價、無年齡身高限制', n:'行叢林小徑+吊橋+山洞搵恐龍BB，親子好評No.1；正常排60–75分鐘，Premium ¥3,740直入', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-5', t:'11:30', who:'family', a:'午餐：早過12:00去食避開高峰（或13:00後去Wild Banquet戶外美食廣場）', n:'多間餐廳有kids plate；BB零食可以帶入園', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-6', t:'13:30', who:'family', a:'Show時段：Wild Beat（約13:30）→ やんばるフレンズ室內show → Splash Fest（約14:30）', n:'3歲啱睇晒，坐定定唞氣；時間以App當日公佈為準', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-7', t:'15:00–16:00', who:'family', a:'BB喺BB車午睡 ➜ 爸媽用「Child Switch」輪流玩刺激項目', n:'用App抽下午場：Sky Phoenix滑索／Titans Swing等（95cm+項目BB玩唔到，爸媽輪流上陣唔使嘥飛）', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-8', t:'16:30', who:'family', a:'Tram Tram園內小火車 / 手信店 / 或去 SPA JUNGLIA 無邊際溫泉浸吓', n:'BB瞓醒精神返；SPA門票另計，入場截至閉館前1小時', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-9', t:'18:00', who:'family', a:'園內晚餐', n:'', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-10', t:'19:00', who:'family', a:'夜間表演／煙火（如當日有場次）', n:'⚠️ 10月show/煙火時間每月月末先公佈，出發前必須用App confirm；天氣差會取消', loc:'JUNGLIA OKINAWA'},
+    {id:'d2-stop-11', t:'19:45（估）', who:'move', a:'返回 Ala MAHAINA（車程約30–45分）', n:'寶寶車上熟睡；按實際表演結束時間出發', loc:'Ala MAHAINA CONDO HOTEL'},
    ],
    eats:[
     {ic:'🎢', n:'Wild Banquet 戶外美食廣場', q:'JUNGLIA OKINAWA', note:'食べ歩き小食車＋恐龍主題餐點；13:00後人流回落先去最好，出餐快'},
@@ -431,17 +552,17 @@ const days = [
    ],
    hotel:'LOISIR HOTEL NAHA（本館，已付款並確認 ✓ 10/9–10/12・3晚）',
    rows:[
-    {t:'07:00', who:'family', a:'早餐、退房、行李上車', n:'Ala MAHAINA退房期限11:00；為配合原規劃上午浮潛，需提早離開本部町。未見活動確認單，集合時間及地點需再核實', loc:'Ala MAHAINA CONDO HOTEL'},
-    {t:'07:30（估）', who:'move', a:'出發前往真栄田岬（車程約75–90分）', n:'原駐點已改為本部町，唔再按喜瀬35分鐘車程；另預留泊車及報到時間', loc:'真栄田岬 沖縄'},
-    {t:'09:15（待預約確認）', who:'family', a:'Pink Mermaid 幼兒專屬浮潛團報到', n:'時間及集合地點以活動確認單為準；如取消，直接南下改室內活動，避免已到恩納再折返本部町', loc:'真栄田岬 沖縄', web:'https://pink-mermaid.com/tw/course/Dcourse.html'},
-    {t:'09:30–11:00', who:'family', a:'青之洞窟親子浮潛體驗', n:'含免費水下高畫質相機拍攝/錄影（教練AirDrop傳送）及免費餵魚體驗，3人同行約6,500円/人（已含裝備船票保險）', loc:'真栄田岬 沖縄'},
-    {t:'11:15', who:'family', a:'真栄田岬設施沖身換衫', n:'有投幣淋浴同更衣室', loc:'真栄田岬 沖縄'},
-    {t:'11:45', who:'move', a:'一程直入那霸（經石川IC上高速，車程約1小時，中途唔停）', n:'寶寶車上熟睡', loc:'那覇市西3-2-1'},
-    {t:'12:50', who:'family', a:'午餐：泊いゆまち魚市場（入那霸順路，離飯店車程5分）', n:'吞拿魚／三文魚籽／蟹籽海鮮丼任揀檔口，市場地方大出餐快；唔想落車就飯店附近隨便食', loc:'泊いゆまち 那覇'},
-    {t:'14:00（估）', who:'move', a:'抵達 LOISIR HOTEL NAHA 本館（未到入住時間先寄存行李）', n:'已付款並確認，訂單1771807276；截圖未列入住時間，依入住憑證安排，唔當作14:00已可取房', loc:'那覇市西3-2-1', web:'https://www.loisir-naha.com/'},
-    {t:'入住後', who:'family', a:'BB房內午睡，爸媽輪流休息', n:'溫泉／泳池開放及使用權益先向本館確認，唔假設可用Spa Tower設施', loc:'那覇市西3-2-1'},
-    {t:'16:30（估）', who:'family', a:'飯店親子休息，或波の上ビーチ散步', n:'如想用泳池，先向本館確認開放時間及收費', loc:'波の上ビーチ 那覇'},
-    {t:'19:00', who:'family', a:'晚餐：飯店周邊（西町／久茂地）', n:'Jackie牛排行路約7分鐘就到', loc:'那覇市西3-2-1'},
+    {id:'d3-stop-1', t:'07:00', who:'family', a:'早餐、退房、行李上車', n:'Ala MAHAINA退房期限11:00；為配合原規劃上午浮潛，需提早離開本部町。未見活動確認單，集合時間及地點需再核實', loc:'Ala MAHAINA CONDO HOTEL'},
+    {id:'d3-stop-2', t:'07:30（估）', who:'move', a:'出發前往真栄田岬（車程約75–90分）', n:'原駐點已改為本部町，唔再按喜瀬35分鐘車程；另預留泊車及報到時間', loc:'真栄田岬 沖縄'},
+    {id:'d3-stop-3', t:'09:15（待預約確認）', who:'family', a:'Pink Mermaid 幼兒專屬浮潛團報到', n:'時間及集合地點以活動確認單為準；如取消，直接南下改室內活動，避免已到恩納再折返本部町', loc:'真栄田岬 沖縄', web:'https://pink-mermaid.com/tw/course/Dcourse.html'},
+    {id:'d3-stop-4', t:'09:30–11:00', who:'family', a:'青之洞窟親子浮潛體驗', n:'含免費水下高畫質相機拍攝/錄影（教練AirDrop傳送）及免費餵魚體驗，3人同行約6,500円/人（已含裝備船票保險）', loc:'真栄田岬 沖縄'},
+    {id:'d3-stop-5', t:'11:15', who:'family', a:'真栄田岬設施沖身換衫', n:'有投幣淋浴同更衣室', loc:'真栄田岬 沖縄'},
+    {id:'d3-stop-6', t:'11:45', who:'move', a:'一程直入那霸（經石川IC上高速，車程約1小時，中途唔停）', n:'寶寶車上熟睡', loc:'那覇市西3-2-1'},
+    {id:'d3-stop-7', t:'12:50', who:'family', a:'午餐：泊いゆまち魚市場（入那霸順路，離飯店車程5分）', n:'吞拿魚／三文魚籽／蟹籽海鮮丼任揀檔口，市場地方大出餐快；唔想落車就飯店附近隨便食', loc:'泊いゆまち 那覇'},
+    {id:'d3-stop-8', t:'14:00（估）', who:'move', a:'抵達 LOISIR HOTEL NAHA 本館（未到入住時間先寄存行李）', n:'已付款並確認，訂單1771807276；截圖未列入住時間，依入住憑證安排，唔當作14:00已可取房', loc:'那覇市西3-2-1', web:'https://www.loisir-naha.com/'},
+    {id:'d3-stop-9', t:'入住後', who:'family', a:'BB房內午睡，爸媽輪流休息', n:'溫泉／泳池開放及使用權益先向本館確認，唔假設可用Spa Tower設施', loc:'那覇市西3-2-1'},
+    {id:'d3-stop-10', t:'16:30（估）', who:'family', a:'飯店親子休息，或波の上ビーチ散步', n:'如想用泳池，先向本館確認開放時間及收費', loc:'波の上ビーチ 那覇'},
+    {id:'d3-stop-11', t:'19:00', who:'family', a:'晚餐：飯店周邊（西町／久茂地）', n:'Jackie牛排行路約7分鐘就到', loc:'那覇市西3-2-1'},
    ],
    eats:[
     {ic:'🥞', n:'Hawaiian Pancakes House Paanilani', q:'ハワイアンパンケーキハウス パニラニ 恩納', note:'恩納名店pancake，07:00開，去真栄田岬途中順路；時間緊就飯店食完先出發'},
@@ -465,17 +586,17 @@ const days = [
    ],
    hotel:'LOISIR HOTEL NAHA（本館，已付款並確認）',
    rows:[
-    {t:'09:00', who:'family', a:'悠閒起身、早餐', n:'早餐是否包含以入住憑證為準；今日冇早集合，全家慢慢嚟', loc:'那覇市西3-2-1'},
-    {t:'09:45', who:'move', a:'出發前往豊崎美らSUNビーチ（車程約15分）', n:'', loc:'豊崎美らSUNビーチ'},
-    {t:'10:00–12:00', who:'family', a:'🏖 沙灘玩水挖沙：水淺灘平、有救生員同淋浴設施，10月仲落得水', n:'帶定沙灘玩具；隔籬iias豊崎商場有DMM Kariyushi水族館——落雨即刻轉場', loc:'豊崎美らSUNビーチ', web:'https://www.churasun-beach.com/'},
-    {t:'12:15', who:'family', a:'午餐：iias豊崎（沙灘隔籬商場）', n:'餐廳＋food court任揀，沖完身啱啱好', loc:'イーアス沖縄豊崎'},
-    {t:'13:30', who:'move', a:'出發去PARCO CITY（車程約25分）', n:'BB車上瞓晏覺（3:00前開始瞓啱節奏）', loc:'サンエー浦添西海岸PARCO CITY'},
-    {t:'14:00–17:30', who:'mom', a:'👗 媽媽shopping time：BB瞓醒爸爸帶佢去3F「あそびパークPLUS」玩，媽媽安心慢慢睇衫', n:'室內遊樂場（6個月–12歲，¥700/30分）：數碼波波池、迷你王國、幼兒專區；PARCO有Zara/GU/Uniqlo/沖繩限定手信，10:00–22:00', loc:'サンエー浦添西海岸PARCO CITY', web:'https://bandainamco-am.co.jp/kids/asobiparkplus/loc/urasoe.html'},
-    {t:'17:30', who:'move', a:'離開PARCO，返回那霸飯店休息／放低購物袋（車程估約20分）', n:'今晚19:15已有訂位，保留緩衝時間，唔再北上北谷', loc:'那覇市西3-2-1'},
-    {t:'18:30（估）', who:'move', a:'由飯店出發前往琉球の牛 那覇久茂地店', n:'車程估約10分，另預留泊車及步行；可按當日路況提早出發', loc:'沖縄県那覇市久茂地3-16-1 Taihei Building 1F'},
-    {t:'19:00（目標）', who:'family', a:'抵達餐廳，準備出示預約確認', n:'地址：3-16-1 Kumoji, Taihei Building 1F, Naha, Okinawa 900-0015；用確認截圖核對店名及地址', loc:'沖縄県那覇市久茂地3-16-1 Taihei Building 1F'},
-    {t:'19:15（已訂）', who:'family', a:'🥩 琉球の牛 那覇久茂地店 · Ryukyu beef Nahakumoji', n:'2026/10/10（六）日本時間19:15；成人2名＋幼兒1名；確認碼QSNGSK。係久茂地店，請按確認地址前往', loc:'沖縄県那覇市久茂地3-16-1 Taihei Building 1F'},
-    {t:'晚餐後', who:'move', a:'返回LOISIR HOTEL NAHA（車程估約10分）', n:'全家休息，唔安排趕去北谷睇煙火', loc:'那覇市西3-2-1'},
+    {id:'d4-stop-1', t:'09:00', who:'family', a:'悠閒起身、早餐', n:'早餐是否包含以入住憑證為準；今日冇早集合，全家慢慢嚟', loc:'那覇市西3-2-1'},
+    {id:'d4-stop-2', t:'09:45', who:'move', a:'出發前往豊崎美らSUNビーチ（車程約15分）', n:'', loc:'豊崎美らSUNビーチ'},
+    {id:'d4-stop-3', t:'10:00–12:00', who:'family', a:'🏖 沙灘玩水挖沙：水淺灘平、有救生員同淋浴設施，10月仲落得水', n:'帶定沙灘玩具；隔籬iias豊崎商場有DMM Kariyushi水族館——落雨即刻轉場', loc:'豊崎美らSUNビーチ', web:'https://www.churasun-beach.com/'},
+    {id:'d4-stop-4', t:'12:15', who:'family', a:'午餐：iias豊崎（沙灘隔籬商場）', n:'餐廳＋food court任揀，沖完身啱啱好', loc:'イーアス沖縄豊崎'},
+    {id:'d4-stop-5', t:'13:30', who:'move', a:'出發去PARCO CITY（車程約25分）', n:'BB車上瞓晏覺（3:00前開始瞓啱節奏）', loc:'サンエー浦添西海岸PARCO CITY'},
+    {id:'d4-stop-6', t:'14:00–17:30', who:'mom', a:'👗 媽媽shopping time：BB瞓醒爸爸帶佢去3F「あそびパークPLUS」玩，媽媽安心慢慢睇衫', n:'室內遊樂場（6個月–12歲，¥700/30分）：數碼波波池、迷你王國、幼兒專區；PARCO有Zara/GU/Uniqlo/沖繩限定手信，10:00–22:00', loc:'サンエー浦添西海岸PARCO CITY', web:'https://bandainamco-am.co.jp/kids/asobiparkplus/loc/urasoe.html'},
+    {id:'d4-stop-7', t:'17:30', who:'move', a:'離開PARCO，返回那霸飯店休息／放低購物袋（車程估約20分）', n:'今晚19:15已有訂位，保留緩衝時間，唔再北上北谷', loc:'那覇市西3-2-1'},
+    {id:'d4-stop-8', t:'18:30（估）', who:'move', a:'由飯店出發前往琉球の牛 那覇久茂地店', n:'車程估約10分，另預留泊車及步行；可按當日路況提早出發', loc:'沖縄県那覇市久茂地3-16-1 Taihei Building 1F'},
+    {id:'d4-stop-9', t:'19:00（目標）', who:'family', a:'抵達餐廳，準備出示預約確認', n:'地址：3-16-1 Kumoji, Taihei Building 1F, Naha, Okinawa 900-0015；用確認截圖核對店名及地址', loc:'沖縄県那覇市久茂地3-16-1 Taihei Building 1F'},
+    {id:'d4-stop-10', t:'19:15（已訂）', who:'family', a:'🥩 琉球の牛 那覇久茂地店 · Ryukyu beef Nahakumoji', n:'2026/10/10（六）日本時間19:15；成人2名＋幼兒1名；確認碼QSNGSK。係久茂地店，請按確認地址前往', loc:'沖縄県那覇市久茂地3-16-1 Taihei Building 1F'},
+    {id:'d4-stop-11', t:'晚餐後', who:'move', a:'返回LOISIR HOTEL NAHA（車程估約10分）', n:'全家休息，唔安排趕去北谷睇煙火', loc:'那覇市西3-2-1'},
    ],
    eats:[
     {ic:'🍱', n:'iias豊崎 餐廳/food court', q:'イーアス沖縄豊崎', note:'沙灘隔籬商場午餐最方便；DMM Kariyushi水族館都喺呢度'},
@@ -500,15 +621,15 @@ const days = [
    ],
    hotel:'LOISIR HOTEL NAHA（本館，已付款並確認）',
    rows:[
-    {t:'09:00', who:'family', a:'起身、早餐', n:'早餐是否包含以入住憑證為準', loc:'那覇市西3-2-1'},
-    {t:'09:45', who:'move', a:'出發前往浦添大公園（車程約15分）', n:'', loc:'浦添大公園 C地区'},
-    {t:'10:00–12:00', who:'family', a:'🛝 浦添大公園C區「感育廣場」：招牌超長roller滑梯＋幼兒遊具區', n:'沖繩本地細路至愛，免費入場；著長褲瀡滑梯唔㷫囉柚，朝早去最涼爽', loc:'浦添大公園 C地区', web:'https://www.urasoedaipark.osi.okinawa.jp/'},
-    {t:'12:15', who:'family', a:'午餐：港川外人住宅（車程約10分）', n:'美軍舊住宅改建嘅特色小店群：oHacorte水果撻、ippe coppe麵包、沖繩麵小店，影相靚', loc:'港川ステイツサイドタウン'},
-    {t:'13:45', who:'move', a:'返飯店，BB午睡；爸媽休息／執手信', n:'瞓夠先去teamLab，玩得盡興啲；溫泉權益向本館確認', loc:'那覇市西3-2-1'},
-    {t:'15:30', who:'family', a:'✨ teamLab 未來遊樂園（車程約10分，DFS內）', n:'室內互動數位藝術：畫魚放入大水族館、彈跳宇宙、光之球——3歲玩到唔捨得走；需預先購買指定時段票', loc:'チームラボ 学ぶ 未来の遊園地 沖縄', web:'https://www.teamlab.art/e/futurepark-okinawa/'},
-    {t:'17:00（彈性）', who:'family', a:'如需阿卡將掃貨，安排今日去 Apple Town', n:'先核對店舖當日營業時間；唔留到回程日，以免影響還車及登機', loc:'アップルタウン 那覇 アカチャンホンポ'},
-    {t:'18:00', who:'family', a:'晚餐：國際通（車程約10分）或飯店周邊', n:'鰻魚飯彦本店建議訂位；琉球の牛已安排喺前一晚10/10久茂地店', loc:'国際通り 那覇'},
-    {t:'20:00', who:'family', a:'返飯店，最後一晚執行李及租車文件', n:'聽日HX679 13:55起飛，規劃11:00還車；今晚執定行李最鬆動', loc:'那覇市西3-2-1'},
+    {id:'d5-stop-1', t:'09:00', who:'family', a:'起身、早餐', n:'早餐是否包含以入住憑證為準', loc:'那覇市西3-2-1'},
+    {id:'d5-stop-2', t:'09:45', who:'move', a:'出發前往浦添大公園（車程約15分）', n:'', loc:'浦添大公園 C地区'},
+    {id:'d5-stop-3', t:'10:00–12:00', who:'family', a:'🛝 浦添大公園C區「感育廣場」：招牌超長roller滑梯＋幼兒遊具區', n:'沖繩本地細路至愛，免費入場；著長褲瀡滑梯唔㷫囉柚，朝早去最涼爽', loc:'浦添大公園 C地区', web:'https://www.urasoedaipark.osi.okinawa.jp/'},
+    {id:'d5-stop-4', t:'12:15', who:'family', a:'午餐：港川外人住宅（車程約10分）', n:'美軍舊住宅改建嘅特色小店群：oHacorte水果撻、ippe coppe麵包、沖繩麵小店，影相靚', loc:'港川ステイツサイドタウン'},
+    {id:'d5-stop-5', t:'13:45', who:'move', a:'返飯店，BB午睡；爸媽休息／執手信', n:'瞓夠先去teamLab，玩得盡興啲；溫泉權益向本館確認', loc:'那覇市西3-2-1'},
+    {id:'d5-stop-6', t:'15:30', who:'family', a:'✨ teamLab 未來遊樂園（車程約10分，DFS內）', n:'室內互動數位藝術：畫魚放入大水族館、彈跳宇宙、光之球——3歲玩到唔捨得走；需預先購買指定時段票', loc:'チームラボ 学ぶ 未来の遊園地 沖縄', web:'https://www.teamlab.art/e/futurepark-okinawa/'},
+    {id:'d5-stop-7', t:'17:00（彈性）', who:'family', a:'如需阿卡將掃貨，安排今日去 Apple Town', n:'先核對店舖當日營業時間；唔留到回程日，以免影響還車及登機', loc:'アップルタウン 那覇 アカチャンホンポ'},
+    {id:'d5-stop-8', t:'18:00', who:'family', a:'晚餐：國際通（車程約10分）或飯店周邊', n:'鰻魚飯彦本店建議訂位；琉球の牛已安排喺前一晚10/10久茂地店', loc:'国際通り 那覇'},
+    {id:'d5-stop-9', t:'20:00', who:'family', a:'返飯店，最後一晚執行李及租車文件', n:'聽日HX679 13:55起飛，規劃11:00還車；今晚執定行李最鬆動', loc:'那覇市西3-2-1'},
    ],
    eats:[
     {ic:'🍰', n:'oHacorte 港川本店', q:'oHacorte 港川', note:'外人住宅人氣水果撻，園區小庭園靚到痺；隔籬仲有ippe coppe天然酵母麵包'},
@@ -529,13 +650,13 @@ const days = [
    ],
    hotel:'LOISIR HOTEL NAHA退房 → HX679 13:55起飛／15:50抵港T1',
    rows:[
-    {t:'09:00', who:'family', a:'早餐、整理行李及退房', n:'阿卡將購物已移到Day 5彈性時段；確認冇遺漏護照、駕照及隨身物品', loc:'那覇市西3-2-1'},
-    {t:'09:30（估）', who:'move', a:'出發前往糸満お魚センター（車程約25–30分）', n:'漁市場停留屬彈性；如路況、開店或接駁時間唔配合，直接加油還車', loc:'糸満お魚センター 道の駅いとまん'},
-    {t:'10:00–10:30（彈性）', who:'family', a:'🐟 漁市場快速早午餐', n:'先確認當日開門時間；10:30前離開，唔排長隊，唔加額外購物行程', loc:'糸満お魚センター 道の駅いとまん', web:'https://www.okinawastory.jp/spot/600004452'},
-    {t:'10:30–11:00（估）', who:'move', a:'前往OKS租車店，途中加滿油', n:'保留加油收據及油量表相片；如需更多時間加油，提早離開市場', loc:'沖縄県糸満市潮平794-2'},
-    {t:'11:00（目標）', who:'move', a:'OKS還車手續 + 接駁前往那霸機場', n:'訂單12:00到期，為HX679提早還車；先確認OKS接駁班次，還車及接駁合共預留45分鐘，唔再假設5分鐘到機場', loc:'沖縄県糸満市潮平794-2'},
-    {t:'11:45（目標）', who:'move', a:'抵達那霸機場，辦理國際線登機手續', n:'距13:55起飛約2小時10分，實際報到及閘口截止以香港航空通知為準', loc:'那覇空港'},
-    {t:'13:55', who:'move', a:'HX679起飛返香港', n:'香港航空A320-200；15:50抵達香港國際機場T1（香港時間）', loc:'那覇空港'},
+    {id:'d6-stop-1', t:'09:00', who:'family', a:'早餐、整理行李及退房', n:'阿卡將購物已移到Day 5彈性時段；確認冇遺漏護照、駕照及隨身物品', loc:'那覇市西3-2-1'},
+    {id:'d6-stop-2', t:'09:30（估）', who:'move', a:'出發前往糸満お魚センター（車程約25–30分）', n:'漁市場停留屬彈性；如路況、開店或接駁時間唔配合，直接加油還車', loc:'糸満お魚センター 道の駅いとまん'},
+    {id:'d6-stop-3', t:'10:00–10:30（彈性）', who:'family', a:'🐟 漁市場快速早午餐', n:'先確認當日開門時間；10:30前離開，唔排長隊，唔加額外購物行程', loc:'糸満お魚センター 道の駅いとまん', web:'https://www.okinawastory.jp/spot/600004452'},
+    {id:'d6-stop-4', t:'10:30–11:00（估）', who:'move', a:'前往OKS租車店，途中加滿油', n:'保留加油收據及油量表相片；如需更多時間加油，提早離開市場', loc:'沖縄県糸満市潮平794-2'},
+    {id:'d6-stop-5', t:'11:00（目標）', who:'move', a:'OKS還車手續 + 接駁前往那霸機場', n:'訂單12:00到期，為HX679提早還車；先確認OKS接駁班次，還車及接駁合共預留45分鐘，唔再假設5分鐘到機場', loc:'沖縄県糸満市潮平794-2'},
+    {id:'d6-stop-6', t:'11:45（目標）', who:'move', a:'抵達那霸機場，辦理國際線登機手續', n:'距13:55起飛約2小時10分，實際報到及閘口截止以香港航空通知為準', loc:'那覇空港'},
+    {id:'d6-stop-7', t:'13:55', who:'move', a:'HX679起飛返香港', n:'香港航空A320-200；15:50抵達香港國際機場T1（香港時間）', loc:'那覇空港'},
    ],
    eats:[
     {ic:'🐟', n:'糸満お魚センター', q:'糸満お魚センター 道の駅いとまん', book:'https://www.okinawastory.jp/spot/600004452', note:'漁協直營11檔：海膽軍艦、龍蝦、吞拿魚刺身、海鮮丼即買即食，露天eat-in位；10:00開，年中無休（週一個別檔口休）'},
@@ -572,60 +693,381 @@ function dayEmbedUrl(route){
   return `https://maps.google.com/maps?saddr=${saddr}&daddr=${rest}&output=embed`;
 }
 
+const ITINERARY_KEY = 'tidelog_itinerary_v1';
+const SELECTED_DAY_KEY = 'tidelog_selected_day';
+const editableFields = ['t', 'a', 'n', 'loc'];
+const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let savedEdits = {version:1, days:{}};
+let undoEdits = null;
+let statusTimer;
+function announce(message, persistent = false) {
+  const status = document.getElementById('saveStatus');
+  status.textContent = message;
+  clearTimeout(statusTimer);
+  if (!persistent) statusTimer = setTimeout(() => { status.textContent = ''; }, 4500);
+}
+function validateEdits(input) {
+  if (!input || input.version !== 1 || !input.days || typeof input.days !== 'object' || Array.isArray(input.days)) throw new Error('備份格式不正確');
+  const result = {version:1, days:{}};
+  for (const [key, entry] of Object.entries(input.days)) {
+    const day = days.find(d => String(d.num) === key);
+    if (!day || !entry || typeof entry !== 'object') throw new Error('備份包含未知日期');
+    const ids = day.rows.map(r => r.id);
+    const clean = {overrides:{}};
+    if (entry.order !== undefined) {
+      if (!Array.isArray(entry.order) || new Set(entry.order).size !== entry.order.length || entry.order.some(id => !ids.includes(id))) throw new Error('備份排序不正確');
+      clean.order = [...entry.order, ...ids.filter(id => !entry.order.includes(id))];
+    }
+    if (entry.overrides !== undefined) {
+      if (!entry.overrides || typeof entry.overrides !== 'object' || Array.isArray(entry.overrides)) throw new Error('備份內容不正確');
+      for (const [id, fields] of Object.entries(entry.overrides)) {
+        if (!ids.includes(id) || !fields || typeof fields !== 'object') throw new Error('備份包含未知行程');
+        clean.overrides[id] = {};
+        for (const field of editableFields) {
+          if (fields[field] !== undefined) {
+            if (typeof fields[field] !== 'string' || fields[field].length > 10000) throw new Error('備份文字不正確');
+            if (field === 'a' && !fields[field].trim()) throw new Error('行程內容不能留空');
+            clean.overrides[id][field] = fields[field];
+          }
+        }
+      }
+    }
+    result.days[key] = clean;
+  }
+  return result;
+}
+try {
+  const saved = localStorage.getItem(ITINERARY_KEY);
+  if (saved) savedEdits = validateEdits(JSON.parse(saved));
+} catch {
+  announce('未能讀取已存修改，原有儲存資料未被刪除。可嘗試匯入備份。', true);
+}
+function rowsForDay(day) {
+  const edit = savedEdits.days[day.num] || {};
+  const order = [...(edit.order || []), ...day.rows.map(r => r.id).filter(id => !(edit.order || []).includes(id))];
+  return order.map(id => {
+    const base = day.rows.find(r => r.id === id);
+    return {...base, ...(edit.overrides?.[id] || {})};
+  });
+}
+function writeEdits(message) {
+  try {
+    localStorage.setItem(ITINERARY_KEY, JSON.stringify(savedEdits));
+    announce(message || '已儲存到此裝置');
+  } catch {
+    announce('未能儲存到此裝置；請用「匯出修改」備份目前內容。', true);
+  }
+  document.getElementById('undoBtn').disabled = !undoEdits;
+}
+function editEntry(day) {
+  return savedEdits.days[day.num] ||= {overrides:{}};
+}
+function rememberUndo() {
+  undoEdits = structuredClone(savedEdits);
+}
+function stopHtml(row, index, total) {
+  const who = whoMeta[row.who] || whoMeta.family;
+  return '<article class="stop-card" data-id="' + escapeHtml(row.id) + '">' +
+    '<div class="stop-top">' +
+    '<button type="button" class="drag-handle" aria-label="拖動排序：' + escapeHtml(row.a) + '" title="拖動排序；鍵盤可用上下箭嘴">⠿</button>' +
+    '<button type="button" class="stop-time" data-action="edit">' + escapeHtml(row.t || '未定時間') + '</button>' +
+    '<div class="stop-main"><button type="button" class="stop-title" data-action="edit"><span class="who ' + who.cls + '">' + who.icon + '</span>' + escapeHtml(row.a) + '</button></div>' +
+    '<button type="button" class="edit-stop" data-action="edit" aria-label="編輯：' + escapeHtml(row.a) + '">✎</button></div>' +
+    '<div class="stop-bottom"><details class="stop-details"><summary>小提示 · 地點</summary>' +
+    '<p class="stop-note">' + escapeHtml(row.n || '未有小提示，可按編輯加入。') + '</p>' +
+    (row.loc ? '<p class="stop-location">' + escapeHtml(row.loc) + '</p>' : '') +
+    '<div class="stop-links">' +
+    (row.loc ? '<a href="' + escapeHtml(mapsSearch(row.loc)) + '" target="_blank" rel="noopener">📍 地圖</a>' : '') +
+    (row.web ? '<a href="' + escapeHtml(row.web) + '" target="_blank" rel="noopener">🔗 網站</a>' : '') +
+    '</div></details><div class="move-buttons">' +
+    '<button type="button" data-action="up" aria-label="上移行程"' + (index === 0 ? ' disabled' : '') + '>↑</button>' +
+    '<button type="button" data-action="down" aria-label="下移行程"' + (index === total - 1 ? ' disabled' : '') + '>↓</button>' +
+    '</div></div></article>';
+}
+function routeForDay(day) {
+  const points = [];
+  for (const row of rowsForDay(day)) {
+    if (row.loc && points.at(-1)?.q !== row.loc) points.push({q:row.loc, l:row.loc});
+  }
+  return points;
+}
+function updateRoute(day) {
+  const sec = document.getElementById('s-day' + day.num);
+  const route = routeForDay(day);
+  const url = mapsDirections(route);
+  sec.querySelector('.day-route-actions').innerHTML = url ? '<a class="btn-directions" href="' + escapeHtml(url) + '" target="_blank" rel="noopener">🗺 按目前排序開啟路線</a>' : '';
+  sec.querySelector('.route-chips').innerHTML = route.map(p => '<a class="route-chip" href="' + escapeHtml(mapsSearch(p.q)) + '" target="_blank" rel="noopener">' + escapeHtml(p.l) + '</a>').join('');
+  const iframe = sec.querySelector('.day-map-embed iframe');
+  if (iframe) {
+    const embed = dayEmbedUrl(route);
+    if (embed) { iframe.dataset.src = embed; if (iframe.hasAttribute('src')) iframe.src = embed; }
+    else iframe.removeAttribute('src');
+  }
+}
+function renderRows(day) {
+  const sec = document.getElementById('s-day' + day.num);
+  const openIds = new Set([...sec.querySelectorAll('.stop-details[open]')].map(d => d.closest('.stop-card').dataset.id));
+  const rows = rowsForDay(day);
+  sec.querySelector('.stop-list').innerHTML = rows.map((r,i) => stopHtml(r,i,rows.length)).join('');
+  sec.querySelectorAll('.stop-card').forEach(card => { card.querySelector('details').open = openIds.has(card.dataset.id); });
+  updateRoute(day);
+}
+
 const daysContainer = document.getElementById('daysContainer');
-days.forEach((d)=>{
-  const mm = moodMeta[d.mood];
-  const routeHtml = d.route.map((r)=>{
-    if(r.leg) return `<span class="route-leg">🚗 ${r.leg}</span>`;
-    const cls = 'route-chip' + (r.optional ? ' optional' : '');
-    return r.q ? `<a class="${cls}" href="${mapsSearch(r.q)}" target="_blank">📍 ${r.l}</a>` : `<span class="${cls}">${r.l}</span>`;
-  }).join('');
-  const dirUrl = mapsDirections(d.route);
-  const dirBtn = dirUrl ? `<a class="btn-directions" href="${dirUrl}" target="_blank">🗺 用 Google Maps 開啟今日路線</a>` : '';
-  const embedUrl = dayEmbedUrl(d.route);
-  const embedHtml = embedUrl ? `<div class="day-map-embed"><iframe src="${embedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>` : '';
-  const rowsHtml = d.rows.map(r=>{
-    const wm = whoMeta[r.who];
-    const pin = r.loc ? ` <a class="row-map" href="${mapsSearch(r.loc)}" target="_blank" title="開 Google Maps">📍</a>` : '';
-    const web = r.web ? ` <a class="row-web" href="${r.web}" target="_blank" title="官方網站介紹">🔗</a>` : '';
-    return `<tr><td class="time">${r.t}</td><td><span class="who ${wm.cls}" title="${r.who}">${wm.icon}</span></td><td>${r.a}${pin}${web}</td><td class="note">${r.n||''}</td></tr>`;
-  }).join('');
+days.forEach(day => {
   const sec = document.createElement('section');
-  sec.className = 'slide paper';
-  sec.id = 's-day'+d.num;
-  sec.setAttribute('data-label', 'Day '+d.num);
-  sec.innerHTML = `
-    <span class="page-index" data-auto></span>
-    <div class="day-head">
-      <div class="day-badge"><small>DAY</small>${d.num}${d.date?`<span class="dbdate">${d.date}</span>`:''}</div>
-      <div class="day-title-wrap">
-        <h2>${d.title}</h2>
-        <div class="mood-tags"><span class="mood-tag" style="background:${mm.color};">${mm.label}</span></div>
-        <div class="drive-total">🚗 今日總車程：${d.totalDrive}</div>
-      </div>
-    </div>
-    ${d.guide ? `<div class="day-guide"><span>📖 攻略</span>${d.guide.map(g=>`<a href="${g.url}" target="_blank" rel="noopener">${g.label}</a>`).join('')}</div>` : ''}
-    <div class="route-chips">${routeHtml}</div>
-    <div class="day-route-actions">${dirBtn}</div>
-    ${embedHtml}
-    <table class="sched">
-      <thead><tr><th>時間</th><th>who</th><th>行程內容</th><th>地點 / 小提示</th></tr></thead>
-      <tbody>${rowsHtml}</tbody>
-    </table>
-    ${d.eats ? `<div class="day-eats"><div class="de-label">🍽 食乜好 · 順路必食 REMARK</div>${d.eats.map(e=>{
-      const name = e.q ? `<a href="${mapsSearch(e.q)}" target="_blank">${e.n}</a>` : `<span class="${e.warn?'warn':''}">${e.n}</span>`;
-      const bk = e.book ? `<a class="resv-btn" href="${e.book}" target="_blank" rel="noopener">📅 訂位</a>` : '';
-      return `<div class="de-row"><span class="ic">${e.ic||'🍜'}</span><span>${name}${bk}${e.note?` — ${e.note}`:''}</span></div>`;
-    }).join('')}</div>` : ''}
-    <div class="day-foot"><span class="lbl">住宿</span> ${d.hotel}</div>
-    <div class="day-comment" data-day="Day ${d.num}">
-      <div class="dc-label">📝 家庭留言 / 太太備註</div>
-      <textarea class="dc-text" placeholder="喺度寫低想法、想食咩、要訂咩…"></textarea>
-      <div class="dc-actions"><button class="dc-save" type="button">儲存</button><span class="dc-status"></span></div>
-    </div>
-  `;
+  sec.className = 'slide paper day-section';
+  sec.id = 's-day' + day.num;
+  sec.dataset.day = day.num;
+  sec.dataset.label = 'Day ' + day.num;
+  sec.hidden = true;
+  const eats = (day.eats || []).map(e => '<div class="de-row"><span class="ic">' + escapeHtml(e.ic || '🍜') + '</span><span>' +
+    (e.q ? '<a href="' + escapeHtml(mapsSearch(e.q)) + '" target="_blank" rel="noopener">' + escapeHtml(e.n) + '</a>' : escapeHtml(e.n)) +
+    (e.book ? ' <a class="resv-btn" href="' + escapeHtml(e.book) + '" target="_blank" rel="noopener">📅 訂位</a>' : '') +
+    (e.note ? ' — ' + escapeHtml(e.note) : '') + '</span></div>').join('');
+  sec.innerHTML = '<div class="day-head"><div class="day-badge"><small>DAY</small>' + day.num + '<span class="dbdate">' + escapeHtml(day.date) + '</span></div>' +
+    '<div class="day-title-wrap"><h2>' + escapeHtml(day.title) + '</h2><div class="day-foot">🏨 ' + escapeHtml(day.hotel) + '</div></div></div>' +
+    '<div class="day-toolbar"><p>按時間／內容編輯 · 拖住 ⠿ 排序<br>修改自動儲存到此裝置；排序唔會自動改時間。</p><button type="button" data-action="reset">還原此日</button></div>' +
+    '<div class="stop-list" aria-label="Day ' + day.num + ' 行程"></div>' +
+    '<details class="day-extra"><summary>🗺 路線與車程</summary><div class="day-extra-body"><div class="drive-total">原規劃：' + escapeHtml(day.totalDrive) + '；修改後請按導航覆核。</div><div class="day-route-actions"></div><div class="route-chips"></div><div class="day-map-embed"><iframe title="Day ' + day.num + ' 路線地圖" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></details>' +
+    (day.guide ? '<details class="day-extra"><summary>📖 活動攻略</summary><div class="day-extra-body day-guide">' + day.guide.map(g => '<a href="' + escapeHtml(g.url) + '" target="_blank" rel="noopener">' + escapeHtml(g.label) + '</a>').join('') + '</div></details>' : '') +
+    (eats ? '<details class="day-extra"><summary>🍽 餐飲與備選</summary><div class="day-extra-body day-eats">' + eats + '</div></details>' : '') +
+    '<details class="day-extra"><summary>📝 家庭留言</summary><div class="day-extra-body"><div class="day-comment" data-day="Day ' + day.num + '"><textarea class="dc-text" aria-label="Day ' + day.num + ' 家庭留言" placeholder="想食咩、要訂咩…"></textarea><div class="dc-actions"><button class="dc-save" type="button">儲存到 Notion</button><span class="dc-status"></span></div></div></div></details>';
   daysContainer.appendChild(sec);
+  renderRows(day);
+  sec.querySelectorAll('details.day-extra').forEach(details => details.addEventListener('toggle', () => {
+    if (details.open) {
+      const frame = details.querySelector('iframe');
+      if (frame?.dataset.src && !frame.hasAttribute('src')) frame.src = frame.dataset.src;
+    }
+  }));
 });
+
+const shortcuts = document.querySelector('.day-shortcuts');
+days.forEach(day => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.dataset.day = day.num;
+  button.innerHTML = 'Day ' + day.num + '<span>' + escapeHtml(day.date.replace('・',' ')) + '</span>';
+  button.addEventListener('click', () => selectDay(day.num, true));
+  shortcuts.appendChild(button);
+});
+function todayDay() {
+  const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const get = name => parts.find(p => p.type === name).value;
+  const date = get('year') + '-' + get('month') + '-' + get('day');
+  if (date < '2026-10-07') return {num:1, message:'旅程未開始，先顯示 Day 1（10/7）'};
+  if (date > '2026-10-12') return {num:6, message:'旅程已結束，顯示 Day 6（10/12）'};
+  return {num:Number(get('day')) - 6, message:'已跳到今日行程（日本時間）'};
+}
+let selectedDay;
+function selectDay(num, scroll = false) {
+  if (!days.some(d => d.num === num)) return;
+  if (dragState) finishDrag(true);
+  selectedDay = num;
+  daysContainer.querySelectorAll('.day-section').forEach(sec => { sec.hidden = Number(sec.dataset.day) !== num; });
+  shortcuts.querySelectorAll('button').forEach(button => {
+    if (Number(button.dataset.day) === num) button.setAttribute('aria-current','date');
+    else button.removeAttribute('aria-current');
+  });
+  try { localStorage.setItem(SELECTED_DAY_KEY, String(num)); } catch {}
+  if (scroll) {
+    shortcuts.querySelector('[aria-current]').scrollIntoView({block:'nearest',inline:'nearest'});
+    document.getElementById('s-day' + num).scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+document.getElementById('todayBtn').addEventListener('click', () => {
+  const today = todayDay();
+  selectDay(today.num, true);
+  announce(today.message);
+});
+function dayForElement(element) {
+  return days.find(d => d.num === Number(element.closest('.day-section').dataset.day));
+}
+function moveStop(day, id, delta) {
+  const order = rowsForDay(day).map(r => r.id);
+  const index = order.indexOf(id);
+  const next = index + delta;
+  if (index < 0 || next < 0 || next >= order.length) return;
+  rememberUndo();
+  [order[index],order[next]] = [order[next],order[index]];
+  editEntry(day).order = order;
+  renderRows(day);
+  document.getElementById('s-day' + day.num).querySelector('[data-id="' + id + '"] .drag-handle').focus({preventScroll:true});
+  writeEdits('排序已儲存；時間保持原值');
+}
+const dialog = document.getElementById('editDialog');
+let editingRow = null;
+function openEditor(day, id) {
+  const row = rowsForDay(day).find(r => r.id === id);
+  if (!row) return;
+  editingRow = {day,id};
+  for (const field of editableFields) document.getElementById('field-' + field).value = row[field] || '';
+  document.getElementById('editError').textContent = '';
+  dialog.showModal();
+  document.getElementById('field-t').focus();
+}
+document.getElementById('cancelEdit').addEventListener('click', () => dialog.close());
+document.getElementById('editForm').addEventListener('submit', event => {
+  event.preventDefault();
+  if (!editingRow) return;
+  const fields = {};
+  for (const field of editableFields) fields[field] = document.getElementById('field-' + field).value.trim();
+  if (!fields.a) { document.getElementById('editError').textContent = '請填寫行程內容。'; return; }
+  rememberUndo();
+  editEntry(editingRow.day).overrides[editingRow.id] = fields;
+  renderRows(editingRow.day);
+  dialog.close();
+  writeEdits();
+});
+daysContainer.addEventListener('click', event => {
+  const action = event.target.closest('[data-action]');
+  if (!action || dragState?.moved) return;
+  const day = dayForElement(action);
+  const card = action.closest('.stop-card');
+  if (action.dataset.action === 'edit') openEditor(day,card.dataset.id);
+  if (action.dataset.action === 'up') moveStop(day,card.dataset.id,-1);
+  if (action.dataset.action === 'down') moveStop(day,card.dataset.id,1);
+  if (action.dataset.action === 'reset' && confirm('還原 Day ' + day.num + ' 嘅時間、內容及排序？可用「復原」撤銷。')) {
+    rememberUndo();
+    delete savedEdits.days[day.num];
+    renderRows(day);
+    writeEdits('此日已還原；可按「復原」撤銷');
+  }
+});
+daysContainer.addEventListener('keydown', event => {
+  const handle = event.target.closest('.drag-handle');
+  if (!handle || !['ArrowUp','ArrowDown'].includes(event.key)) return;
+  event.preventDefault();
+  moveStop(dayForElement(handle),handle.closest('.stop-card').dataset.id,event.key === 'ArrowUp' ? -1 : 1);
+});
+
+let dragState = null;
+let dragFrame;
+function reorderAtPointer() {
+  if (!dragState?.moved) return;
+  const {card,list,x,y} = dragState;
+  const target = document.elementFromPoint(x,y)?.closest('.stop-card');
+  if (!target || target === card || target.parentElement !== list) return;
+  const middle = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2;
+  if (y < middle) list.insertBefore(card,target);
+  else list.insertBefore(card,target.nextSibling);
+}
+function dragScroll() {
+  if (!dragState) return;
+  if (dragState.moved) {
+    const top = document.getElementById('dayNav').getBoundingClientRect().bottom + 35;
+    const bottom = innerHeight - 95;
+    const bounds = dragState.list.getBoundingClientRect();
+    if (dragState.y < top && bounds.top < top) window.scrollBy(0,-12);
+    else if (dragState.y > bottom && bounds.bottom > bottom) window.scrollBy(0,12);
+    reorderAtPointer();
+  }
+  dragFrame = requestAnimationFrame(dragScroll);
+}
+daysContainer.addEventListener('pointerdown', event => {
+  const handle = event.target.closest('.drag-handle');
+  if (!handle || !event.isPrimary || event.button !== 0) return;
+  event.preventDefault();
+  const card = handle.closest('.stop-card');
+  const day = dayForElement(card);
+  dragState = {handle,card,day,list:card.parentElement,pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,moved:false,order:rowsForDay(day).map(r=>r.id)};
+  // Capture on the stationary list: moving a captured card loses capture on touch browsers.
+  dragState.list.setPointerCapture(event.pointerId);
+  handle.focus({preventScroll:true});
+  dragFrame = requestAnimationFrame(dragScroll);
+});
+daysContainer.addEventListener('pointermove', event => {
+  if (!dragState || event.pointerId !== dragState.pointerId) return;
+  dragState.x = event.clientX;
+  dragState.y = event.clientY;
+  if (Math.hypot(event.clientX - dragState.startX,event.clientY - dragState.startY) > 5) {
+    dragState.moved = true;
+    dragState.card.classList.add('dragging');
+    reorderAtPointer();
+  }
+});
+function finishDrag(cancelled = false) {
+  if (!dragState) return;
+  const drag = dragState;
+  dragState = null;
+  cancelAnimationFrame(dragFrame);
+  if (drag.list.hasPointerCapture(drag.pointerId)) drag.list.releasePointerCapture(drag.pointerId);
+  drag.card.classList.remove('dragging');
+  const order = [...drag.list.children].map(card => card.dataset.id);
+  if (cancelled) renderRows(drag.day);
+  else if (drag.moved && order.join() !== drag.order.join()) {
+    rememberUndo();
+    editEntry(drag.day).order = order;
+    renderRows(drag.day);
+    writeEdits('排序已儲存；時間保持原值');
+  }
+}
+daysContainer.addEventListener('pointerup', event => { if (dragState?.pointerId === event.pointerId) finishDrag(); });
+daysContainer.addEventListener('pointercancel', event => { if (dragState?.pointerId === event.pointerId) finishDrag(true); });
+daysContainer.addEventListener('lostpointercapture', () => { if (dragState) finishDrag(true); });
+
+document.getElementById('undoBtn').addEventListener('click', () => {
+  if (!undoEdits) return;
+  savedEdits = undoEdits;
+  undoEdits = null;
+  days.forEach(renderRows);
+  writeEdits('已復原上一次修改');
+});
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(savedEdits,null,2)],{type:'application/json'}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'tide-log-itinerary-backup.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url),1000);
+  announce('已匯出行程修改，可在另一裝置匯入');
+});
+document.getElementById('importFile').addEventListener('change', async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+  try {
+    if (file.size > 1024 * 1024) throw new Error('檔案太大');
+    const imported = validateEdits(JSON.parse(await file.text()));
+    if (!confirm('匯入會取代此裝置嘅行程修改，是否繼續？可用「復原」撤銷。')) return;
+    rememberUndo();
+    savedEdits = imported;
+    days.forEach(renderRows);
+    writeEdits('備份已匯入');
+  } catch {
+    announce('無法匯入：請選擇此 App 匯出嘅行程備份；現有修改未被更改。',true);
+  } finally { event.target.value = ''; }
+});
+
+for (const id of ['s-overview','s-food','s-acts','s-hotels','s-tips','s-closing']) {
+  const section = document.getElementById(id);
+  const title = section.querySelector('h2').textContent;
+  const details = document.createElement('details');
+  details.className = 'support-panel';
+  const summary = document.createElement('summary');
+  summary.textContent = title;
+  const body = document.createElement('div');
+  body.className = 'panel-body';
+  while (section.firstChild) body.appendChild(section.firstChild);
+  details.append(summary,body);
+  section.appendChild(details);
+  section.classList.add('support-section');
+}
+let initialDay = todayDay().num;
+try {
+  const previous = Number(localStorage.getItem(SELECTED_DAY_KEY));
+  if (days.some(d => d.num === previous)) initialDay = previous;
+} catch {}
+selectDay(initialDay);
+let printDetails = [];
+window.addEventListener('beforeprint', () => {
+  printDetails = [...document.querySelectorAll('details')].map(element => ({element,open:element.open}));
+  printDetails.forEach(({element}) => { element.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  printDetails.forEach(({element,open}) => { element.open = open; });
+});
+
 
 // ---- 每日家庭留言（sync 上 Notion）----
 (function initComments(){
@@ -734,30 +1176,6 @@ hotels.forEach(h=>{
     <ul class="hotel-tips">${h.tips.map(t=>`<li>${t}</li>`).join('')}</ul>`;
   hotelContainer.appendChild(card);
 });
-
-const slides = Array.from(document.querySelectorAll('.slide'));
-slides.forEach((s,i)=>{
-  const idx = s.querySelector('[data-auto]');
-  if(idx) idx.textContent = String(i+1).padStart(2,'0') + ' / ' + slides.length;
-});
-const nav = document.getElementById('dotNav');
-slides.forEach((s)=>{
-  const btn = document.createElement('button');
-  btn.setAttribute('data-label', s.getAttribute('data-label') || 'Section');
-  btn.addEventListener('click', ()=> s.scrollIntoView({behavior:'smooth'}));
-  nav.appendChild(btn);
-});
-const dotBtns = Array.from(nav.children);
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const idx = slides.indexOf(e.target);
-      dotBtns.forEach(b=>b.classList.remove('active'));
-      if(dotBtns[idx]) dotBtns[idx].classList.add('active');
-    }
-  });
-}, {threshold:0.55});
-slides.forEach(s=>io.observe(s));
 
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
 </script>
