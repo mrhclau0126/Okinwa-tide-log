@@ -41,8 +41,12 @@ p{margin:0;}
 .chip{font-family:var(--mono); font-size:.76rem; border:1px solid var(--linedark); border-radius:100px; padding:.4rem .9rem; color:#DCEDE8; background:rgba(255,255,255,.03);}
 .flight-card{border:1.5px solid var(--reef); border-radius:10px; background:var(--ink2); padding:1rem 1.3rem; max-width:38rem; margin-bottom:1rem;}
 .flight-card .lead{font-size:.7rem; color:var(--tide); font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem;}
-.flight-row{display:flex; justify-content:space-between; font-size:.85rem; color:#EAF2EC; padding:.15rem 0;}
+.flight-row{display:flex; justify-content:space-between; gap:.6rem; font-size:.85rem; color:#EAF2EC; padding:.15rem 0;}
+.flight-row>span{flex-shrink:0;}
 .flight-row b{color:#fff;}
+.flight-row b,.meta-row span{min-width:0; overflow-wrap:anywhere;}
+.booking-note{font-size:.8rem; line-height:1.5; color:#F3C7B8; margin-top:.65rem;}
+.meta-row a{color:#9FE0D8;}
 .meta-card{border:1.5px solid var(--coral); border-radius:10px; background:var(--ink2); padding:1rem 1.3rem; max-width:38rem;}
 .meta-card .lead{font-size:.7rem; color:var(--tide); font-family:var(--mono); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem;}
 .meta-row{display:flex; gap:.6rem; font-size:.9rem; padding:.22rem 0; color:#EAF2EC;}
@@ -186,6 +190,8 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 @media (max-width:780px){
   .overview-grid,.card-grid,.tips-grid{grid-template-columns:1fr;}
   .slide{padding:8vh 6vw;}
+  table.sched td.time{white-space:normal; min-width:5.5em; width:5.5em; font-size:.78rem;}
+  table.sched td.note{overflow-wrap:anywhere;}
   #dotNav{display:none;}
 }
 @media print{
@@ -204,7 +210,7 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 <button id="printBtn" onclick="window.print()">⬇ 匯出/列印</button>
 
 <section class="slide dark" data-label="封面" id="s-cover">
-  <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · FAMILY ROAD TRIP LOG · v3 (OCT)</span></div>
+  <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · FAMILY ROAD TRIP LOG · v4 (BOOKINGS)</span></div>
   <h1>沖繩 6 天 5 夜<br>親子自駕完美平衡行程</h1>
   <p class="sub">兩地駐點：北部（JUNGLIA・青之洞窟浮潛） × 那霸（美らSUN沙灘・浦添大公園・teamLab・PARCO・北谷花火）</p>
   <div class="chip-row">
@@ -214,16 +220,21 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
     <span class="chip">🚗 只搬1次酒店</span>
   </div>
   <div class="flight-card">
-    <div class="lead">✈️ 已改期航班（10月）</div>
-    <div class="flight-row"><span>去程</span><b>2026/10/07（三）香港09:05 → 沖繩12:55　<span class="edit" contenteditable="true">航班號待填</span></b></div>
-    <div class="flight-row"><span>回程</span><b>2026/10/12（一）沖繩13:55 → 香港15:50　<span class="edit" contenteditable="true">航班號待填</span></b></div>
+    <div class="lead">✈️ 香港航空 · 已核對改期後十月航班</div>
+    <div class="flight-row"><span>去程</span><b>2026/10/07（三）HX676 · 香港09:05 → 沖繩12:55<br>香港國際機場 T2 → 那霸機場 · 直航2小時50分</b></div>
+    <div class="flight-row"><span>回程</span><b>2026/10/12（一）HX679 · 沖繩13:55 → 香港15:50<br>那霸機場 → 香港國際機場 T1 · 直航2小時55分</b></div>
+    <p class="booking-note">以你提供嘅改期後航班資料為準；兩程均為 A320-200、經濟艙「超值飛」。以上均為各地當地時間，日本比香港快1小時。機票PDF係八月舊行程，唔作本次出行憑證；出發前再核對航空公司通知及航站樓。</p>
   </div>
   <div class="meta-card">
-    <div class="lead">✏️ 以下資料可直接點擊填寫</div>
+    <div class="lead">✓ 已核對酒店截圖及十月租車憑證</div>
     <div class="meta-row"><b>同行成員</b><span class="edit" contenteditable="true">爸爸 · 媽媽 · 3歲寶寶（請自行增減）</span></div>
-    <div class="meta-row"><b>租車預約</b><span class="edit" contenteditable="true">⚠️ 原編號 202601583244（8月）要改期：新行程 10/7 約14:00 取車 · 10/12 約11:15 還車</span></div>
-    <div class="meta-row"><b>北部酒店</b><span class="edit" contenteditable="true">已確認 ✓ Oriental Hotel 沖繩リゾート&スパ（名護喜瀬）10/7–10/9・2晚（記得正式落訂）</span></div>
-    <div class="meta-row"><b>那霸酒店</b><span class="edit" contenteditable="true">已確認 ✓ Loisir Hotel & Spa Tower 那霸（旭橋/西町）10/9–10/12・3晚（記得正式落訂；親子建議訂本館）</span></div>
+    <div class="meta-row"><b>租車預約</b><span>OKS Rentacar · UBH323555 · Nissan Note e-POWER 2018 指定車款（5座／2件行李）<br>10/7 13:00取車 → 10/12 12:00還車（日本時間）</span></div>
+    <div class="meta-row"><b>接送集合</b><span>憑證指示：那霸機場國內線3樓6號門，認 OKS 標誌接駁車／工作人員；文字為 AI 翻譯，出發前向店方核實。<a href="tel:+818064958648">+81-80-6495-8648</a></span></div>
+    <div class="meta-row"><b>取還車店</b><span><a href="https://www.google.com/maps/search/?api=1&amp;query=沖縄県糸満市潮平794-2" target="_blank" rel="noopener">沖繩縣糸滿市潮平794-2</a> · 營業08:00–19:00</span></div>
+    <div class="meta-row"><b>租車付款</b><span>憑證列線上付款 HK$1,230；到店付款 ¥10,000（實際以門市為準）；總額參考 HK$1,729。ETC費用按門市結帳，滿油取還車。</span></div>
+    <div class="meta-row"><b>北部酒店</b><span>已付款並確認 ✓ Ala MAHAINA CONDO HOTEL（本部町）10/7–10/9・2晚・1間房<br>訂單1771809270 · 外部房型編號6031648533 · 15:00入住／11:00退房</span></div>
+    <div class="meta-row"><b>那霸酒店</b><span>已付款並確認 ✓ LOISIR HOTEL NAHA（本館）10/9–10/12・3晚・1間房<br>訂單1771807276 · 外部房型編號6190325311</span></div>
+    <p class="booking-note">⚠️ 取車預約13:00，但HX676於12:55落機，未計入境、行李及接駁時間，需先同店方確認等候及實際取車安排。憑證列訂單不可更改，請向店方／Klook查詢處理方式。已選增高座椅標示適合4–7歲、15–30kg；如同行仍係3歲寶寶，需按身高體重向店方確認合適嘅幼童安全座椅。</p>
   </div>
 </section>
 
@@ -237,14 +248,14 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   <div class="map-embed">
     <iframe src="https://maps.google.com/maps?q=%E6%B2%96%E7%B8%84%E6%9C%AC%E5%B3%B6&z=10&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
-  <div class="map-hint">📍 每個地點名稱都可以點擊，直接開 Google Maps；每日行程入面重有點對點嘅車程時間標示</div>
+  <div class="map-hint">📍 每個地點名稱都可以點擊開 Google Maps；車程及活動時間均為規劃估算，未查即時路況，請以當日導航及已確認預約為準。</div>
   <div class="overview-grid">
     <div>
       <div class="route-map">
         <div class="route-item" style="color:var(--tide);">
           <span class="dot" style="background:var(--tide);"></span>
-          <h3><a href="https://www.google.com/maps/search/?api=1&query=JUNGLIA+OKINAWA" target="_blank">恩納／北部</a> <span class="daytag">Day 1–3</span></h3>
-          <div class="sub">恩納海岸 · JUNGLIA · 真栄田岬青之洞窟浮潛</div>
+          <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Ala+MAHAINA+CONDO+HOTEL" target="_blank">本部町／北部</a> <span class="daytag">Day 1–3</span></h3>
+          <div class="sub">Ala MAHAINA駐點 · JUNGLIA · 南下真栄田岬青之洞窟浮潛</div>
         </div>
         <div class="route-item" style="color:var(--reef);">
           <span class="dot" style="background:var(--reef);"></span>
@@ -266,15 +277,15 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
     </div>
     <div class="hotel-strategy">
       <div class="strategy-card">
-        <div class="tag">前 2 晚 ✓ 已確認</div>
-        <h3>名護喜瀬 · Oriental Hotel 沖繩リゾート&スパ</h3>
-        <p>Day 1 – Day 2　JUNGLIA官方酒店（車程約30分），沖繩最大級170米花園泳池＋兒童滑水梯＋大浴場桑拿；去真栄田岬浮潛約35分，部瀬名海中公園就喺隔籬。<a href="https://www.google.com/maps/search/?api=1&query=%E3%82%AA%E3%83%AA%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%AB%E3%83%9B%E3%83%86%E3%83%AB%20%E6%B2%96%E7%B8%84%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%26%E3%82%B9%E3%83%91" target="_blank">在地圖上查看</a></p>
+        <div class="tag">前 2 晚 ✓ 已付款並確認</div>
+        <h3>本部町 · Ala MAHAINA CONDO HOTEL</h3>
+        <p>Day 1 – Day 2（10/7入住、10/9退房）　已訂1間房；15:00起入住、11:00前退房。本部町山川1421-1；Day 3去真栄田岬需預留約1小時15分至1小時30分，較原駐點遠，安排提早出發。<a href="https://www.google.com/maps/search/?api=1&amp;query=Ala+MAHAINA+CONDO+HOTEL" target="_blank" rel="noopener">在地圖上查看</a></p>
       </div>
       <div class="strategy-arrow">↓ Day 3 朝早浮潛完直落那霸，唯一一次搬酒店 ↓</div>
       <div class="strategy-card">
-        <div class="tag">後 3 晚 ✓ 已確認</div>
-        <h3>那霸 · Loisir Hotel &amp; Spa Tower（旭橋/西町）</h3>
-        <p>Day 3 – Day 5　雙天然溫泉「三重城溫泉」＋室內溫水泳池全年開，親子友善；機場約10分鐘，Jackie牛排行路7分。<a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%AF%E3%82%B8%E3%83%BC%E3%83%AB%E3%83%9B%E3%83%86%E3%83%AB%E9%82%A3%E8%A6%87" target="_blank">在地圖上查看</a></p>
+        <div class="tag">後 3 晚 ✓ 已付款並確認</div>
+        <h3>那霸 · LOISIR HOTEL NAHA（本館）</h3>
+        <p>Day 3 – Day 5（10/9入住、10/12退房）　已訂1間房；地址那霸市西3-2-1。截圖確認係 LOISIR HOTEL NAHA，未見 Spa Tower 預訂；入住時間、早餐及溫泉／泳池使用權益以入住憑證為準。<a href="https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%AF%E3%82%B8%E3%83%BC%E3%83%AB%E3%83%9B%E3%83%86%E3%83%AB%E9%82%A3%E8%A6%87" target="_blank">在地圖上查看</a></p>
       </div>
       <div class="strategy-card" style="border-color:var(--coral);">
         <p style="color:#F3C7B8; font-size:.85rem;">✏️ 10月係沖繩颱風尾季：浮潛、沙灘、花火全部睇天氣，出發前一週留意預報；如有需要，Day 3浮潛可同Day 5對調，沙灘日可轉室內（DMM水族館＋teamLab）。</p>
@@ -318,12 +329,12 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
   <span class="page-index" data-auto></span>
   <div class="section-head"><span class="eyebrow">Field Notes</span><h2>實用小貼士</h2></div>
   <div class="tips-grid">
-    <div class="tip-item"><span class="num">01</span><p><b>⚠️ 行程已改期（10/7–10/12）：</b>原8月租車預約 <b>202601583244</b> 記得上網改期或取消重book（新行程約10/7 14:00取車、10/12 11:15還車），並confirm幼兒汽座；8月嘅酒店/餐廳訂位都要逐一cancel。</p></div>
+    <div class="tip-item"><span class="num">01</span><p><b>⚠️ 預訂核對（10/7–10/12）：</b>酒店已付款並確認；航班去程HX676、回程HX679。OKS租車預約 <b>UBH323555</b> 為10/7 13:00取車、10/12 12:00還車；取車時間距12:55落機只差5分鐘，需向店方確認。已選增高座椅適合4–7歲／15–30kg，3歲寶寶需確認合適安全座椅。</p></div>
     <div class="tip-item"><span class="num">02</span><p><b>Pink Mermaid浮潛：</b>3人以上同行每人約6,500円，含裝備船票保險＋免費水下拍攝，建議提早於官網預約。</p></div>
     <div class="tip-item"><span class="num">03</span><p><b>JUNGLIA抽籤攻略：</b>刺激項目靠官方App「整理券抽籤」（一日幾輪，一入園即抽第一輪中籤率最高），抽唔中可買Premium Pass（約¥2,600–3,700/項）保底；3歲重點玩 Finding Dinosaurs（無限制、好評No.1）＋園內小火車＋三場show；Dinosaur Safari要4歲+95cm玩唔到，爸媽可用Child Switch輪流玩。Show/煙火時間每月月末公佈，以App為準。</p></div>
     <div class="tip-item"><span class="num">04</span><p><b>北谷煙火：</b>シーポートちゃたんカーニバル多數逢週六放煙火，10/10啱啱係週六，出發前於官網confirm當日場次。</p></div>
     <div class="tip-item"><span class="num">05</span><p><b>10月天氣：</b>沖繩10月仲有28–30度、落水冇問題，防曬照帶；同時係颱風尾季，出發前一週留意預報——浮潛/沙灘/花火如受天氣影響，Day 3浮潛可同Day 5對調，沙灘日可轉DMM水族館＋teamLab室內組合。</p></div>
-    <div class="tip-item"><span class="num">06</span><p><b>還車提醒：</b>Day 6係13:55起飛，規定起飛前1.5小時（12:25前）還車，建議11:15前到店，途中加滿油；還完店方有接駁去機場，約5分鐘。</p></div>
+    <div class="tip-item"><span class="num">06</span><p><b>還車提醒：</b>訂單還車期限10/12 12:00（日本時間），地點糸滿市潮平794-2。HX679於13:55起飛，規劃11:00到店、11:45到機場，較起飛早2小時10分；還車及接駁合共預留45分，實際班次向OKS確認。滿油還車，保留加油收據及油量表相片；護照、駕照正本、1949年公約國際駕照正本及列印租車憑證一齊帶備。</p></div>
     <div class="tip-item"><span class="num">07</span><p><b>北部食飯策略：</b>北部名店大多11:00開、17:00前收工，而且好多逢週三定休（きしもと本店／花人逢／Captain Kangaroo）——名店留返午餐食，晚餐靠飯店或燒肉店最實際。</p></div>
     <div class="tip-item"><span class="num">08</span><p><b>排隊＋訂位：</b>排隊三寶（きしもと食堂／暖暮／ポーたま）開店前15–30分鐘到最穩；燒肉店（琉球の牛恩納／那霸／北谷）一定要提早TableCheck預約。帶住BB盡量避開正午戶外排隊。</p></div>
     <div class="tip-item"><span class="num">09</span><p><b>訂位App：</b>有「📅 訂位」掣嘅餐廳可以直接網上book（HotPepper／TableCheck）；淨係收電話預約嘅店，可以用 <a href="https://autoreserve.com/" target="_blank" rel="noopener">AutoReserve</a> App——AI幫你打電話去日本餐廳book台（有中文介面，成功先收少量手續費，唔使自己講日文）。</p></div>
@@ -349,49 +360,50 @@ table.sched td.note{color:var(--text-soft); font-size:.82rem; font-style:italic;
 
 <script>
 const days = [
-  {num:1, mood:'move', date:'10/7・三', title:'12:55落機 → 途經AEON買水果 → 入住Oriental · 花園泳池+大浴場',
-   totalDrive:'車程約1小時25分（分段：機場→AEON約40分，AEON→名護喜瀬約45分）',
+  {num:1, mood:'move', date:'10/7・三', title:'HX676 12:55落機 → OKS取車 → AEON補給 → 入住Ala MAHAINA',
+   totalDrive:'估算約2–2.5小時（機場接駁至糸滿另計；OKS→AEON約45–60分，AEON→本部町約75–90分）',
    route:[
      {l:'那霸機場',q:'那覇空港'},
-     {leg:'約40分鐘'},
+     {leg:'接駁時間待店方確認'},
+     {l:'OKS Rentacar（取車）',q:'沖縄県糸満市潮平794-2'},
+     {leg:'約45–60分鐘'},
      {l:'AEON MALL 沖繩來客夢',q:'イオンモール沖縄ライカム'},
-     {leg:'約1小時'},
-     {l:'Oriental Hotel（喜瀬）',q:'オリエンタルホテル 沖縄リゾート&スパ'},
+     {leg:'約75–90分鐘'},
+     {l:'Ala MAHAINA（本部町）',q:'Ala MAHAINA CONDO HOTEL'},
    ],
-   hotel:'Oriental Hotel 沖繩リゾート&スパ（名護喜瀬，已確認 ✓ Day 1–2）',
+   hotel:'Ala MAHAINA CONDO HOTEL（本部町，已付款並確認 ✓ 10/7–10/9・2晚）',
    rows:[
-    {t:'12:55', who:'move', a:'抵達那覇機場（香港09:05起飛）', n:'航班號請自行補返；⚠️ 原8月租車預約202601583244記得改期並confirm幼兒汽座', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
-    {t:'13:30', who:'move', a:'領行李 → 國內線出口 → 11號接送巴士站搭接駁車去租車店（約1.5km）', n:'', loc:'那覇空港'},
-    {t:'14:15', who:'move', a:'租車店辦手續、裝汽座、取車出發', n:'檢查車身花痕影相留底', loc:'那覇空港 レンタカー'},
-    {t:'15:00', who:'family', a:'AEON MALL 沖繩來客夢：超市買水果、飲用水、零食等日用品（車程約40分）', n:'商場內San-A超市選擇多，買定幾日消夜；唔好留太耐，今日重點係酒店設施', loc:'イオンモール沖縄ライカム'},
-    {t:'16:00', who:'move', a:'出發前往 Oriental Hotel（車程約45分，經沖繩道）', n:'寶寶車上補眠，落車啱啱瞓醒有精神玩', loc:'オリエンタルホテル 沖縄リゾート&スパ'},
-    {t:'16:45', who:'move', a:'抵達 Oriental Hotel 辦理入住，即刻落樓享用設施', n:'沖繩最大級170米花園泳池＋兒童滑水梯（開放至10月底，book前confirm）；室內大浴場カラカラ＋桑拿', loc:'オリエンタルホテル 沖縄リゾート&スパ', web:'https://www.okinawa.oriental-hotels.com/'},
-    {t:'17:00', who:'family', a:'親子花園泳池時間 → 輪流浸大浴場', n:'BB玩滑水梯放電，晚啲好瞓；爸媽輪流歎浴場桑拿', loc:'オリエンタルホテル 沖縄リゾート&スパ'},
-    {t:'19:00', who:'family', a:'晚餐：飯店內餐廳，或大家うふやー（車程約15分）', n:'大家建議預約；食完返飯店早唞，聽日JUNGLIA全日', loc:'百年古家 大家 名護'},
+    {t:'12:55', who:'move', a:'HX676抵達那覇機場（香港T2 09:05起飛）', n:'⚠️ OKS訂單13:00取車，落機後只得5分鐘，出發前必須確認店方等候安排，唔可以當作已能準時取車', loc:'那覇空港', web:'https://www.naha-airport.co.jp/'},
+    {t:'13:30–14:00（估）', who:'move', a:'入境、領行李 → 國內線3樓6號門集合 → OKS接駁', n:'憑證為AI翻譯指示，先向店方核實集合點及班次；認OKS標誌，電話+81-80-6495-8648', loc:'那覇空港'},
+    {t:'14:00–14:45（估）', who:'move', a:'OKS租車店辦手續、確認合適安全座椅、取車', n:'預約UBH323555；Nissan Note e-POWER 2018；護照、駕照正本、紙本IDP及列印憑證帶齊；到店付款¥10,000以門市為準，車身花痕影相留底', loc:'沖縄県糸満市潮平794-2'},
+    {t:'15:30–16:00（估）', who:'family', a:'AEON MALL 沖繩來客夢：超市買水果、飲用水、零食（車程約45–60分）', n:'以快速補給為主；如取車延誤就跳過商場，直接北上飯店', loc:'イオンモール沖縄ライカム'},
+    {t:'16:00（估）', who:'move', a:'出發前往 Ala MAHAINA（本部町，車程約75–90分）', n:'寶寶車上補眠；入住時間視取車及路況順延', loc:'Ala MAHAINA CONDO HOTEL'},
+    {t:'17:15–17:30（估）', who:'move', a:'抵達 Ala MAHAINA 辦理入住', n:'已付款並確認，訂單1771809270；15:00起入住，10/9 11:00前退房；設施及早餐權益以入住憑證為準', loc:'沖縄県国頭郡本部町山川1421-1'},
+    {t:'18:00（估）', who:'family', a:'飯店休息、附近散步及晚餐', n:'第一日唔再安排長途繞路，食完早唞，聽日JUNGLIA全日', loc:'Ala MAHAINA CONDO HOTEL'},
    ],
    eats:[
-    {ic:'🐷', n:'大家 うふやー', q:'百年古家 大家 名護', book:'https://www.hotpepper.jp/strJ000114346/', note:'百年古民家阿古豬料理，離喜瀬車程約15分，HotPepper訂位'},
-    {ic:'⚠️', n:'今日係週三', q:'', note:'Captain Kangaroo／きしもと本店等北部名店週三休——今晚食大家或飯店最穩', warn:true},
-    {ic:'🍱', n:'AEON熟食＋水果', q:'イオンモール沖縄ライカム', note:'買定消夜生果，浸完大浴場喺房慢慢嘆'},
+    {ic:'🍽', n:'飯店或本部町附近晚餐', q:'Ala MAHAINA CONDO HOTEL', note:'以已訂飯店為中心，避免再繞去恩納／喜瀬；餐廳營業時間及是否需訂位先確認'},
+    {ic:'⚠️', n:'今日係週三', q:'', note:'北部部分名店週三休，出發前核對營業時間', warn:true},
+    {ic:'🍱', n:'AEON熟食＋水果', q:'イオンモール沖縄ライカム', note:'取車順利先停商場；如延誤，改到飯店附近補給'},
    ]},
   {num:2, mood:'explore', date:'10/8・四', title:'JUNGLIA 全日攻略 × 抽籤策略 × 煙火',
-   totalDrive:'車程約1小時（來回，經許田IC）',
+   totalDrive:'估算車程約1–1.5小時（本部町↔JUNGLIA，各約30–45分，以導航為準）',
    guide:[
      {label:'官方家庭指南', url:'https://junglia.jp/family-guide'},
      {label:'官方營業時間/日曆', url:'https://junglia.jp/opening-hours'},
      {label:'KKday 香港全攻略', url:'https://www.kkday.com/zh-hk/blog/123079/junglia-okinawa-guide'},
    ],
    route:[
-     {l:'Oriental Hotel（喜瀬）',q:'オリエンタルホテル 沖縄リゾート&スパ'},
-     {leg:'約30分鐘'},
+     {l:'Ala MAHAINA（本部町）',q:'Ala MAHAINA CONDO HOTEL'},
+     {leg:'約30–45分鐘'},
      {l:'JUNGLIA(今歸仁)',q:'JUNGLIA OKINAWA'},
-     {leg:'約30分鐘'},
-     {l:'Oriental Hotel（喜瀬）',q:'オリエンタルホテル 沖縄リゾート&スパ'},
+     {leg:'約30–45分鐘'},
+     {l:'Ala MAHAINA（本部町）',q:'Ala MAHAINA CONDO HOTEL'},
    ],
-   hotel:'Oriental Hotel 沖繩リゾート&スパ（JUNGLIA官方酒店）',
+   hotel:'Ala MAHAINA CONDO HOTEL（已付款並確認 ✓ 第2晚）',
    rows:[
-    {t:'08:30', who:'family', a:'起身、飯店早餐', n:'阿仔8:30–9:00起身啱啱好，唔使趕', loc:'オリエンタルホテル 沖縄リゾート&スパ'},
-    {t:'09:05', who:'move', a:'出發前往 JUNGLIA（車程約30分），目標開園前20分鐘到閘', n:'📱 出發前裝定官方App＋綁定門票；Oriental係JUNGLIA官方酒店，book時留意有冇門票/接駁優惠；開園時間以官方日曆為準', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
+    {t:'08:00', who:'family', a:'起身、早餐', n:'早餐是否包含以入住憑證為準；按當日開園時間調整出發', loc:'Ala MAHAINA CONDO HOTEL'},
+    {t:'09:00（估）', who:'move', a:'由本部町出發前往 JUNGLIA（車程約30–45分）', n:'📱 出發前裝定官方App＋綁定門票；另預留泊車及步行時間，開園時間以官方日曆為準', loc:'JUNGLIA OKINAWA', web:'https://junglia.jp/'},
     {t:'10:00', who:'family', a:'一入園即刻喺App抽上午場「整理券」（刺激項目全部靠抽籤或Premium Pass）', n:'🎯 策略：抽籤一日分幾輪，第一輪中籤率最高；抽唔中就買Premium Pass（每項約¥2,600–3,700）保底', loc:'JUNGLIA OKINAWA'},
     {t:'10:15', who:'family', a:'⭐ Finding Dinosaurs（搵BB恐龍）——3歲最高評價、無年齡身高限制', n:'行叢林小徑+吊橋+山洞搵恐龍BB，親子好評No.1；正常排60–75分鐘，Premium ¥3,740直入', loc:'JUNGLIA OKINAWA'},
     {t:'11:30', who:'family', a:'午餐：早過12:00去食避開高峰（或13:00後去Wild Banquet戶外美食廣場）', n:'多間餐廳有kids plate；BB零食可以帶入園', loc:'JUNGLIA OKINAWA'},
@@ -400,33 +412,34 @@ const days = [
     {t:'16:30', who:'family', a:'Tram Tram園內小火車 / 手信店 / 或去 SPA JUNGLIA 無邊際溫泉浸吓', n:'BB瞓醒精神返；SPA門票另計，入場截至閉館前1小時', loc:'JUNGLIA OKINAWA'},
     {t:'18:00', who:'family', a:'園內晚餐', n:'', loc:'JUNGLIA OKINAWA'},
     {t:'19:00', who:'family', a:'夜間表演／煙火（如當日有場次）', n:'⚠️ 10月show/煙火時間每月月末先公佈，出發前必須用App confirm；天氣差會取消', loc:'JUNGLIA OKINAWA'},
-    {t:'19:45', who:'move', a:'返回飯店（車程約30分）', n:'寶寶車上熟睡', loc:'オリエンタルホテル 沖縄リゾート&スパ'},
+    {t:'19:45（估）', who:'move', a:'返回 Ala MAHAINA（車程約30–45分）', n:'寶寶車上熟睡；按實際表演結束時間出發', loc:'Ala MAHAINA CONDO HOTEL'},
    ],
    eats:[
     {ic:'🎢', n:'Wild Banquet 戶外美食廣場', q:'JUNGLIA OKINAWA', note:'食べ歩き小食車＋恐龍主題餐點；13:00後人流回落先去最好，出餐快'},
     {ic:'🍼', n:'園內kids plate＋自備BB零食', q:'JUNGLIA OKINAWA', note:'多間餐廳有兒童餐；幼兒零食/奶可以帶入園，有育嬰室同尿布台'},
-    {ic:'🐷', n:'大家 うふやー', q:'百年古家 大家 名護', book:'https://www.hotpepper.jp/strJ000114346/', note:'如果唔等煙火提早離園，回程名護食百年古民家阿古豬（建議預約）'},
+    {ic:'🐷', n:'大家 うふやー', q:'百年古家 大家 名護', book:'https://www.hotpepper.jp/strJ000114346/', note:'如提早離園可另行繞道名護食阿古豬；唔係返本部町飯店必經，需預留車程及訂位'},
    ]},
   {num:3, mood:'explore', date:'10/9・五', title:'真栄田岬 Pink Mermaid 親子浮潛（上晝場最理想）→ 南下那霸 CHECK IN',
-   totalDrive:'車程約1小時35分（喜瀬→真栄田岬約35分＋浮潛完一程直入那霸約1小時，中途唔停）',
+   totalDrive:'估算車程約2小時15分至2小時30分（本部町→真栄田岬約75–90分，再南下那霸約1小時）',
    route:[
-     {l:'Oriental Hotel（喜瀬）',q:'オリエンタルホテル 沖縄リゾート&スパ'},
-     {leg:'約35分鐘'},
+     {l:'Ala MAHAINA（本部町）',q:'Ala MAHAINA CONDO HOTEL'},
+     {leg:'約75–90分鐘'},
      {l:'真栄田岬（青の洞窟）',q:'真栄田岬 沖縄'},
      {leg:'約1小時'},
      {l:'那霸Loisir飯店',q:'ロワジールホテル那覇'},
    ],
-   hotel:'Loisir Hotel & Spa Tower 那霸（三重城溫泉，已確認 ✓ Day 3–5晚）',
+   hotel:'LOISIR HOTEL NAHA（本館，已付款並確認 ✓ 10/9–10/12・3晚）',
    rows:[
-    {t:'08:00', who:'family', a:'早餐、退房、行李上車，出發前往真栄田岬（車程約35分）', n:'🌊 點解book上晝場：朝早風浪最靜、水清、避開10:00–15:00人潮；10月北風漸多，越朝早成團率越高，仲啱BB下晝3點嘅午睡節奏', loc:'真栄田岬 沖縄'},
-    {t:'09:15', who:'family', a:'Pink Mermaid 幼兒專屬浮潛團報到', n:'中英文教練團隊，1歲起可玩，對2–3歲小朋友經驗豐富；如當日北風大被取消，改行備瀬林道/水族館做backup', loc:'真栄田岬 沖縄', web:'https://pink-mermaid.com/tw/course/Dcourse.html'},
+    {t:'07:00', who:'family', a:'早餐、退房、行李上車', n:'Ala MAHAINA退房期限11:00；為配合原規劃上午浮潛，需提早離開本部町。未見活動確認單，集合時間及地點需再核實', loc:'Ala MAHAINA CONDO HOTEL'},
+    {t:'07:30（估）', who:'move', a:'出發前往真栄田岬（車程約75–90分）', n:'原駐點已改為本部町，唔再按喜瀬35分鐘車程；另預留泊車及報到時間', loc:'真栄田岬 沖縄'},
+    {t:'09:15（待預約確認）', who:'family', a:'Pink Mermaid 幼兒專屬浮潛團報到', n:'時間及集合地點以活動確認單為準；如取消，直接南下改室內活動，避免已到恩納再折返本部町', loc:'真栄田岬 沖縄', web:'https://pink-mermaid.com/tw/course/Dcourse.html'},
     {t:'09:30–11:00', who:'family', a:'青之洞窟親子浮潛體驗', n:'含免費水下高畫質相機拍攝/錄影（教練AirDrop傳送）及免費餵魚體驗，3人同行約6,500円/人（已含裝備船票保險）', loc:'真栄田岬 沖縄'},
     {t:'11:15', who:'family', a:'真栄田岬設施沖身換衫', n:'有投幣淋浴同更衣室', loc:'真栄田岬 沖縄'},
     {t:'11:45', who:'move', a:'一程直入那霸（經石川IC上高速，車程約1小時，中途唔停）', n:'寶寶車上熟睡', loc:'那覇市西3-2-1'},
     {t:'12:50', who:'family', a:'午餐：泊いゆまち魚市場（入那霸順路，離飯店車程5分）', n:'吞拿魚／三文魚籽／蟹籽海鮮丼任揀檔口，市場地方大出餐快；唔想落車就飯店附近隨便食', loc:'泊いゆまち 那覇'},
-    {t:'14:00', who:'move', a:'抵達 Loisir Hotel 辦理入住（未有房就寄存行李）', n:'雙天然溫泉「三重城溫泉」（800萬年化石海水）＋室內溫水泳池全年開', loc:'那覇市西3-2-1', web:'https://www.loisir-naha.com/'},
-    {t:'15:00', who:'family', a:'BB房內午睡，爸媽輪流浸溫泉', n:'本館2F島人の湯／Spa Tower 2F海人の湯', loc:'那覇市西3-2-1'},
-    {t:'16:30', who:'family', a:'室內溫水泳池親子時間，或波の上ビーチ散步（行路約10分）', n:'黃昏海邊影相一流', loc:'波の上ビーチ 那覇'},
+    {t:'14:00（估）', who:'move', a:'抵達 LOISIR HOTEL NAHA 本館（未到入住時間先寄存行李）', n:'已付款並確認，訂單1771807276；截圖未列入住時間，依入住憑證安排，唔當作14:00已可取房', loc:'那覇市西3-2-1', web:'https://www.loisir-naha.com/'},
+    {t:'入住後', who:'family', a:'BB房內午睡，爸媽輪流休息', n:'溫泉／泳池開放及使用權益先向本館確認，唔假設可用Spa Tower設施', loc:'那覇市西3-2-1'},
+    {t:'16:30（估）', who:'family', a:'飯店親子休息，或波の上ビーチ散步', n:'如想用泳池，先向本館確認開放時間及收費', loc:'波の上ビーチ 那覇'},
     {t:'19:00', who:'family', a:'晚餐：飯店周邊（西町／久茂地）', n:'Jackie牛排行路約7分鐘就到', loc:'那覇市西3-2-1'},
    ],
    eats:[
@@ -447,15 +460,15 @@ const days = [
      {leg:'約35分鐘'},
      {l:'那霸Loisir飯店',q:'ロワジールホテル那覇'},
    ],
-   hotel:'Loisir Hotel & Spa Tower 那霸',
+   hotel:'LOISIR HOTEL NAHA（本館，已付款並確認）',
    rows:[
-    {t:'09:00', who:'family', a:'悠閒起身、飯店早餐', n:'今日冇早集合，全家慢慢嚟；爸爸全日司機', loc:'那覇市西3-2-1'},
+    {t:'09:00', who:'family', a:'悠閒起身、早餐', n:'早餐是否包含以入住憑證為準；今日冇早集合，全家慢慢嚟', loc:'那覇市西3-2-1'},
     {t:'09:45', who:'move', a:'出發前往豊崎美らSUNビーチ（車程約15分）', n:'', loc:'豊崎美らSUNビーチ'},
     {t:'10:00–12:00', who:'family', a:'🏖 沙灘玩水挖沙：水淺灘平、有救生員同淋浴設施，10月仲落得水', n:'帶定沙灘玩具；隔籬iias豊崎商場有DMM Kariyushi水族館——落雨即刻轉場', loc:'豊崎美らSUNビーチ', web:'https://www.churasun-beach.com/'},
     {t:'12:15', who:'family', a:'午餐：iias豊崎（沙灘隔籬商場）', n:'餐廳＋food court任揀，沖完身啱啱好', loc:'イーアス沖縄豊崎'},
     {t:'13:30', who:'move', a:'出發去PARCO CITY（車程約25分）', n:'BB車上瞓晏覺（3:00前開始瞓啱節奏）', loc:'サンエー浦添西海岸PARCO CITY'},
     {t:'14:00–17:30', who:'mom', a:'👗 媽媽shopping time：BB瞓醒爸爸帶佢去3F「あそびパークPLUS」玩，媽媽安心慢慢睇衫', n:'室內遊樂場（6個月–12歲，¥700/30分）：數碼波波池、迷你王國、幼兒專區；PARCO有Zara/GU/Uniqlo/沖繩限定手信，10:00–22:00', loc:'サンエー浦添西海岸PARCO CITY', web:'https://bandainamco-am.co.jp/kids/asobiparkplus/loc/urasoe.html'},
-    {t:'18:00', who:'family', a:'（彈性）上北谷美國村晚餐（車程約15分），海邊位睇日落', n:'唔想咁夜就喺PARCO食完直接返飯店浸溫泉', loc:'アメリカンビレッジ デポアイランド'},
+    {t:'18:00', who:'family', a:'（彈性）上北谷美國村晚餐（車程約15分），海邊位睇日落', n:'唔想咁夜就喺PARCO食完直接返飯店休息；溫泉權益向本館確認', loc:'アメリカンビレッジ デポアイランド'},
     {t:'20:00', who:'family', a:'シーポートちゃたんカーニバル 煙火表演', n:'免費，坐喺Depot Island海岸木棧道就睇到；10/10係週六，多數有場次，出發前官網confirm', loc:'アメリカンビレッジ デポアイランド'},
     {t:'20:30', who:'move', a:'返回那霸飯店（車程約35分）', n:'寶寶車上瞓著都唔緊要', loc:'那覇市西3-2-1'},
    ],
@@ -466,7 +479,7 @@ const days = [
     {ic:'🦞', n:'Chatan Steam Seafood', q:'チャタンスチームシーフード 北谷', note:'露台蒸海鮮對住個海，北谷晚餐備選'},
    ]},
   {num:5, mood:'explore', date:'10/11・日', title:'浦添大公園瀡長滑梯 × 港川外人住宅 × teamLab未來遊樂園',
-   totalDrive:'車程約50分鐘（那霸→浦添大公園15分→港川10分→飯店15分→teamLab 10分）',
+   totalDrive:'估算車程約1小時15分（飯店→浦添15分→港川10分→飯店15分→teamLab 10分→Apple Town 10分→飯店15分，含彈性購物）',
    route:[
      {l:'那霸Loisir飯店',q:'ロワジールホテル那覇'},
      {leg:'約15分鐘'},
@@ -474,20 +487,25 @@ const days = [
      {leg:'約10分鐘'},
      {l:'港川外人住宅',q:'港川ステイツサイドタウン'},
      {leg:'約15分鐘'},
+     {l:'那霸Loisir飯店（午睡）',q:'ロワジールホテル那覇'},
+     {leg:'約10分鐘'},
      {l:'teamLab未來遊樂園',q:'チームラボ 学ぶ 未来の遊園地 沖縄'},
      {leg:'約10分鐘'},
+     {l:'Apple Town 阿卡將（彈性）',q:'アップルタウン 那覇 アカチャンホンポ',optional:true},
+     {leg:'約15分鐘'},
      {l:'那霸Loisir飯店',q:'ロワジールホテル那覇'},
    ],
-   hotel:'Loisir Hotel & Spa Tower 那霸',
+   hotel:'LOISIR HOTEL NAHA（本館，已付款並確認）',
    rows:[
-    {t:'09:00', who:'family', a:'起身、飯店早餐', n:'', loc:'那覇市西3-2-1'},
+    {t:'09:00', who:'family', a:'起身、早餐', n:'早餐是否包含以入住憑證為準', loc:'那覇市西3-2-1'},
     {t:'09:45', who:'move', a:'出發前往浦添大公園（車程約15分）', n:'', loc:'浦添大公園 C地区'},
     {t:'10:00–12:00', who:'family', a:'🛝 浦添大公園C區「感育廣場」：招牌超長roller滑梯＋幼兒遊具區', n:'沖繩本地細路至愛，免費入場；著長褲瀡滑梯唔㷫囉柚，朝早去最涼爽', loc:'浦添大公園 C地区', web:'https://www.urasoedaipark.osi.okinawa.jp/'},
     {t:'12:15', who:'family', a:'午餐：港川外人住宅（車程約10分）', n:'美軍舊住宅改建嘅特色小店群：oHacorte水果撻、ippe coppe麵包、沖繩麵小店，影相靚', loc:'港川ステイツサイドタウン'},
-    {t:'13:45', who:'move', a:'返飯店，BB午睡；爸媽輪流浸溫泉/執手信', n:'瞓夠先去teamLab，玩得盡興啲', loc:'那覇市西3-2-1'},
+    {t:'13:45', who:'move', a:'返飯店，BB午睡；爸媽休息／執手信', n:'瞓夠先去teamLab，玩得盡興啲；溫泉權益向本館確認', loc:'那覇市西3-2-1'},
     {t:'15:30', who:'family', a:'✨ teamLab 未來遊樂園（車程約10分，DFS內）', n:'室內互動數位藝術：畫魚放入大水族館、彈跳宇宙、光之球——3歲玩到唔捨得走；需預先購買指定時段票', loc:'チームラボ 学ぶ 未来の遊園地 沖縄', web:'https://www.teamlab.art/e/futurepark-okinawa/'},
+    {t:'17:00（彈性）', who:'family', a:'如需阿卡將掃貨，安排今日去 Apple Town', n:'先核對店舖當日營業時間；唔留到回程日，以免影響還車及登機', loc:'アップルタウン 那覇 アカチャンホンポ'},
     {t:'18:00', who:'family', a:'晚餐：國際通（車程約10分）或飯店周邊', n:'琉球の牛要TableCheck預約；鰻魚飯彦本店建議訂位', loc:'国際通り 那覇'},
-    {t:'20:00', who:'family', a:'返飯店，最後一晚浸溫泉執行李', n:'聽日13:55機，今晚執定行李最鬆動', loc:'那覇市西3-2-1'},
+    {t:'20:00', who:'family', a:'返飯店，最後一晚執行李及租車文件', n:'聽日HX679 13:55起飛，規劃11:00還車；今晚執定行李最鬆動', loc:'那覇市西3-2-1'},
    ],
    eats:[
     {ic:'🍰', n:'oHacorte 港川本店', q:'oHacorte 港川', note:'外人住宅人氣水果撻，園區小庭園靚到痺；隔籬仲有ippe coppe天然酵母麵包'},
@@ -496,34 +514,30 @@ const days = [
     {ic:'🍚', n:'鰻と日本料理 彦 本店', q:'鰻と日本料理 彦 本店 那覇', book:'http://honten.hiko-okinawa.jp/', note:'鰻魚飯有個室啱一家人，晚餐建議預約'},
     {ic:'🍔', n:'A&W 國際通牧志店', q:'A&W 国際通り牧志店', note:'沖繩限定美式快餐，Root Beer任飲，BB友善又快靚正'},
    ]},
-  {num:6, mood:'move', date:'10/12・一', title:'回程日：阿卡將掃貨 → 糸満漁市場早午餐 → 還車 → 13:55起飛',
-   totalDrive:'車程約45分鐘（飯店→Apple Town 15分→糸満15分→還車15分）',
+  {num:6, mood:'move', date:'10/12・一', title:'回程日：退房 → 糸滿早午餐（彈性）→ OKS提早還車 → HX679 13:55起飛',
+   totalDrive:'估算車程約40–50分（飯店→糸滿約25–30分→OKS約15–20分；還車及機場接駁另預留45分）',
    route:[
      {l:'那霸Loisir飯店',q:'ロワジールホテル那覇'},
-     {leg:'約15分鐘'},
-     {l:'Apple Town 阿卡將本鋪',q:'アップルタウン 那覇 アカチャンホンポ'},
-     {leg:'約15分鐘'},
-     {l:'糸満お魚センター',q:'糸満お魚センター 道の駅いとまん'},
-     {leg:'約15分鐘'},
-     {l:'還車',q:''},
-     {leg:'約5分鐘'},
+     {leg:'約25–30分鐘'},
+     {l:'糸満お魚センター（彈性）',q:'糸満お魚センター 道の駅いとまん',optional:true},
+     {leg:'約15–20分鐘'},
+     {l:'OKS Rentacar（還車）',q:'沖縄県糸満市潮平794-2'},
+     {leg:'還車＋接駁預留45分鐘'},
      {l:'那霸機場',q:'那覇空港'},
    ],
-   hotel:'—（回程日，13:55起飛）',
+   hotel:'LOISIR HOTEL NAHA退房 → HX679 13:55起飛／15:50抵港T1',
    rows:[
-    {t:'08:30', who:'move', a:'退房，出發前往 Apple Town（車程約15分）', n:'行李放車尾箱', loc:'アップルタウン 那覇 アカチャンホンポ'},
-    {t:'09:00', who:'family', a:'阿卡將本鋪最後大掃貨', n:'嬰幼兒用品、手信一次過買齊', loc:'アップルタウン 那覇 アカチャンホンポ'},
-    {t:'10:15', who:'move', a:'出發前往糸満お魚センター（車程約15分，10:00開門）', n:'日本最南端道の駅「いとまん」內', loc:'糸満お魚センター 道の駅いとまん'},
-    {t:'10:30–11:20', who:'family', a:'🐟 漁市場早午餐：11檔漁協直營，海膽/龍蝦/吞拿魚刺身/海鮮丼即買即食，有eat-in位', n:'週一個別檔口休息，多行兩步總有開；糸満名物「爆彈蒲鉾」啱買手信；隔籬道の駅仲有最後手信補給', loc:'糸満お魚センター 道の駅いとまん', web:'https://www.okinawastory.jp/spot/600004452'},
-    {t:'11:25', who:'move', a:'前往租車公司還車（車程約15分，途中加滿油）', n:'⚠️ 13:55起飛，規定起飛前1.5小時（12:25前）還車；記得改期原預約202601583244', loc:'那覇空港 レンタカー'},
-    {t:'11:50–12:05', who:'move', a:'還車手續 + 接駁前往機場（約5分鐘）', n:'店方提供機場接送服務', loc:'那覇空港'},
-    {t:'12:15', who:'move', a:'抵達機場，辦理登機手續', n:'免稅店最後採買', loc:'那覇空港'},
-    {t:'13:55', who:'move', a:'起飛返香港（航班號請自行補返）', n:'預計15:50抵達香港', loc:'那覇空港'},
+    {t:'09:00', who:'family', a:'早餐、整理行李及退房', n:'阿卡將購物已移到Day 5彈性時段；確認冇遺漏護照、駕照及隨身物品', loc:'那覇市西3-2-1'},
+    {t:'09:30（估）', who:'move', a:'出發前往糸満お魚センター（車程約25–30分）', n:'漁市場停留屬彈性；如路況、開店或接駁時間唔配合，直接加油還車', loc:'糸満お魚センター 道の駅いとまん'},
+    {t:'10:00–10:30（彈性）', who:'family', a:'🐟 漁市場快速早午餐', n:'先確認當日開門時間；10:30前離開，唔排長隊，唔加額外購物行程', loc:'糸満お魚センター 道の駅いとまん', web:'https://www.okinawastory.jp/spot/600004452'},
+    {t:'10:30–11:00（估）', who:'move', a:'前往OKS租車店，途中加滿油', n:'保留加油收據及油量表相片；如需更多時間加油，提早離開市場', loc:'沖縄県糸満市潮平794-2'},
+    {t:'11:00（目標）', who:'move', a:'OKS還車手續 + 接駁前往那霸機場', n:'訂單12:00到期，為HX679提早還車；先確認OKS接駁班次，還車及接駁合共預留45分鐘，唔再假設5分鐘到機場', loc:'沖縄県糸満市潮平794-2'},
+    {t:'11:45（目標）', who:'move', a:'抵達那霸機場，辦理國際線登機手續', n:'距13:55起飛約2小時10分，實際報到及閘口截止以香港航空通知為準', loc:'那覇空港'},
+    {t:'13:55', who:'move', a:'HX679起飛返香港', n:'香港航空A320-200；15:50抵達香港國際機場T1（香港時間）', loc:'那覇空港'},
    ],
    eats:[
     {ic:'🐟', n:'糸満お魚センター', q:'糸満お魚センター 道の駅いとまん', book:'https://www.okinawastory.jp/spot/600004452', note:'漁協直營11檔：海膽軍艦、龍蝦、吞拿魚刺身、海鮮丼即買即食，露天eat-in位；10:00開，年中無休（週一個別檔口休）'},
-    {ic:'🍜', n:'琉球新麺 通堂 小禄本店', q:'琉球新麺 通堂 小禄本店', note:'備選：唔想食魚就改食拉麵，Apple Town附近，11:00開'},
-    {ic:'🍱', n:'那霸機場 空港食堂／A&W', q:'空港食堂 那覇空港', note:'時間緊嘅最後防線：國內線航廈平價空港食堂同A&W，最後一杯Root Beer'},
+    {ic:'🍱', n:'飯店早餐／機場餐飲', q:'那覇空港', note:'若漁市場時間唔配合，直接還車去機場；以登機及安檢時間為優先'},
    ]},
 ];
 
@@ -662,14 +676,14 @@ days.forEach((d)=>{
 })();
 
 const restaurants = [
-  {name:'琉球の牛 恩納本館', en:'Yakiniku Ryukyu no Ushi Onna', day:'Day 1 晚餐', desc:'A5和牛燒肉，恩納住宿首晚晚餐首選；17:00開晚市，TableCheck網上訂位', addr:'沖縄県国頭郡恩納村前兼久909-2', tel:'', resv:'https://www.tablecheck.com/en/shops/yakiniku-onna/reserve', book:'https://www.u-shi.net/', bookLabel:'官方網站'},
+  {name:'琉球の牛 恩納本館', en:'Yakiniku Ryukyu no Ushi Onna', day:'恩納晚餐備選（需另安排行程）', desc:'A5和牛燒肉；現住本部町，唔再作首晚飯店附近晚餐。17:00開晚市，需預留車程及提早訂位', addr:'沖縄県国頭郡恩納村前兼久909-2', tel:'', resv:'https://www.tablecheck.com/en/shops/yakiniku-onna/reserve', book:'https://www.u-shi.net/', bookLabel:'官方網站'},
   {name:'きしもと食堂 本店', en:'Kishimoto Shokudo (est.1905)', day:'Day 2 彈性（本部）', desc:'沖繩最老木灰沖繩麵老店，11:00–17:00賣完即止，逢週三休；排隊名店，開店前到最穩', addr:'沖縄県国頭郡本部町渡久地5', tel:'0980-47-2887', book:'https://tabelog.com/en/okinawa/A4702/A470202/47000068/', bookLabel:'Tabelog介紹'},
-  {name:'大家 うふやー', en:'Ufuya · Agu Pork', day:'Day 2 回程備選', desc:'百年古民家歎阿古豬沖繩麵／涮涮鍋，庭園環境一流，JUNGLIA回程經名護順路，遊客多建議預約', addr:'沖縄県名護市中山90', tel:'0980-53-0280', resv:'https://www.hotpepper.jp/strJ000114346/', book:'https://ufuya.com/', bookLabel:'官方網站'},
+  {name:'大家 うふやー', en:'Ufuya · Agu Pork', day:'Day 2 繞道名護備選', desc:'百年古民家阿古豬料理；JUNGLIA返本部町飯店唔必經名護，若去食需另預留車程及提早訂位', addr:'沖縄県名護市中山90', tel:'0980-53-0280', resv:'https://www.hotpepper.jp/strJ000114346/', book:'https://ufuya.com/', bookLabel:'官方網站'},
   {act:true, name:'JUNGLIA 叢林樂園', en:'JUNGLIA Okinawa', day:'Day 2（含煙火）', desc:'2025新開幕主題樂園，3歲以下免費入場', addr:'', tel:'', book:'https://junglia.jp/', bookLabel:'官方網站'},
   {name:'花人逢', en:'Kajinho · Ocean-view Pizza', day:'Day 2 彈性（本部）', desc:'本部山上海景pizza老屋，11:30–19:00，週二三休；view一流，假日要排隊', addr:'沖縄県国頭郡本部町山里1153-2', tel:'0980-47-5537', book:'https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E4%BA%BA%E9%80%A2', bookLabel:'地圖'},
   {act:true, name:'Pink Mermaid 青の洞窟浮潛', en:'Pink Mermaid Snorkel Tour', day:'Day 3', desc:'真栄田岬幼兒專屬浮潛團，1歲起可玩，含水下拍攝+餵魚體驗，3人同行約6,500円/人', addr:'真栄田岬，恩納村', tel:'', book:'https://pink-mermaid.com/tw/course/Dcourse.html', bookLabel:'官方預約頁'},
   {name:'なかむらそば', en:'Nakamura Soba', day:'Day 3 備選', desc:'恩納自家製麵沖繩麵名店，招牌アーサ（海藻）そば；離真栄田岬10分——如浮潛完想食咗嘢先南下就係佢', addr:'沖縄県国頭郡恩納村瀬良垣1669-1', tel:'098-966-8005', book:'https://www.nakamurasoba.com/', bookLabel:'官方網站'},
-  {act:true, name:'部瀬名海中公園', en:'Busena Marine Park', day:'Day 1–3 彈性（酒店隔籬5分）', desc:'海中展望塔＋鯨魚造型玻璃船，服著晒都可以睇熱帶魚', addr:'沖縄県名護市字喜瀬1744-1', tel:'0980-52-3379', book:'https://www.busena-marinepark.com/', bookLabel:'官方網站'},
+  {act:true, name:'部瀬名海中公園', en:'Busena Marine Park', day:'北部彈性備選（需另預留車程）', desc:'海中展望塔＋鯨魚造型玻璃船；地點喺名護喜瀬，唔係本部町已訂飯店旁，加入行程前先查導航', addr:'沖縄県名護市字喜瀬1744-1', tel:'0980-52-3379', book:'https://www.busena-marinepark.com/', bookLabel:'官方網站'},
   {act:true, name:'AEON MALL 沖繩來客夢', en:'AEON MALL Okinawa Rycom', day:'Day 1', desc:'沖繩最大型購物中心，超市＋巨大Toys R Us＋美食街，Day 1北上途中入貨', addr:'沖繩縣中頭郡北中城村字ライカム1番地', tel:'098-930-0425', book:'https://okinawarycom-aeonmall.com/', bookLabel:'官方網站'},
   {name:'ジャッキーステーキハウス', en:'Jackie Steak House (est.1953)', day:'Day 3 晚餐', desc:'那霸老字號美式牛排，招牌Tenderloin；離Loisir行路約7分；唔收訂位，繁忙時間現場攞籌', addr:'沖縄県那覇市西1-7-3', tel:'098-868-2408', book:'https://www.google.com/maps/search/?api=1&query=%E3%82%B8%E3%83%A3%E3%83%83%E3%82%AD%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B9', bookLabel:'地圖'},
   {name:'ポーたま 牧志市場本店', en:'Pork Tamago Onigiri', day:'彈性早餐（牧志）', desc:'豬肉蛋飯糰專門店，07:00開門現點現做；早去避排隊，第一牧志公設市場喺隔籬', addr:'沖縄県那覇市松尾2-8-35', tel:'', book:'https://porktamago.com/', bookLabel:'官方網站'},
@@ -704,8 +718,8 @@ restaurants.forEach(r=>{
 });
 
 const hotels = [
-  {name:'Oriental Hotel 沖繩リゾート&スパ ✓ 已確認', cn:'オリエンタルホテル 沖縄リゾート&スパ（名護・喜瀬）', days:'Day 1–2（10/7–10/9・2晚）', addr:'〒905-0026 沖繩縣名護市喜瀬1490-1', tel:'+81-980-51-1000', web:'okinawa.oriental-hotels.com ／ Agoda ／ Booking.com', tips:['JUNGLIA官方酒店，車程約30分；book時留意住客門票/接駁優惠','沖繩最大級170米花園泳池＋兒童滑水梯（開放至10月底，出發前confirm）','室內大浴場「カラカラ」＋桑拿＋按摩池（非天然溫泉）','真栄田岬浮潛約35分、部瀬名海中公園車程5分、AEON名護店10分']},
-  {name:'Loisir Hotel & Spa Tower 那霸 ✓ 已確認', cn:'ロワジールホテル＆スパタワー那覇（旭橋・西町）', days:'Day 3–5（10/9–10/12・3晚）', addr:'〒900-0036 沖繩縣那霸市西3-2-1', tel:'+81-98-868-2222', web:'loisir-naha.com ／ Agoda ／ Booking.com', tips:['雙天然溫泉「三重城溫泉」（800萬年化石海水）：本館島人の湯＋Spa Tower海人の湯','室內溫水泳池全年開放＋夏季室外泳池，小朋友日日有得游','親子建議訂本館（Loisir Hotel那霸）；Spa Tower高層房大啲較靜','機場車程約10分、Jackie牛排行路約7分、波の上ビーチ行路約10分']},
+  {name:'Ala MAHAINA CONDO HOTEL ✓ 已付款並確認', cn:'阿拉瑪哈伊納公寓式飯店（本部町）', days:'Day 1–2（2026/10/7–10/9・2晚・1間房）', addr:'〒905-0205 沖繩縣國頭郡本部町山川1421-1', tel:'+81-980-48-4888', web:'預訂狀態：已付款並確認（按提供嘅訂單截圖）', tips:['訂單編號：1771809270；外部房型編號：6031648533','10/7 15:00起入住；10/9 11:00前退房','本部町駐點；JUNGLIA車程估算30–45分，真栄田岬約75–90分，請以導航為準','截圖未列房型名稱、早餐或設施權益，請以正式入住憑證為準']},
+  {name:'LOISIR HOTEL NAHA ✓ 已付款並確認', cn:'那霸洛希爾飯店（本館，旭橋／西町）', days:'Day 3–5（2026/10/9–10/12・3晚・1間房）', addr:'〒900-0036 沖繩縣那霸市西3-2-1', tel:'+81-98-868-2222', web:'預訂狀態：已付款並確認（按提供嘅訂單截圖）', tips:['訂單編號：1771807276；外部房型編號：6190325311','預訂名稱係LOISIR HOTEL NAHA，唔係Spa Tower','截圖未列房型名稱、入住／退房時間、早餐及溫泉／泳池權益，請核對正式入住憑證','10/12退房後到糸滿OKS還車；目標11:00到店、11:45到那霸機場']},
 ];
 const hotelContainer = document.getElementById('hotelContainer');
 hotels.forEach(h=>{
@@ -714,7 +728,7 @@ hotels.forEach(h=>{
   card.innerHTML = `<div class="tag">${h.days}</div><h3>${h.name}</h3><div class="cn">${h.cn}</div>
     <div class="hotel-row"><span class="ic">📍</span><span><a href="${mapsSearch(h.addr)}" target="_blank">${h.addr}</a></span></div>
     <div class="hotel-row"><span class="ic">☎</span><span><a href="tel:${h.tel.replace(/[^0-9+]/g,'')}">${h.tel}</a></span></div>
-    <div class="hotel-row"><span class="ic">🌐</span><span>${h.web}</span></div>
+    <div class="hotel-row"><span class="ic">🧾</span><span>${h.web}</span></div>
     <ul class="hotel-tips">${h.tips.map(t=>`<li>${t}</li>`).join('')}</ul>`;
   hotelContainer.appendChild(card);
 });

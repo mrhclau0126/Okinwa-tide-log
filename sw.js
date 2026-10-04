@@ -1,4 +1,4 @@
-const CACHE = 'tidelog-v2';
+const CACHE = 'tidelog-v3';
 const SHELL = ['itinerary', 'expenses', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', (e) => {
