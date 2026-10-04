@@ -1,5 +1,5 @@
-const CACHE = 'tidelog-v5';
-const SHELL = ['itinerary', 'expenses', 'manifest.json', 'icon-192.png', 'icon-512.png'];
+const CACHE = 'tidelog-v6';
+const SHELL = ['itinerary', 'expenses', 'manifest.json', 'icon-192.png', 'icon-512.png', 'theme.css', 'assets/okinawa-coast.webp'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)));

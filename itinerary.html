@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0B2A32">
+<meta name="theme-color" content="#faf7ef">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>沖繩 6 天 5 夜親子自駕行程 · Tide Log</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
 
 :root{
   --ink:#0B2A32; --ink2:#123B46; --ink3:#0E323C;
@@ -299,20 +298,28 @@ button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var
 }
 
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
-<body>
+<body class="travel-page">
 
 
 
 <section class="slide dark" data-label="封面" id="s-cover">
-  <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · 7–12 OCT 2026</span></div>
-  <h1>沖繩 · 6 天 5 夜<br>親子行程手帳</h1>
-  <p class="sub">兩地駐點：北部（JUNGLIA・青之洞窟浮潛） × 那霸（美らSUN沙灘・浦添大公園・teamLab・PARCO・琉球の牛已訂晚餐）</p>
+  <div class="journal-brand"><b>TIDE LOG</b><span>家族の旅 · 2026 秋</span></div>
+  <div class="okinawa-hero">
+    <img src="assets/okinawa-coast.webp" width="2172" height="724" fetchpriority="high" alt="沖繩海岸插畫：碧海、跨海橋、赤瓦屋、風獅爺與扶桑花">
+    <div class="hero-copy">
+      <div class="cover-eyebrow"><span class="eyebrow">OKINAWA · A FAMILY JOURNEY</span></div>
+      <h1>沖繩，慢慢遊。<span>六天五夜 · 親子旅行手帳</span></h1>
+      <p class="sub">從北部的碧海，到那霸的小街。一起收藏秋日回憶。</p>
+      <div class="hero-date">2026.10.07 — 10.12</div>
+    </div>
+    <span class="hero-stamp" aria-hidden="true">沖縄<br>旅日記</span>
+  </div>
   <div class="chip-row">
-    <span class="chip">👶 3歲寶寶親子節奏</span>
-    <span class="chip">🌊 浮潛・沙灘・大公園</span>
-    <span class="chip">🥩 10/10 琉球の牛已訂位</span>
-    <span class="chip">🚗 只搬1次酒店</span>
+    <span class="chip">👶 親子慢旅行</span>
+    <span class="chip">🚗 本部町 → 那霸</span>
+    <span class="chip">✓ 10/10 琉球の牛已訂</span>
   </div>
   <div class="app-tools">
     <button id="undoBtn" type="button" disabled>↶ 復原</button>
@@ -475,8 +482,8 @@ button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var
 </section>
 
 <nav id="bottomNav">
-  <a href="itinerary" class="active"><span class="ic">🗺</span>行程</a>
-  <a href="expenses"><span class="ic">💰</span>記帳</a>
+  <a href="itinerary" class="active"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Z"/><path d="M9 3v16M15 5v16"/></svg></span>行程</a>
+  <a href="expenses"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-3M3 7h17"/><path d="M16 10h6v6h-6a3 3 0 0 1 0-6Z"/><path d="M17 13h1"/></svg></span>記帳</a>
 </nav>
 
 <script>

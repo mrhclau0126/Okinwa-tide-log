@@ -1,15 +1,23 @@
 {
   "name": "沖繩親子行程 Tide Log",
   "short_name": "Tide Log",
-  "description": "沖繩7天6夜親子自駕行程 + 旅費記帳",
+  "description": "沖繩6天5夜親子自駕行程 + 旅費記帳",
   "start_url": "itinerary",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0B2A32",
-  "theme_color": "#0B2A32",
+  "background_color": "#faf7ef",
+  "theme_color": "#faf7ef",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }

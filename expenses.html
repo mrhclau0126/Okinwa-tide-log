@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0B2A32">
+<meta name="theme-color" content="#faf7ef">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>旅費記帳 · Tide Log</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
 :root{
   --ink:#0B2A32; --ink2:#123B46;
   --paper:#EDF1E4; --paper2:#E1E9D6;
@@ -133,14 +132,23 @@ header h1{font-size:1.5rem; margin:.3rem 0 .8rem;}
 #bottomNav a .ic{display:block; font-size:1.15rem; margin-bottom:.15rem;}
 #bottomNav a.active{color:var(--tide);}
 </style>
+<link rel="stylesheet" href="theme.css">
 </head>
-<body>
+<body class="expense-page">
 
 <header>
-  <div class="eyebrow">TIDE LOG · EXPENSES</div>
-  <h1>沖繩旅費記帳</h1>
+  <div class="journal-brand"><b>TIDE LOG</b><span>旅の記録 · 旅費手帳</span></div>
+  <div class="okinawa-hero expense-hero">
+    <img src="assets/okinawa-coast.webp" width="2172" height="724" fetchpriority="high" alt="沖繩碧海與赤瓦屋海景插畫">
+    <div class="hero-copy">
+      <div class="eyebrow">OKINAWA · LITTLE MEMORIES</div>
+      <h1>沖繩旅費手帳</h1>
+      <p class="sub">每一餐、每一程，都係旅途嘅一部分。</p>
+    </div>
+    <span class="hero-stamp" aria-hidden="true">沖縄<br>旅日記</span>
+  </div>
   <div class="rate-row">
-    💱 匯率　1 HKD = <input type="number" id="rate" value="19.5" step="0.1"> JPY
+    💱 匯率　1 HKD = <input aria-label="每港元兌日圓匯率" type="number" id="rate" value="19.5" step="0.1"> JPY
   </div>
 </header>
 
@@ -150,13 +158,13 @@ header h1{font-size:1.5rem; margin:.3rem 0 .8rem;}
     <div class="big" id="totalJPY">¥0</div>
     <div class="sub" id="totalHKD">≈ HK$0</div>
     <div class="budget-row">
-      <span>預算 <input type="number" id="budget" placeholder="輸入預算(JPY)"></span>
+      <span>預算 <input type="number" id="budget" aria-label="日圓預算" placeholder="日圓預算"></span>
       <span id="budgetLeft"></span>
     </div>
     <div class="budget-bar"><div class="budget-fill" id="budgetFill" style="width:0%"></div></div>
   </div>
   <div class="summary-card">
-    <div class="sub" style="margin-bottom:.7rem;">分類breakdown</div>
+    <div class="sub" style="margin-bottom:.7rem;">支出分類</div>
     <div class="cat-breakdown" id="catBreakdown"></div>
   </div>
 </div>
@@ -165,13 +173,13 @@ header h1{font-size:1.5rem; margin:.3rem 0 .8rem;}
   <button class="btn-sync" onclick="syncToNotion()">☁️ 同步去 Notion</button>
   <button class="btn-sync" onclick="loadFromNotion()">⬇️ 由 Notion 載入</button>
 </div>
-<div class="sync-status" id="syncStatus">未連接 Notion（純本機儲存，離線都用到）</div>
+<div class="sync-status" id="syncStatus">資料儲存於此裝置；可同步至 Notion。</div>
 
 <div class="section-title">支出記錄</div>
 <div id="list"></div>
 <div class="empty-hint" id="emptyHint">未有記錄，撳右下角 + 開始記帳</div>
 
-<button id="fab" onclick="openSheet()">＋</button>
+<button id="fab" aria-label="新增支出" onclick="openSheet()">＋</button>
 
 <div id="sheet-backdrop" onclick="closeSheetOnBackdrop(event)">
   <div id="sheet">
@@ -227,8 +235,8 @@ header h1{font-size:1.5rem; margin:.3rem 0 .8rem;}
 </div>
 
 <nav id="bottomNav">
-  <a href="itinerary"><span class="ic">🗺</span>行程</a>
-  <a href="expenses" class="active"><span class="ic">💰</span>記帳</a>
+  <a href="itinerary"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Z"/><path d="M9 3v16M15 5v16"/></svg></span>行程</a>
+  <a href="expenses" class="active"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-3M3 7h17"/><path d="M16 10h6v6h-6a3 3 0 0 1 0-6Z"/><path d="M17 13h1"/></svg></span>記帳</a>
 </nav>
 
 <script>
